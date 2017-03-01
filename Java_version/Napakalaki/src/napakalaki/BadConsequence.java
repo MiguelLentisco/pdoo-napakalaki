@@ -1,3 +1,5 @@
+package napakalaki;
+
 
 import java.util.ArrayList;
 
@@ -11,7 +13,6 @@ import java.util.ArrayList;
  *
  * @author Mike
  */
-
 
 public class BadConsequence {
     private String text;
@@ -28,11 +29,15 @@ public class BadConsequence {
         this.levels = levels;
         this.nVisibleTreasures = nVisible;
         this.nHiddenTreasures = nHidden;
+        this.death = false;
     }
     
     public BadConsequence(String text, boolean death)
     {
         this.text = text;
+        this.levels = 0;
+        this.nVisibleTreasures = 0;
+        this.nHiddenTreasures = 0;
         this.death = death;
     }
     
@@ -41,8 +46,11 @@ public class BadConsequence {
     {
         this.text = text;
         this.levels = levels;
+        this.nHiddenTreasures = 0;
+        this.nVisibleTreasures = 0;
         this.specificHiddenTreasures = tHidden;
         this.specificVisibleTreasures = tVisible;
+        this.death = false;
     }
     
     public String getText()
@@ -79,4 +87,28 @@ public class BadConsequence {
     {
         return specificVisibleTreasures;
     }
+    
+    public String toString()
+    {
+        String message = "Text = " + text;
+        if (!death)
+        {
+            message += " levels = " + Integer.toString(levels);
+            message += " hiddenTreasures = "; 
+            if (specificHiddenTreasures.size() > 0)
+               message += specificHiddenTreasures.toString();
+            else
+                message += Integer.toString(nHiddenTreasures);
+            message += "visibleTreasures = ";
+            if (specificVisibleTreasures.size() > 0)
+                message += specificVisibleTreasures.toString();
+            else
+                message += Integer.toString(nVisibleTreasures);
+            
+        }
+       message += " death = " + Boolean.toString(death);
+       
+       return message;
+    }
+    
 }
