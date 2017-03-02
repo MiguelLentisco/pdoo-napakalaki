@@ -11,8 +11,8 @@ class BadConsequence
   attr_reader :levels                   # Nº de niveles perdidos
   attr_reader :nVisibleTreasures        # Nº de tesoros visibles perdidos
   attr_reader :nHiddenTreasures         # Nº de tesoros ocultos perdidos 
-  attr_reader :specificHiddenTreasures  # Tesoros ocultos específicos perdidos
   attr_reader :specificVisibleTreasures # Tesoros visibles específicos perdidos
+  attr_reader :specificHiddenTreasures  # Tesoros ocultos específicos perdidos
   attr_reader :death                    # Si produce muerte
   
   # -------------------------------------------------------
