@@ -1,27 +1,32 @@
+// begin Prize.java
 package napakalaki;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Mike
- */
+// Clase Prize que representa la recompensa a obtener
 public class Prize {
+    
+    /* Datos miembro */
+    /* ------------------------------------------------------ */
+    
+    // Nº de tesoros obtenidos
     private int treasures;
+    // Nº de niveles subidos
     private int level;
     
-    /*
-     * Constructor de la clase
-    */
+    /* ------------------------------------------------------ */
+    
+    /* Constructor */
+    /* ------------------------------------------------------ */
+    
     public Prize(int treasures, int level)
     {
         this.treasures = treasures;
         this.level = level;
     }
+    
+    /* ------------------------------------------------------ */
+    
+    /* Consulta */
+    /* ------------------------------------------------------ */
     
     public int getTreasures()
     {
@@ -32,11 +37,19 @@ public class Prize {
     {
         return level;
     }
+    /* ------------------------------------------------------ */
     
+    /* Métodos */
+    /* ------------------------------------------------------ */
+    
+    // Convierte a String
     public String toString()
     {
-        return  "Treasures = " + Integer.toString(treasures) + " levels = " 
-                + Integer.toString(level);
+        return  "Treasures = " + Integer.toString(treasures) 
+                + " levels = " + Integer.toString(level);
     }
-        
+    
+    /* ------------------------------------------------------ */
 }
+
+// end Prize.java

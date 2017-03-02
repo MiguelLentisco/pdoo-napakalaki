@@ -1,19 +1,18 @@
+// begin TreasureKind.java
 package napakalaki;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Mike
- */
+// Enumerado TreasureKind que representa el tipo de tesoro
 public enum TreasureKind {
+    // Armadura
     ARMOR,
+    // Arma de una mano
     ONEHAND,
+    // Arma de dos manos
     BOTHHANDS,
+    // Casco
     HELMET,
+    // Calzado
     SHOES;
 }
+
+// end TreasureKind.java

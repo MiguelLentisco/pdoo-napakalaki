@@ -1,6 +1,5 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+# begin pruebaNapakalaki.rb
+#encoding: utf-8
 
 # Clase PruebaNapakalaki para probar el juego
 class PruebaNapakalakib

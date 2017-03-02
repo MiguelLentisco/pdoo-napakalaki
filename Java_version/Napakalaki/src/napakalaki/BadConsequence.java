@@ -1,28 +1,36 @@
+// begin BadConsequence.java
 package napakalaki;
 
-
+// Usar arrays
 import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Mike
- */
-
+// Clase BadConsequence que representa el mal rollo de los monstruos
 public class BadConsequence {
-    private String text;
-    private int levels;
-    private int nVisibleTreasures;
-    private int nHiddenTreasures;
-    private boolean death;
-    private ArrayList<TreasureKind> specificHiddenTreasures = new ArrayList();
-    private ArrayList<TreasureKind> specificVisibleTreasures = new ArrayList();
     
+    /* Datos miembro */
+    /* ------------------------------------------------------ */
+    
+    // Descripción del mal rollo
+    private String text;
+    // Niveles a perder
+    private int levels;
+    // Nº de tesoros visibles perdidos
+    private int nVisibleTreasures;
+    // Nº de tesoros ocultos perdidos
+    private int nHiddenTreasures;
+    // Tesoros visibles específicos perdidos
+    private ArrayList<TreasureKind> specificVisibleTreasures = new ArrayList();
+    // Tesoros ocultos específicos perdidos
+    private ArrayList<TreasureKind> specificHiddenTreasures = new ArrayList();
+    // Si se produce muerte
+    private boolean death;
+    
+    /* ------------------------------------------------------- */
+    
+    /* Constructores */
+    /* ------------------------------------------------------- */
+    
+    // Constructor tipo 1: tesoros no específcos
     public BadConsequence(String text, int levels, int nVisible, int nHidden)
     {
         this.text = text;
@@ -32,15 +40,7 @@ public class BadConsequence {
         this.death = false;
     }
     
-    public BadConsequence(String text, boolean death)
-    {
-        this.text = text;
-        this.levels = 0;
-        this.nVisibleTreasures = 0;
-        this.nHiddenTreasures = 0;
-        this.death = death;
-    }
-    
+     // Constructor tipo 2: tesoros específicos
     public BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible,
                                ArrayList<TreasureKind> tHidden)
     {
@@ -52,6 +52,21 @@ public class BadConsequence {
         this.specificVisibleTreasures = tVisible;
         this.death = false;
     }
+    
+    // Constructor tipo 3: muerte
+    public BadConsequence(String text, boolean death)
+    {
+        this.text = text;
+        this.levels = 0;
+        this.nVisibleTreasures = 0;
+        this.nHiddenTreasures = 0;
+        this.death = death;
+    }
+    
+    /* ------------------------------------------------------- */
+    
+    /* Consulta */
+    /* ------------------------------------------------------- */
     
     public String getText()
     {
@@ -88,6 +103,12 @@ public class BadConsequence {
         return specificVisibleTreasures;
     }
     
+    /* ------------------------------------------------------- */
+    
+    /* Métodos */
+    /* ------------------------------------------------------- */
+    
+    // Convierte a String
     public String toString()
     {
         String message = "Text = " + text;
@@ -111,4 +132,7 @@ public class BadConsequence {
        return message;
     }
     
+    /* ------------------------------------------------------- */
 }
+
+// end BadConsequence.java

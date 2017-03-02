@@ -1,21 +1,25 @@
+// begin Monster.java
 package napakalaki;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Mike
- */
+// Clase Monster que representa una carta de monstruo
 public class Monster {
     
+    /* Datos miembro */
+    /* ------------------------------------------------------ */
+    
+    // Nombre del monstruo
     private String name;
-    private int combatLevel;  
+    // Nivel de combate
+    private int combatLevel;
+    // Recompensa por derrotarlo
     private Prize prize;
+    // Mal rollo
     private BadConsequence badConsequence;
+    
+    /* ------------------------------------------------------ */
+    
+    /* Constructor */
+    /* ------------------------------------------------------ */
     
     public Monster(String name, int level, BadConsequence bc, Prize prize)
     {
@@ -24,6 +28,11 @@ public class Monster {
         this.badConsequence = bc;
         this.prize = prize;
     }
+    
+    /* ------------------------------------------------------- */
+    
+    /* Consulta */
+    /* ------------------------------------------------------- */
     
     public String getName()
     {
@@ -45,6 +54,13 @@ public class Monster {
         return badConsequence;
     }
     
+    /* ------------------------------------------------------- */
+    
+    
+    /* Métodos */
+    /* ------------------------------------------------------- */
+    
+    // Convierte a String
     public String toString()
     {
         return  "Name = " + name 
@@ -52,4 +68,8 @@ public class Monster {
                 + " prize = " + prize.toString() 
                 + " badConsequence = " + badConsequence.toString();
     }
+    
+    /* ------------------------------------------------------- */
 }
+
+// end Monster.java

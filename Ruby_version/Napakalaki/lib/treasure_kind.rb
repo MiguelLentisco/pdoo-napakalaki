@@ -1,5 +1,5 @@
+# begin treasure_kind.rb
 #encoding: utf-8
-# init treasure_kind.rb
 
 # Módulo TreasureKind que representa el tipo de tesoro
 module TreasureKind

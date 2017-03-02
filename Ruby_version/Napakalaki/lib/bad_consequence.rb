@@ -1,10 +1,12 @@
+# begin bad_consequence.rb
 #encoding: utf-8
-# init bad_consequence.rb
 
-# Clase BadConsequence que representa el mal rollo que se aplica al jugador
+# Clase BadConsequence que representa el mal rollo del monstruo
 class BadConsequence
   
-  # Consultores
+  # Consultores / datos miembro
+  # -------------------------------------------------------
+  
   attr_reader :text                     # Descripción del mal rollo
   attr_reader :levels                   # Nº de niveles perdidos
   attr_reader :nVisibleTreasures        # Nº de tesoros visibles perdidos
@@ -13,9 +15,15 @@ class BadConsequence
   attr_reader :specificVisibleTreasures # Tesoros visibles específicos perdidos
   attr_reader :death                    # Si produce muerte
   
+  # -------------------------------------------------------
+  
+  # Constructores
+  # -------------------------------------------------------
+  
   # Constructor general
-  private def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures, 
-      someSpecificVisibleTreasures, someSpecificHiddenTreasures, death)
+  private def initialize(aText, someLevels, someVisibleTreasures, 
+      someHiddenTreasures, someSpecificVisibleTreasures, 
+      someSpecificHiddenTreasures, death)
     @text = aText
     @levels = someLevels
     @nVisibleTreasures = someVisibleTreasures
@@ -33,8 +41,8 @@ class BadConsequence
   end
   
   # Constructor tipo 2: tesoros específicos
-  def self.newLevelSpecificTreasures(aText, someLevels, someSpecificVisibleTreasures, 
-      someSpecificHiddenTreasures)
+  def self.newLevelSpecificTreasures(aText, someLevels, 
+      someSpecificVisibleTreasures, someSpecificHiddenTreasures)
     self.new(aText, someLevels, 0, 0, someSpecificVisibleTreasures, 
       someSpecificHiddenTreasures, false)
   end
@@ -44,11 +52,17 @@ class BadConsequence
     self.new(aText, 0, 0, nil, nil, true)
   end
   
-  # Método to_string
+  # -------------------------------------------------------
+  
+  # Métodos
+  # -------------------------------------------------------
+  
+  # Convierte a string
   def to_s
     
   end
   
+  # -------------------------------------------------------
 end
 
 # end bad_consequence-rb

@@ -1,16 +1,22 @@
-#encoding: utf-8
-# init monster.rb
+# begin monster.rb
+#encoding: utf-8s
 
-# Clase Monstruo que representa una carta de Monstruo
+# Clase Monstruo que representa una carta de monstruo
 class Monster
   
-  # Consultores
+  # Consultores / datos miembro
+  # -------------------------------------------------------
+  
   attr_reader :name           # Nombre del monstruo
   attr_reader :combatLevel    # Poder de combate
   attr_reader :prize          # Recompensa
   attr_reader :badConsequence # Mal rollo
   
-  # Constructor general
+  # -------------------------------------------------------
+  
+  # Constructor
+  # -------------------------------------------------------
+  
   def initialize(name, combatLevel, prize, badConsequence)
     @name = name
     @combatLevel = combatLevel
@@ -18,11 +24,18 @@ class Monster
     @badConsequence = badConsequence
   end
   
-  # Método to_string
+  # -------------------------------------------------------
+  
+  # Métodos
+  # -------------------------------------------------------
+  
+  # Convierte a string
   def to_s
-    
+    "Nombre: #{@name}\n Poder de combate: #{@combatLevel}\n 
+     Recompensa: #{@prize}\n Mal rollo: #{@badConsequence}"
   end
   
+  # -------------------------------------------------------
 end
 
 # end monster.rb

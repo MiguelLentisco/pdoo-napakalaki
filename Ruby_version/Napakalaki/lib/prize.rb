@@ -1,23 +1,36 @@
+# being prize.rb
 #encoding: utf-8
-# init prize.rb
 
+# Clase Prize que representa la recompensa por vencer a un monstruo
 class Prize
   
-  # Consultores
+  # Consultores / datos miembro
+  # -------------------------------------------------------
+  
   attr_reader :treasures  # Nº de tesoros a coger
   attr_reader :level      # Nº de niveles aumentados
   
-  # Constructor general
+  # -------------------------------------------------------
+  
+  # Constructor
+  # -------------------------------------------------------
+  
   def initialize(treasures, level)
     @treasures = treasures
     @level = level
   end
   
-  # Método to_string
+  # -------------------------------------------------------
+  
+  # Métodos
+  # -------------------------------------------------------
+  
+  # Convierte a string
   def to_s
     "Tesoros ganados: #{@treasures}\n Niveles generados: #{@level}"
   end
   
+  # -------------------------------------------------------
 end
 
 # end prize.rb
