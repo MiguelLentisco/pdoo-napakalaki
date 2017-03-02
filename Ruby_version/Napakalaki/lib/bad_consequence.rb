@@ -59,7 +59,23 @@ class BadConsequence
   
   # Convierte a string
   def to_s
-    
+    message = "Descripción: #{@text}\n"
+    if !death
+      message += "Niveles a perder: #{@levels}\n"
+      message += "Tesoros visibles perdidos: "
+      if @specificVisibleTreasures.empty?
+        message += " #{@nVisibleTreasures}\n"
+      else
+        message += " #{@specificVisibleTreasures}\n"
+      end
+      message += "Tesoros ocultos perdidos: "
+      if @specificHiddenTreasures.empty?
+        message += " #{@nHiddenTreasures}\n"
+      else
+        message += " #{@specificHiddenTreasures}\n"
+      end
+    end
+    message += "Muerte: #{@death}"
   end
   
   # -------------------------------------------------------

@@ -115,17 +115,16 @@ public class BadConsequence {
         if (!death)
         {
             message += " levels = " + Integer.toString(levels);
-            message += " hiddenTreasures = "; 
-            if (specificHiddenTreasures.size() > 0)
-               message += specificHiddenTreasures.toString();
-            else
-                message += Integer.toString(nHiddenTreasures);
             message += "visibleTreasures = ";
             if (specificVisibleTreasures.size() > 0)
                 message += specificVisibleTreasures.toString();
             else
                 message += Integer.toString(nVisibleTreasures);
-            
+            message += " hiddenTreasures = ";
+            if (specificHiddenTreasures.size() > 0)
+               message += specificHiddenTreasures.toString();
+            else
+                message += Integer.toString(nHiddenTreasures);
         }
        message += " death = " + Boolean.toString(death);
        
