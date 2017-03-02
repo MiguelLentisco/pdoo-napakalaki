@@ -1,5 +1,4 @@
 # begin monster.rb
-#encoding: utf-8s
 
 # Clase Monstruo que representa una carta de monstruo
 class Monster

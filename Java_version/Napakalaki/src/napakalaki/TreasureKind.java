@@ -3,16 +3,17 @@ package napakalaki;
 
 // Enumerado TreasureKind que representa el tipo de tesoro
 public enum TreasureKind {
-    // Armadura
-    ARMOR,
-    // Arma de una mano
-    ONEHAND,
-    // Arma de dos manos
-    BOTHHANDS,
-    // Casco
-    HELMET,
-    // Calzado
-    SHOES;
+    
+    /* Tipos */
+    /* ------------------------------------------------------- */
+    
+    ARMOR,                         // Armadura
+    ONEHAND,                       // Arma de una mano
+    BOTHHANDS,                     // Arma de dos manos
+    HELMET,                        // Casco
+    SHOES;                         // Calzado
+    
+    /* ------------------------------------------------------- */
 }
 
 // end TreasureKind.java

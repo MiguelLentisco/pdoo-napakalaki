@@ -1,5 +1,4 @@
 # begin bad_consequence.rb
-#encoding: utf-8
 
 # Clase BadConsequence que representa el mal rollo del monstruo
 class BadConsequence

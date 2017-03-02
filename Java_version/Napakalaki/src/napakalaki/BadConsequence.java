@@ -63,6 +63,16 @@ public class BadConsequence {
         this.death = death;
     }
     
+    // ?¿?¿?¿
+    public BadConsequence(String text)
+    {
+        this.text = text;
+        this.levels = 0;
+        this.nVisibleTreasures = 0;
+        this.nHiddenTreasures = 0;
+        this.death = true;
+    }
+    
     /* ------------------------------------------------------- */
     
     /* Consulta */
