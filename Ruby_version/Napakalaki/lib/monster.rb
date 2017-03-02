@@ -3,6 +3,8 @@
 
 # Clase Monstruo que representa una carta de Monstruo
 class Monster
+  
+  # Consultores
   attr_reader :name           # Nombre del monstruo
   attr_reader :combatLevel    # Poder de combate
   attr_reader :prize          # Recompensa

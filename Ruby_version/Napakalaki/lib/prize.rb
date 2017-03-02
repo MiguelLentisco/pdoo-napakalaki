@@ -2,6 +2,8 @@
 # init prize.rb
 
 class Prize
+  
+  # Consultores
   attr_reader :treasures  # Nº de tesoros a coger
   attr_reader :level      # Nº de niveles aumentados
   

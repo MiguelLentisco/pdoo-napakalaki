@@ -3,6 +3,8 @@
 
 # Clase BadConsequence que representa el mal rollo que se aplica al jugador
 class BadConsequence
+  
+  # Consultores
   attr_reader :text                     # Descripción del mal rollo
   attr_reader :levels                   # Nº de niveles perdidos
   attr_reader :nVisibleTreasures        # Nº de tesoros visibles perdidos
