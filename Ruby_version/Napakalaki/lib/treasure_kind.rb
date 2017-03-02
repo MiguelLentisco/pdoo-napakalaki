@@ -1,11 +1,13 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+#encoding: utf-8
+# init treasure_kind.rb
 
+# Módulo TreasureKind que representa el tipo de tesoro
 module TreasureKind
-    ARMOR = armor
-    ONEHAND = onehand
-    BOTHHANDS = bothhands
-    HELMET = helmet
-    SHOES = shoes
+    ARMOR = :armor
+    ONEHAND = :onehand
+    BOTHHANDS = :bothhands
+    HELMET = :helmet
+    SHOES = :shoes
 end
+
+# end treasure_kind.rb

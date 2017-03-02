@@ -1,8 +1,14 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+#encoding: utf-8
+# init monster.rb
 
+# Clase Monstruo que representa una carta de Monstruo
 class Monster
+  attr_reader :name           # Nombre del monstruo
+  attr_reader :combatLevel    # Poder de combate
+  attr_reader :prize          # Recompensa
+  attr_reader :badConsequence # Mal rollo
+  
+  # Constructor general
   def initialize(name, combatLevel, prize, badConsequence)
     @name = name
     @combatLevel = combatLevel
@@ -10,5 +16,11 @@ class Monster
     @badConsequence = badConsequence
   end
   
-  attr_reader :name, :combatLevel, :prize, :badConsequence
+  # Método to_string
+  def to_s
+    
+  end
+  
 end
+
+# end monster.rb
