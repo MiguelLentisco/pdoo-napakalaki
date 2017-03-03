@@ -21,8 +21,7 @@ public class Monster {
     /* Constructor */
     /* ------------------------------------------------------ */
     
-    public Monster(String name, int level, BadConsequence bc, Prize prize)
-    {
+    public Monster(String name, int level, BadConsequence bc, Prize prize) {
         this.name = name;
         this.combatLevel = level;
         this.badConsequence = bc;
@@ -34,23 +33,19 @@ public class Monster {
     /* Consulta */
     /* ------------------------------------------------------- */
     
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
     
-    public int getCombatLevel()
-    {
+    public int getCombatLevel() {
         return combatLevel;
     }
     
-    public Prize getPrize()
-    {
+    public Prize getPrize() {
         return prize;
     }
     
-    public BadConsequence getBadConsequence()
-    {
+    public BadConsequence getBadConsequence() {
         return badConsequence;
     }
     
@@ -61,8 +56,7 @@ public class Monster {
     /* ------------------------------------------------------- */
     
     // Convierte a String
-    public String toString()
-    {
+    public String toString() {
         return  "Name = " + name 
                 + " levels = " + Integer.toString(combatLevel)
                 + " prize = " + prize.toString() 

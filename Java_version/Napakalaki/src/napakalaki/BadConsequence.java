@@ -31,8 +31,7 @@ public class BadConsequence {
     /* ------------------------------------------------------- */
     
     // Constructor tipo 1: tesoros no específcos
-    public BadConsequence(String text, int levels, int nVisible, int nHidden)
-    {
+    public BadConsequence(String text, int levels, int nVisible, int nHidden) {
         this.text = text;
         this.levels = levels;
         this.nVisibleTreasures = nVisible;
@@ -42,8 +41,7 @@ public class BadConsequence {
     
      // Constructor tipo 2: tesoros específicos
     public BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible,
-                               ArrayList<TreasureKind> tHidden)
-    {
+                               ArrayList<TreasureKind> tHidden) {
         this.text = text;
         this.levels = levels;
         this.nHiddenTreasures = 0;
@@ -54,8 +52,7 @@ public class BadConsequence {
     }
     
     // Constructor tipo 3: muerte
-    public BadConsequence(String text, boolean death)
-    {
+    public BadConsequence(String text, boolean death) {
         this.text = text;
         this.levels = 0;
         this.nVisibleTreasures = 0;
@@ -63,53 +60,36 @@ public class BadConsequence {
         this.death = death;
     }
     
-    // ?¿?¿?¿
-    public BadConsequence(String text)
-    {
-        this.text = text;
-        this.levels = 0;
-        this.nVisibleTreasures = 0;
-        this.nHiddenTreasures = 0;
-        this.death = true;
-    }
-    
     /* ------------------------------------------------------- */
     
     /* Consulta */
     /* ------------------------------------------------------- */
     
-    public String getText()
-    {
+    public String getText() {
         return text;
     }
     
-    public int getLevels()
-    {
+    public int getLevels() {
         return levels;
     }
     
-    public int getNVisibleTreasures()
-    {
+    public int getNVisibleTreasures() {
         return nVisibleTreasures;
     }
         
-    public int getNHiddenTreasures()
-    {
+    public int getNHiddenTreasures() {
         return nHiddenTreasures;
     }
     
-    public boolean getDeath()
-    {
+    public boolean getDeath() {
         return death;
     }
     
-    public ArrayList<TreasureKind> getSpecificHiddenTreasures()
-    {
+    public ArrayList<TreasureKind> getSpecificHiddenTreasures() {
         return specificHiddenTreasures;
     }
     
-    public ArrayList<TreasureKind> getSpecificVisibleTreasures()
-    {
+    public ArrayList<TreasureKind> getSpecificVisibleTreasures() {
         return specificVisibleTreasures;
     }
     
@@ -119,8 +99,7 @@ public class BadConsequence {
     /* ------------------------------------------------------- */
     
     // Convierte a String
-    public String toString()
-    {
+    public String toString() {
         String message = "Text = " + text;
         if (!death)
         {

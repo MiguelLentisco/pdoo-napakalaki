@@ -75,14 +75,14 @@ public class PruebaNapakalaki {
     prize = new Prize(1,1);
     bC = new BadConsequence("Embobados con el lindo" +
         "primigenio te descartas de tu casco visible.", 1, 
-        new ArrayList(Arrays.asList(TreasureKind.ARMOR)), null);
+        new ArrayList(Arrays.asList(TreasureKind.ARMOR)), new ArrayList());
     monsters.add(new Monster("Tenochtitlan", 2, bC, prize));
     
     // El sopor de Dunwich
     prize = new Prize(1,1);
     bC = new BadConsequence("El primodial bostezo " +
         "contagioso. Pierdes el calzado visible.", 1, 
-        new ArrayList(Arrays.asList(TreasureKind.SHOES)), null);
+        new ArrayList(Arrays.asList(TreasureKind.SHOES)), new ArrayList());
     monsters.add(new Monster("El sopor de Dunwich", 2, bC, prize));
     
     // Demonios de Magaluf
@@ -103,13 +103,14 @@ public class PruebaNapakalaki {
     // H.P. Munchcraft
     prize = new Prize(2, 1);
     bC = new BadConsequence("Pierdes la armadura visible.",
-        1, new ArrayList(Arrays.asList(TreasureKind.ARMOR)), null);
+        1, new ArrayList(Arrays.asList(TreasureKind.ARMOR)), new ArrayList());
     monsters.add(new Monster("H.P. Munchcraft", 6, bC, prize));
     
     // Necrófago
     prize = new Prize(1, 1);
     bC = new BadConsequence("Sientes bichos bajo la ropa. Descarta la armadura " 
-        + "visible.", 1, new ArrayList(Arrays.asList(TreasureKind.ARMOR)), null);
+        + "visible.", 1, new ArrayList(Arrays.asList(TreasureKind.ARMOR)), 
+        new ArrayList());
     monsters.add(new Monster("Necrófago", 13, bC, prize));
     
     // El rey de rosado
@@ -125,7 +126,7 @@ public class PruebaNapakalaki {
     // Los hondos
     prize = new Prize(2, 1);
     bC = new BadConsequence("Estos monstruos resultan bastante superficales" +
-        "y te aburren mortalmente. Estas muerto.");
+        "y te aburren mortalmente. Estas muerto.", true);
     monsters.add(new Monster("Los hondos", 8, bC, prize));
     
     // Semillas Cthulhu
@@ -136,7 +137,7 @@ public class PruebaNapakalaki {
     // Dameargo
     prize = new Prize(2, 1);
     bC = new BadConsequence("Te intentas escaquear. Pierdes una mano visible.", 
-        1, new ArrayList(Arrays.asList(TreasureKind.ONEHAND)), null);
+        1, new ArrayList(Arrays.asList(TreasureKind.ONEHAND)), new ArrayList());
     monsters.add(new Monster("Dameargo", 1, bC, prize));
     
     // Pollipólipo volante
@@ -147,19 +148,19 @@ public class PruebaNapakalaki {
     // Yskhtihyssg-Goth
     prize = new Prize(3, 1);
     bC = new BadConsequence("No le hace gracia que pronuncien mal su nombre. "
-        + "Estas muerto.");
+        + "Estas muerto.", true);
     monsters.add(new Monster("Yskhtihyssg-Goth", 14, bC, prize));
     
     // Familia feliz
     prize = new Prize(3, 1);
-    bC = new BadConsequence("La familia te atrapa. Estás muerto.");
+    bC = new BadConsequence("La familia te atrapa. Estás muerto.", true);
     monsters.add(new Monster("Familia feliz", 1, bC, prize));
     
     // Roboggoth
     prize = new Prize(2, 1);
     bC = new BadConsequence("La quinta directiva primaria" +
         "te obliga a perder 2 niveles y un tesoro de 2 manos visible.", 2, 
-        new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS)), null);
+        new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS)), new ArrayList());
     monsters.add(new Monster("Roboggoth", 8, bC, prize));
     
     // El espía sordo
@@ -180,7 +181,7 @@ public class PruebaNapakalaki {
     bC = new BadConsequence("Te faltan manos para tanta" +
         "cabeza. Pierdes 3 nivels y tus tesoros visibles de las manos.", 3,
         new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS, 
-        TreasureKind.ONEHAND, TreasureKind.ONEHAND)), null);
+        TreasureKind.ONEHAND, TreasureKind.ONEHAND)), new ArrayList());
     monsters.add(new Monster("Bicéfalo", 21, bC, prize));
     }
 }

@@ -17,8 +17,7 @@ public class Prize {
     /* Constructor */
     /* ------------------------------------------------------ */
     
-    public Prize(int treasures, int level)
-    {
+    public Prize(int treasures, int level) {
         this.treasures = treasures;
         this.level = level;
     }
@@ -28,13 +27,11 @@ public class Prize {
     /* Consulta */
     /* ------------------------------------------------------ */
     
-    public int getTreasures()
-    {
+    public int getTreasures() {
         return treasures;
     }
     
-    public int getLevel()
-    {
+    public int getLevel() {
         return level;
     }
     /* ------------------------------------------------------ */
@@ -43,8 +40,7 @@ public class Prize {
     /* ------------------------------------------------------ */
     
     // Convierte a String
-    public String toString()
-    {
+    public String toString() {
         return  "Treasures = " + Integer.toString(treasures) 
                 + " levels = " + Integer.toString(level);
     }
