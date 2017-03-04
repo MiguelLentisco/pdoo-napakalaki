@@ -57,10 +57,10 @@ public class Monster {
     
     // Convierte a String
     public String toString() {
-        return  "Name = " + name 
-                + " levels = " + Integer.toString(combatLevel)
-                + " prize = " + prize.toString() 
-                + " badConsequence = " + badConsequence.toString();
+        return  "\nNombre = " + name 
+                + "\nPoder de combate = " + Integer.toString(combatLevel)
+                + "\n--Recompensa--" + prize.toString() 
+                + "\n--Mal rollo--" + badConsequence.toString();
     }
     
     /* ------------------------------------------------------- */

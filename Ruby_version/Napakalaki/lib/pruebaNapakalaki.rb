@@ -1,9 +1,10 @@
+#encoding: utf-8
 # begin pruebaNapakalaki.rb
 
 # Includes
 # -------------------------------------------------------
 require_relative 'treasure_kind'
-require_relative "prize"
+require_relative 'prize'
 require_relative 'bad_consequence'
 require_relative 'monster'
 # -------------------------------------------------------
@@ -17,23 +18,33 @@ class PruebaNapakalaki
   # "Main"
   def initialize
     createMonsters
-    puts "Monstruos que solo hacen perder niveles: "
-    printMonsters(justLooseLevels)   
-    puts "\nMonstruos que te hacen ganar mas de un nivel: "
+    puts "Todos los monstruos:"
+    puts "--------------------------------------------------------" 
+    printMonsters(@@monsters)
+    puts "\nMonstruos que solo hacen perder niveles:"
+    puts "--------------------------------------------------------" 
+    printMonsters(justLoseLevels)   
+    puts "\nMonstruos que te hacen ganar mas de un nivel:"
+    puts "--------------------------------------------------------" 
     printMonsters(winLevelsOver1)
-    puts "\nMonstruos con poder de combate mayor de 10: "
+    puts "\nMonstruos con poder de combate mayor de 10:"
+    puts "--------------------------------------------------------" 
     printMonsters(combatLevelOver10)
-    puts "\nMonstruos que te hacen perder el casco: "
-    printMonsters(looseTreasureType(TreasureKind::HELMET))
-    puts "\nMonstruos que te hacen perder la armadura: "
-    printMonsters(looseTreasureType(TreasureKind::ARMOR))
-    puts "\nMonstruos que te hacen perder armas de 1 mano: "
-    printMonsters(looseTreasureType(TreasureKind::ONEHAND))
-    puts "\nMonstruos que te hacen perder armas de 2 manos: "
-    printMonsters(looseTreasureType(TreasureKind::BOTHHANDS))
-    puts "\nMonstruos que te hacen perder el calzado: "
-    printMonsters(looseTreasureType(TreasureKind::SHOES))
-
+    puts "\nMonstruos que te hacen perder el casco:"
+    puts "--------------------------------------------------------" 
+    printMonsters(loseTreasureType(TreasureKind::HELMET))
+    puts "\nMonstruos que te hacen perder la armadura:"
+    puts "--------------------------------------------------------" 
+    printMonsters(loseTreasureType(TreasureKind::ARMOR))
+    puts "\nMonstruos que te hacen perder armas de 1 mano:"
+    puts "--------------------------------------------------------" 
+    printMonsters(loseTreasureType(TreasureKind::ONEHAND))
+    puts "\nMonstruos que te hacen perder armas de 2 manos:"
+    puts "--------------------------------------------------------" 
+    printMonsters(loseTreasureType(TreasureKind::BOTHHANDS))
+    puts "\nMonstruos que te hacen perder el calzado:"
+    puts "--------------------------------------------------------" 
+    printMonsters(loseTreasureType(TreasureKind::SHOES))
   end
   
   # Crea todos los monstruos y los mete en el array
@@ -99,7 +110,7 @@ class PruebaNapakalaki
     # Los hondos
     prize = Prize.new(2, 1)
     bC = BadConsequence.newDeath("Estos monstruos resultan bastante " \
-        "superficiales y te aburren mortalmente. Estas muerto.")
+        "superficiales y te aburren mortalmente. Estás muerto.")
     @@monsters << Monster.new("Los hondos", 8, prize, bC)
     
     # Semillas Cthulhu
@@ -123,7 +134,7 @@ class PruebaNapakalaki
     # Yskhtihyssggoth
     prize = Prize.new(3, 1)
     bC = BadConsequence.newDeath("No le hace gracia que pronuncien mal su " \
-        "nombre. Estas muerto.")
+        "nombre. Estás muerto.")
     @@monsters << Monster.new("Yskhtihyssggoth", 14, prize, bC)
     
     # Familia feliz
@@ -166,7 +177,7 @@ class PruebaNapakalaki
   
   # Lista todos los monstruos que tengan un mal rollo que implique sólo pérdida
   # de niveles
-  private def justLooseLevels
+  private def justLoseLevels
     @@monsters.select {|monster| monster.badConsequence.nVisibleTreasures == 0 and
         monster.badConsequence.nHiddenTreasures == 0 and 
         monster.badConsequence.specificVisibleTreasures.empty? and
@@ -182,7 +193,7 @@ class PruebaNapakalaki
   
   # Lista todos los monstruos que tengan un mal rollo que suponga la pérdida
   # del tipo de tesoro que se pasa como parámetro, ya sean visibles y/o ocultos
-  private def looseTreasureType(treasureType)
+  private def loseTreasureType(treasureType)
     @@monsters.select { |monster| 
       monster.badConsequence.specificVisibleTreasures.include?(treasureType) or
       monster.badConsequence.specificHiddenTreasures.include?(treasureType) }

@@ -100,23 +100,23 @@ public class BadConsequence {
     
     // Convierte a String
     public String toString() {
-        String message = "Text = " + text;
+        String message = "\nDescripción = " + text;
         if (!death)
         {
-            message += " levels = " + Integer.toString(levels);
-            message += "visibleTreasures = ";
-            if (specificVisibleTreasures.size() > 0)
-                message += specificVisibleTreasures.toString();
-            else
-                message += Integer.toString(nVisibleTreasures);
-            message += " hiddenTreasures = ";
-            if (specificHiddenTreasures.size() > 0)
-               message += specificHiddenTreasures.toString();
-            else
-                message += Integer.toString(nHiddenTreasures);
+            message += "\nNiveles = " + Integer.toString(levels);
+            if (!specificVisibleTreasures.isEmpty())
+                message += "\nTesoros visibles = " + specificVisibleTreasures.toString();
+            else if (nVisibleTreasures > 0)
+                message += "\nTesoros visibles = " + Integer.toString(nVisibleTreasures);
+            
+            if (!specificHiddenTreasures.isEmpty())
+               message += "\nTesoros ocultos = " + specificHiddenTreasures.toString();
+            else if (nHiddenTreasures > 0)
+                message += "\nTesoros ocultos = " + Integer.toString(nHiddenTreasures);
         }
-       message += " death = " + Boolean.toString(death);
-       
+        else
+            message += "\nMuerte = sí";
+                    
        return message;
     }
     
