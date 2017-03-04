@@ -20,8 +20,8 @@ class BadConsequence
   # -------------------------------------------------------
   
   # Constructor general
-  private def initialize(aText, someLevels, someVisibleTreasures, 
-      someHiddenTreasures, someSpecificVisibleTreasures, 
+  private def initialize(aText, someLevels, someVisibleTreasures,
+      someHiddenTreasures, someSpecificVisibleTreasures,
       someSpecificHiddenTreasures, death)
     @text = aText
     @levels = someLevels
@@ -36,7 +36,7 @@ class BadConsequence
   def self.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures,
       someHiddenTreasures)
     self.new(aText, someLevels, someVisibleTreasures, someHiddenTreasures, 
-      nil, nil, false)
+      [], [], false)
   end
   
   # Constructor tipo 2: tesoros específicos
@@ -48,7 +48,7 @@ class BadConsequence
   
   # Constructor tipo 3: muerte
   def self.newDeath(aText)
-    self.new(aText, 0, 0, nil, nil, true)
+    self.new(aText, 0, 0, 0, [], [], true)
   end
   
   # -------------------------------------------------------
@@ -58,23 +58,23 @@ class BadConsequence
   
   # Convierte a string
   def to_s
-    message = "Descripción: #{@text}\n"
+    message = "\nDescripción: #{@text}\n"
     if !death
-      message += "Niveles a perder: #{@levels}\n"
-      message += "Tesoros visibles perdidos: "
-      if @specificVisibleTreasures.empty?
-        message += " #{@nVisibleTreasures}\n"
-      else
-        message += " #{@specificVisibleTreasures}\n"
+      message += "Niveles: #{@levels}\n"
+      if @nVisibleTreasures > 0
+        message += "Tesoros visibles: #{@nVisibleTreasures}\n"
+      elsif !@specificVisibleTreasures.empty?
+        message += "Tesoros visibles: #{@specificVisibleTreasures}\n"
       end
-      message += "Tesoros ocultos perdidos: "
-      if @specificHiddenTreasures.empty?
-        message += " #{@nHiddenTreasures}\n"
-      else
-        message += " #{@specificHiddenTreasures}\n"
+      if @nHiddenTreasures > 0
+        message += "Tesoros ocultos: #{@nHiddenTreasures}\n"
+      elsif !@specificHiddenTreasures.empty?
+        message += "Tesoros ocultos: #{@specificHiddenTreasures}\n"
       end
+    else
+      message += "Muerte: sí"
     end
-    message += "Muerte: #{@death}"
+    message
   end
   
   # -------------------------------------------------------

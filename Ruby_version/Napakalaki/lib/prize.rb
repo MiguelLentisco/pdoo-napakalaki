@@ -26,7 +26,7 @@ class Prize
   
   # Convierte a string
   def to_s
-    "Tesoros ganados: #{@treasures}\n Niveles aumentados: #{@level}"
+    "\nTesoros: #{@treasures}\nNiveles: #{@level}"
   end
   
   # -------------------------------------------------------

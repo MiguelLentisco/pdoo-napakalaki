@@ -30,8 +30,8 @@ class Monster
   
   # Convierte a string
   def to_s
-    "Nombre: #{@name}\n Poder de combate: #{@combatLevel}\n 
-     Recompensa: #{@prize}\n Mal rollo: #{@badConsequence}"
+    "\nNombre: #{@name}\nPoder de combate: #{@combatLevel}\n" \
+    "--Recompensa--#{@prize}\n--Mal rollo--#{@badConsequence}"
   end
   
   # -------------------------------------------------------
