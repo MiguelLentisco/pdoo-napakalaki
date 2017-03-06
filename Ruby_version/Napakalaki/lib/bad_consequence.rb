@@ -21,7 +21,9 @@ class BadConsequence
   # -------------------------------------------------------
   
   # Constructor general
-  private def initialize(aText, someLevels, someVisibleTreasures,
+  private_class_method :new
+  
+  def initialize(aText, someLevels, someVisibleTreasures,
       someHiddenTreasures, someSpecificVisibleTreasures,
       someSpecificHiddenTreasures, death)
     @text = aText
