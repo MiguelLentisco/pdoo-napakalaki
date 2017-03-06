@@ -36,20 +36,20 @@ class BadConsequence
   # Constructor tipo 1: tesoros genéricos
   def self.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures,
       someHiddenTreasures)
-    self.new(aText, someLevels, someVisibleTreasures, someHiddenTreasures, 
+    new(aText, someLevels, someVisibleTreasures, someHiddenTreasures, 
       [], [], false)
   end
   
   # Constructor tipo 2: tesoros específicos
   def self.newLevelSpecificTreasures(aText, someLevels, 
       someSpecificVisibleTreasures, someSpecificHiddenTreasures)
-    self.new(aText, someLevels, 0, 0, someSpecificVisibleTreasures, 
+    new(aText, someLevels, 0, 0, someSpecificVisibleTreasures, 
       someSpecificHiddenTreasures, false)
   end
   
   # Constructor tipo 3: muerte
   def self.newDeath(aText)
-    self.new(aText, 0, 0, 0, [], [], true)
+    new(aText, 0, 0, 0, [], [], true)
   end
   
   # -------------------------------------------------------
