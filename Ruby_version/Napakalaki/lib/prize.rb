@@ -1,4 +1,4 @@
-#encoding: utf-8
+# encoding: utf-8
 # being prize.rb
 
 # Clase Prize que representa la recompensa por vencer a un monstruo

@@ -1,4 +1,4 @@
-#encoding: utf-8
+# encoding: utf-8
 # begin pruebaNapakalaki.rb
 
 # Includes
@@ -15,8 +15,13 @@ class PruebaNapakalaki
   # Array de todos los monstruos
   attr_reader :monsters
   
-  # "Main"
+  # Initialize
   def initialize
+   @@monsters = []
+  end
+  
+  # Main
+  def main
     createMonsters
     puts "Todos los monstruos:"
     puts "--------------------------------------------------------" 
@@ -48,7 +53,7 @@ class PruebaNapakalaki
   end
   
   # Crea todos los monstruos y los mete en el array
-  private def createMonsters
+  def createMonsters
      @@monsters = Array.new
     
     # 3 Byakhees de bonanza
@@ -171,13 +176,13 @@ class PruebaNapakalaki
   end
   
   # Lista todos los monstruos que tengan un nivel de combate superior a 10
-  private def combatLevelOver10
+  def combatLevelOver10
     @@monsters.select { |monster| monster.combatLevel > 10}
   end
   
   # Lista todos los monstruos que tengan un mal rollo que implique sólo pérdida
   # de niveles
-  private def justLoseLevels
+  def justLoseLevels
     @@monsters.select {|monster| monster.badConsequence.nVisibleTreasures == 0 and
         monster.badConsequence.nHiddenTreasures == 0 and 
         monster.badConsequence.specificVisibleTreasures.empty? and
@@ -187,25 +192,36 @@ class PruebaNapakalaki
  
   # Lista todos los monstruos que tengan un buen rollo que indique una ganacia
   # de niveles superior a 1
-  private def winLevelsOver1
+  def winLevelsOver1
     @@monsters.select { |monster| monster.prize.level > 1}
   end
   
   # Lista todos los monstruos que tengan un mal rollo que suponga la pérdida
   # del tipo de tesoro que se pasa como parámetro, ya sean visibles y/o ocultos
-  private def loseTreasureType(treasureType)
+  def loseTreasureType(treasureType)
     @@monsters.select { |monster| 
       monster.badConsequence.specificVisibleTreasures.include?(treasureType) or
       monster.badConsequence.specificHiddenTreasures.include?(treasureType) }
   end
   
   # Imprime la lista de monstruos que se la pasa como parámetro
-  private def printMonsters(monsters)
+  def printMonsters(monsters)
     monsters.each {|monster| puts monster }
   end
   
+  # Métodos privados
+  # -------------------------------------------------------
+  
+  private :createMonsters
+  private :loseTreasureType
+  private :printMonsters
+  private :winLevelsOver1
+  private :justLoseLevels
+  private :combatLevelOver10
+  
+  # -------------------------------------------------------
 end
 
-PruebaNapakalaki.new
+PruebaNapakalaki.new.main
 
 # end pruebaNapakalaki.rb

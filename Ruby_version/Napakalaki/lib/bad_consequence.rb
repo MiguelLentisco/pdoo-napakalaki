@@ -1,4 +1,4 @@
-#encoding: utf-8
+# encoding: utf-8
 # begin bad_consequence.rb
 
 # Clase BadConsequence que representa el mal rollo del monstruo
@@ -20,9 +20,7 @@ class BadConsequence
   # Constructores
   # -------------------------------------------------------
   
-  # Constructor general
-  private_class_method :new
-  
+  # Intialize
   def initialize(aText, someLevels, someVisibleTreasures,
       someHiddenTreasures, someSpecificVisibleTreasures,
       someSpecificHiddenTreasures, death)
@@ -34,6 +32,9 @@ class BadConsequence
     @specificHiddenTreasures = someSpecificHiddenTreasures
     @death = death
   end
+  
+  # new es private
+  private_class_method :new
   
   # Constructor tipo 1: tesoros genéricos
   def self.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures,

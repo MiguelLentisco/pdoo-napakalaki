@@ -1,4 +1,4 @@
-#encoding: utf-8
+# encoding: utf-8
 # begin treasure_kind.rb
 
 # Módulo TreasureKind que representa el tipo de tesoro

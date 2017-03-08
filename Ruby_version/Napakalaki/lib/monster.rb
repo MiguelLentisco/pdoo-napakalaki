@@ -1,4 +1,4 @@
-#encoding: utf-8
+# encoding: utf-8
 # begin monster.rb
 
 # Clase Monstruo que representa una carta de monstruo
