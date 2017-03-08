@@ -21,11 +21,11 @@ public class Monster {
     /* Constructor */
     /* ------------------------------------------------------ */
     
-    public Monster(String name, int level, BadConsequence bc, Prize prize) {
-        this.name = name;
-        this.combatLevel = level;
-        this.badConsequence = bc;
-        this.prize = prize;
+    public Monster(String n, int l, BadConsequence b, Prize p) {
+        this.name = n;
+        this.combatLevel = l;
+        this.badConsequence = b;
+        this.prize = p;
     }
     
     /* ------------------------------------------------------- */
@@ -41,13 +41,19 @@ public class Monster {
         return combatLevel;
     }
     
-    public Prize getPrize() {
-        return prize;
-    }
-    
     public BadConsequence getBadConsequence() {
         return badConsequence;
     }
+    
+    public int getLevelsGained() {
+        
+    }
+    
+    public int getTreasuresGained() {
+        
+    }
+    
+    
     
     /* ------------------------------------------------------- */
     
