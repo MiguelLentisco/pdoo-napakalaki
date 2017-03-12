@@ -22,19 +22,21 @@ class Player
   end
   
   def bringToLife
-    
+    @dead = false
   end
   
   def getCombatLevel
-    
+    bonus = @level
+    visibleTreasures.each {|treasure| bonus += treasure.bonus }
+    bonus
   end
   
   def incrementLevels(l)
-    
+    @level += l
   end
   
   def decrementLevels(l)
-    
+    @level -= l
   end
   
   def applyPrize(m)
@@ -49,16 +51,23 @@ class Player
     
   end
   
+  #Es muy posible que esto pete fuerte
   def howManuVisibleTreasures(tKind)
-    
+    var = 0
+    @visibleTreasures.each { |treasure| 
+      if treasure.type == tKind
+        var += 1
+      end
+    }
+    var
   end
   
   def dieIfNoTreasures 
-    
+    @dead = true
   end
   
   def isDead
-    
+    @dead
   end
   
   def combat(m)
@@ -78,7 +87,8 @@ class Player
   end
   
   def validState
-    
+    @pendingBadConsequence.isEmpty and
+      @hiddenTreasures.size < 4
   end
   
   def initTreasures
@@ -94,15 +104,15 @@ class Player
   end
   
   def canISteal
-    
+    @canISteal
   end
   
   def canYouGiveMeATreasure
-    
+    !nVisible.empty?
   end
   
   def haveStolen
-    
+    @canISteal = false
   end
   
   def discardAllTreasures
@@ -110,7 +120,7 @@ class Player
   end
   
   def setPendingBadConsequence(b)
-    
+    @pendingBadConsequence = b
   end
   
   private_class_method :bringToLife

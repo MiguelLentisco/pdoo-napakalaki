@@ -8,3 +8,14 @@ private_class_method y private, diferencias?
 Qué es PendingBadConsequence en monster?
 CardDealer no inicializado en Napakalaki
 
+Metodos:
+  bringToLife : solamente hacemos dead = false
+  Constructor de player en java
+  Incrementar /decrementar nivel no comprueba nada
+  dieIfNoTreasure comprueba algo?
+  haveStolen wtf
+  
+Exactitud de random
+
+TODO:
+  CardDealer

@@ -58,7 +58,8 @@ class BadConsequence
   # -------------------------------------------------------
   
   def isEmpty
-    
+    nVisibleTreasures == 0 and nHiddenTreasures == 0 and 
+      specificVisibleTreasures.empty? and specificHiddenTreasures.empty?
   end
   
   def substractVisibleTreasure(t)

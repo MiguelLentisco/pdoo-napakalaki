@@ -11,10 +11,7 @@ class Treasure
     @name = n
     @bonus = bonus
     @type = t
-  end
-  
-  
-  
+  end  
 end
 
 # end treasure.rb

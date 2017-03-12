@@ -35,11 +35,11 @@ class Monster
   end
   
   def getLevelsGained
-    
+    @prize.levels
   end
   
   def getTreasuresGained
-  
+  @prize.treasures
   end
   
   # -------------------------------------------------------
