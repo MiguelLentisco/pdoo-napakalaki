@@ -9,7 +9,6 @@ class Monster
   
   attr_reader :name           # Nombre del monstruo
   attr_reader :combatLevel    # Poder de combate
-  attr_reader :prize          # Recompensa
   attr_reader :badConsequence # Mal rollo
   
   # -------------------------------------------------------
@@ -17,7 +16,7 @@ class Monster
   # Constructor
   # -------------------------------------------------------
   
-  def initialize(name, combatLevel, prize, badConsequence)
+  def initialize(n, l, p, b)
     @name = name
     @combatLevel = combatLevel
     @prize = prize
@@ -33,6 +32,14 @@ class Monster
   def to_s
     "\nNombre: #{@name}\nPoder de combate: #{@combatLevel}\n" \
     "--Recompensa--#{@prize}\n--Mal rollo--#{@badConsequence}"
+  end
+  
+  def getLevelsGained
+    
+  end
+  
+  def getTreasuresGained
+  
   end
   
   # -------------------------------------------------------

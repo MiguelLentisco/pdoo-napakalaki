@@ -6,6 +6,7 @@ class BadConsequence
   
   # Consultores / datos miembro
   # -------------------------------------------------------
+  @@MAX_TREASURES = 10
   
   attr_reader :text                     # Descripción del mal rollo
   attr_reader :levels                   # Nº de niveles perdidos
@@ -37,28 +38,40 @@ class BadConsequence
   private_class_method :new
   
   # Constructor tipo 1: tesoros genéricos
-  def self.newLevelNumberOfTreasures(aText, someLevels, someVisibleTreasures,
-      someHiddenTreasures)
-    new(aText, someLevels, someVisibleTreasures, someHiddenTreasures, 
-      [], [], false)
+  def self.newLevelNumberOfTreasures(t, l, nVisible, nHidden)
+    new(t, l, nVisible, nHidden, [], [], false)
   end
   
   # Constructor tipo 2: tesoros específicos
-  def self.newLevelSpecificTreasures(aText, someLevels, 
-      someSpecificVisibleTreasures, someSpecificHiddenTreasures)
-    new(aText, someLevels, 0, 0, someSpecificVisibleTreasures, 
-      someSpecificHiddenTreasures, false)
+  def self.newLevelSpecificTreasures(t, l, v, h)
+    new(t, l, 0, 0, v, h, false)
   end
   
   # Constructor tipo 3: muerte
-  def self.newDeath(aText)
-    new(aText, 0, 0, 0, [], [], true)
+  def self.newDeath(t)
+    new(t, 0, 0, 0, [], [], true)
   end
   
   # -------------------------------------------------------
   
   # Métodos
   # -------------------------------------------------------
+  
+  def isEmpty
+    
+  end
+  
+  def substractVisibleTreasure(t)
+    
+  end
+  
+  def substractHiddenTreasure(t)
+    
+  end
+  
+  def adjustToFitTreasureList(v, h)
+    
+  end
   
   # Convierte a string
   def to_s

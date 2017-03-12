@@ -8,16 +8,16 @@ class Prize
   # -------------------------------------------------------
   
   attr_reader :treasures  # Nº de tesoros a coger
-  attr_reader :level      # Nº de niveles aumentados
+  attr_reader :levels      # Nº de niveles aumentados
   
   # -------------------------------------------------------
   
   # Constructor
   # -------------------------------------------------------
   
-  def initialize(treasures, level)
-    @treasures = treasures
-    @level = level
+  def initialize(t, l)
+    @treasures = t
+    @levels = l
   end
   
   # -------------------------------------------------------
@@ -27,7 +27,7 @@ class Prize
   
   # Convierte a string
   def to_s
-    "\nTesoros: #{@treasures}\nNiveles: #{@level}"
+    "\nTesoros: #{@treasures}\nNiveles: #{@levels}"
   end
   
   # -------------------------------------------------------
