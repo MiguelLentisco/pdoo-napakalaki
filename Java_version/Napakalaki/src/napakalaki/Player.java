@@ -13,35 +13,38 @@ public class Player {
     private boolean canISteal = true;
     private Player enemy;
     private BadConsequence pendingBadConsequence;
-    private ArrayList<Treasure> visibleTreasures;
-    private ArrayList<Treasure> hiddenTreasures;
+    private ArrayList<Treasure> visibleTreasures = new ArrayList();
+    private ArrayList<Treasure> hiddenTreasures = new ArrayList();
 
     public Player(String name) {
         
     }
     
     private String getName() {
-        
+        return name;
     }
     
     private void bringToLife() {
-        
+        dead = false;
     }
     
     private int getCombatLevel() {
-        
+        int bonus_total = level;
+        for (Treasure treasure: visibleTreasures)
+            bonus_total += treasure.getBonus();
+        return bonus_total;
     }
     
     private void incrementLevels(int l) {
-        
+        level += l;
     }
     
     private void decrementLevels(int l) {
-        
+        level -= l;
     }
     
     private void setPendingBadConsequence(BadConsequence b) {
-        
+        pendingBadConsequence = b;
     }
     
     private void applyPrize(Monster m) {
@@ -57,15 +60,19 @@ public class Player {
     }
     
     private int howManyVisibleTreasures(TreasureKind tKind) {
-        
+        int n = 0;
+        for (Treasure treasure : visibleTreasures)
+            if (treasure.getType() == tKind)
+                n++;
+        return n;
     }
     
     private void dieIfNoTreasures() {
-        
+        dead = true;
     }
     
     public boolean isDead() {
-        
+        return dead;
     }
     
     public ArrayList<Treasure> getVisibleTreasures() {
@@ -94,7 +101,7 @@ public class Player {
     }
     
     public boolean validState() {
-        
+       return pendingBadConsequence.isEmpty() && hiddenTreasures.size() <= 4;
     }
     
     public void initTreasures() {
@@ -102,7 +109,7 @@ public class Player {
     }
     
     public int getLevels() {
-        
+        return level;
     }
     
     public Treasure stealTreasures() {
@@ -110,7 +117,7 @@ public class Player {
     }
     
     public void setEnemy(Player enemy) {
-        
+        this.enemy = enemy;
     }
     
     private Treasure giveMeATreasure() {
@@ -118,15 +125,15 @@ public class Player {
     }
     
     public boolean canISteal() {
-        
+        return canISteal;
     }
     
     private boolean canYouGiveMeATreasure() {
-        
+        return !hiddenTreasures.isEmpty();
     }
     
     private void haveStolen() {
-        
+        canISteal = false;
     }
     
     public void discardAllTreasures() {

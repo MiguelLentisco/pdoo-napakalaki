@@ -46,11 +46,11 @@ public class Monster {
     }
     
     public int getLevelsGained() {
-        
+        return prize.getLevels();
     }
     
     public int getTreasuresGained() {
-        
+        return prize.getTreasures();
     }
     
     

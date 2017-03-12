@@ -9,19 +9,21 @@ public class Treasure {
     private TreasureKind type;
     
     public Treasure(String n, int bonus, TreasureKind t) {
-        
+        this.name = n;
+        this.bonus = bonus;
+        this.type = t;
     }
     
     public String getName() {
-        
+        return name;
     }
     
     public int getBonus() {
-        
+        return bonus;
     }
     
     public TreasureKind getType() {
-        
+        return type;
     }
     
 }

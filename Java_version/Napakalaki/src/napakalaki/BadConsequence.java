@@ -68,7 +68,9 @@ public class BadConsequence {
     /* ------------------------------------------------------- */
     
     boolean isEmpty() {
-        
+        return nVisibleTreasures == 0 && nHiddenTreasures == 0 &&
+                specificHiddenTreasures.isEmpty() &&
+                specificVisibleTreasures.isEmpty();
     }
     
     
