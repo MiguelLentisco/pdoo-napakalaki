@@ -6,7 +6,7 @@ class BadConsequence
   
   # Consultores / datos miembro
   # -------------------------------------------------------
-  @@MAX_TREASURES = 10
+  @@MAXTREASURES = 10
   
   attr_reader :text                     # Descripción del mal rollo
   attr_reader :levels                   # Nº de niveles perdidos

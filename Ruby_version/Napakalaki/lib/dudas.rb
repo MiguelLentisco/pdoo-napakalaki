@@ -1,21 +1,18 @@
-Constante de clase en Ruby - attr?
-Orden de parametros del constructor de mosnter en Ruby
-Inicializar parámetros con singleton (CardDealer)
-Si no tenemos set-get de un atributo, como dejamos indicado que existe
-Constructor de jugador, nivel?
-CanISteal - es un get o k
-private_class_method y private, diferencias?
-Qué es PendingBadConsequence en monster?
-CardDealer no inicializado en Napakalaki
+//Constante de clase en Ruby - attr? -> crearlo explicito
+//Orden de parametros del constructor de monster en Ruby -> como en el diagrama de clases
+//Inicializar parámetros con singleton (CardDealer) -> Si
+//Si no tenemos set-get de un atributo, como dejamos indicado que existe  -> en el initialize
+//Constructor de jugador, nivel? -> 1
+//CanISteal - es un get o k -> Si
+//private_class_method y private, diferencias? -> Cambiarlos
+//Qué es PendingBadConsequence en monster? -> Más adelante
+//CardDealer no inicializado en Napakalaki -> @dealer = CardDealer.instance
 
 Metodos:
-  bringToLife : solamente hacemos dead = false
-  Constructor de player en java
-  Incrementar /decrementar nivel no comprueba nada
-  dieIfNoTreasure comprueba algo?
-  haveStolen wtf
-  
-Exactitud de random
+  //bringToLife : solamente hacemos dead = false -> Si, esta bien hecho
+  TODO: Constructor de player en java - incompleto
+  TODO: Incrementar / decrementar nivel no comprueba nada -> Hay que ponerlo con excepciones
+  //dieIfNoTreasure comprueba algo? -> Hay que hacer la comprobación!!!!
 
 TODO:
   CardDealer

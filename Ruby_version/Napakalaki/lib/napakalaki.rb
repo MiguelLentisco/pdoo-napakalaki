@@ -9,6 +9,13 @@ class Napakalaki
   attr_reader :currentPlayer
   attr_reader :currentMonster
   
+  def initialize
+    @currentPlayer = nil
+    @players = []
+    @currentMonster = nil
+    @dealer = CardDealer.instance
+  end
+  
   def initPlayers(names)
     
   end
@@ -52,6 +59,11 @@ class Napakalaki
   def endOfGame(result)
     
   end
+  
+  private :initPlayers
+  private :nextPlayer
+  private :nextTurnAllowed
+  private :setEnemies
   
 end
 

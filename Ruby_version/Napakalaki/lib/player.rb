@@ -20,7 +20,7 @@ class Player
     @hiddenTreasures = []
     @pendingBadConsequence = nil
   end
-  
+ 
   def bringToLife
     @dead = false
   end
@@ -33,10 +33,16 @@ class Player
   
   def incrementLevels(l)
     @level += l
+    if (@level > 10)
+      @level = 10
+    end
   end
   
   def decrementLevels(l)
     @level -= l
+    if (@level < 1)
+      @level = 1
+    end
   end
   
   def applyPrize(m)
@@ -62,8 +68,10 @@ class Player
     var
   end
   
-  def dieIfNoTreasures 
-    @dead = true
+  def dieIfNoTreasures
+    if (@visibleTreasures.empty? and @hiddenTreasures.empty?)
+      @dead = true
+    end
   end
   
   def isDead
@@ -123,19 +131,19 @@ class Player
     @pendingBadConsequence = b
   end
   
-  private_class_method :bringToLife
-  private_class_method :getCombatLevel
-  private_class_method :incrementLevels
-  private_class_method :decrementLevels
-  private_class_method :setPendingBadConsequence
-  private_class_method :applyPrize
-  private_class_method :applyBadConsequence
-  private_class_method :canMakeTreasureVisible
-  private_class_method :howManyVisibleTreasures
-  private_class_method :dieIfNoTreasure
-  private_class_method :giveMeATreasure
-  private_class_method :canYouGiveMeATreasure
-  private_class_method :haveStolen
+  private :bringToLife
+  private :getCombatLevel
+  private :incrementLevels
+  private :decrementLevels
+  private :setPendingBadConsequence
+  private :applyPrize
+  private :applyBadConsequence
+  private :canMakeTreasureVisible
+  private :howManyVisibleTreasures
+  private :dieIfNoTreasure
+  private :giveMeATreasure
+  private :canYouGiveMeATreasure
+  private :haveStolen
   
 end
 

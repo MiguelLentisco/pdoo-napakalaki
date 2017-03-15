@@ -11,7 +11,7 @@ module TreasureKind
     ONEHAND = :onehand      # Arma de 1 mano
     BOTHHANDS = :bothhands  # Arma de 2 manos
     HELMET = :helmet        # Casco
-    SHOES = :shoes          # Calzado
+    SHOE = :shoes          # Calzado
     
     # -------------------------------------------------------
 end
