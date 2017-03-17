@@ -7,9 +7,9 @@ class Monster
   # Consultores / datos miembro
   # -------------------------------------------------------
   
-  attr_reader :name           # Nombre del monstruo
-  attr_reader :combatLevel    # Poder de combate
-  attr_reader :badConsequence # Mal rollo
+  #attr_reader :name           # Nombre del monstruo
+  #attr_reader :combatLevel    # Poder de combate
+  #attr_reader :badConsequence # Mal rollo
   
   # -------------------------------------------------------
   
@@ -32,6 +32,18 @@ class Monster
   def to_s
     "\nNombre: #{@name}\nPoder de combate: #{@combatLevel}\n" \
     "--Recompensa--#{@prize}\n--Mal rollo--#{@badConsequence}"
+  end
+  
+  def getName
+    @name
+  end
+  
+  def getCombatLevel
+    @combatlevel
+  end
+  
+  def getBadConsequence
+    @badConsequence
   end
   
   def getLevelsGained

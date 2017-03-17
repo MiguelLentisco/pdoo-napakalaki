@@ -4,11 +4,11 @@
 class Player
   @@MAX_LEVEL = 10
   
-  attr_reader :name
-  attr_reader :level
-  attr_reader :visibleTreasures
-  attr_reader :hiddenTreasures
-  attr_writter :enemy
+  #attr_reader :name
+  #attr_reader :level
+  #attr_reader :visibleTreasures
+  #attr_reader :hiddenTreasures
+  #attr_writter :enemy
   
   def initialize(name)
     @name = name
@@ -23,12 +23,6 @@ class Player
  
   def bringToLife
     @dead = false
-  end
-  
-  def getCombatLevel
-    bonus = @level
-    visibleTreasures.each {|treasure| bonus += treasure.bonus }
-    bonus
   end
   
   def incrementLevels(l)
@@ -130,6 +124,30 @@ class Player
   def setPendingBadConsequence(b)
     @pendingBadConsequence = b
   end
+  
+  def getName
+    @name
+  end
+  
+  def getHiddenTreasures
+    @hiddenTreasures
+  end
+  
+  def getVisibleTreasures
+    @visibleTreasures
+  end
+  
+  def getLevels
+    @level
+  end
+  
+  def getCombatLevel
+    bonus = @level
+    visibleTreasures.each {|treasure| bonus += treasure.bonus }
+    bonus
+  end
+  
+  
   
   private :bringToLife
   private :getCombatLevel
