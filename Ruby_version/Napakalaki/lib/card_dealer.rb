@@ -6,11 +6,14 @@ require 'singleton'
 class CardDealer
   include Singleton
   
-  def initialize 
-    @unusedTreasures = []
+  def initialize
     @usedTreasures = []
-    @unusedMonsters = []
     @usedMonsters = []
+    @unusedTreasures = []
+    @unusedMonsters = []
+    initTreasuresCardDeck
+    initMonstersCardDeck
+    
   end
   
   def initTreasuresCardDeck

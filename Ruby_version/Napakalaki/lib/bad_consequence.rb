@@ -1,6 +1,8 @@
 # encoding: utf-8
 # begin bad_consequence.rb
 
+module NapakalakiGame
+
 # Clase BadConsequence que representa el mal rollo del monstruo
 class BadConsequence
   
@@ -116,6 +118,8 @@ class BadConsequence
   end
   
   # -------------------------------------------------------
+end
+
 end
 
 # end bad_consequence-rb
