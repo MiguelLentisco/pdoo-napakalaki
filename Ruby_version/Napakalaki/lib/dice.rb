@@ -4,7 +4,6 @@
 require 'singleton'
 
 module NapakalakiGame
-
   class Dice
     include Singleton
 
@@ -12,6 +11,5 @@ module NapakalakiGame
       1 + rand(6)
     end
   end
-
 end
 # end dice.rb

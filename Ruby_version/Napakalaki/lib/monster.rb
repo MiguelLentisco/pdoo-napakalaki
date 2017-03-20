@@ -16,11 +16,11 @@ class Monster
   # Constructor
   # -------------------------------------------------------
   
-  def initialize(n, l, p, b)
-    @name = name
-    @combatLevel = combatLevel
-    @prize = prize
-    @badConsequence = badConsequence
+  def initialize(n, l, b, p)
+    @name = n
+    @combatLevel = l
+    @badConsequence = b
+    @prize = p
   end
   
   # -------------------------------------------------------

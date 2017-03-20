@@ -52,11 +52,11 @@ class Player
   end
   
   #Es muy posible que esto pete fuerte
-  def howManuVisibleTreasures(tKind)
+  def howManyVisibleTreasures(tKind)
     var = 0
     @visibleTreasures.each { |treasure| 
       if treasure.type == tKind
-        var += 1
+        var += 1 
       end
     }
     var
