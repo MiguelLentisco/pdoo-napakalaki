@@ -53,8 +53,6 @@ public class Monster {
         return prize.getTreasures();
     }
     
-    
-    
     /* ------------------------------------------------------- */
     
     
@@ -62,13 +60,14 @@ public class Monster {
     /* ------------------------------------------------------- */
     
     // Convierte a String
+    /*
     public String toString() {
         return  "\nNombre = " + name 
                 + "\nPoder de combate = " + Integer.toString(combatLevel)
                 + "\n--Recompensa--" + prize.toString() 
                 + "\n--Mal rollo--" + badConsequence.toString();
     }
-    
+    */
     /* ------------------------------------------------------- */
 }
 

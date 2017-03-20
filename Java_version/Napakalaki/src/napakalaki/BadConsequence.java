@@ -72,8 +72,7 @@ public class BadConsequence {
                 specificHiddenTreasures.isEmpty() &&
                 specificVisibleTreasures.isEmpty();
     }
-    
-    
+     
     public int getLevels() {
         return levels;
     }
@@ -86,11 +85,6 @@ public class BadConsequence {
         return nHiddenTreasures;
     }
     
-    
-    public String getText() {
-        return text;
-    }
-    
     public ArrayList<TreasureKind> getSpecificHiddenTreasures() {
         return specificHiddenTreasures;
     }
@@ -98,27 +92,21 @@ public class BadConsequence {
     public ArrayList<TreasureKind> getSpecificVisibleTreasures() {
         return specificVisibleTreasures;
     }
-      
-    /*
-    public boolean getDeath() {
-        return death;
-    }
-    */   
     
     /* ------------------------------------------------------- */
     
     /* Métodos */
     /* ------------------------------------------------------- */
     
-    void substractVisibleTreasure(Treasure t) {
+    public void substractVisibleTreasure(Treasure t) {
         
     }
     
-    void substractHiddenTreasure(Treasure t) {
+    public void substractHiddenTreasure(Treasure t) {
         
     }
     
-    BadConsequence adjustToFitTreasureLists(ArrayList<TreasureKind> v,
+    public BadConsequence adjustToFitTreasureLists(ArrayList<TreasureKind> v,
             ArrayList<TreasureKind> h) {
         
     }

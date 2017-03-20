@@ -6,14 +6,13 @@ import java.util.ArrayList;
 // Representación del juego
 public class Napakalaki {
     
-   private static final Napakalaki instance = null;
+   private static final Napakalaki instance = new Napakalaki();
    private Player currentPlayer;
-   private ArrayList<Player> players;
+   private ArrayList<Player> players = new ArrayList();
    private CardDealer dealer;
    private Monster currentMonster;
    
    private Napakalaki() {
-       
    }
    
    private void initPlayers(ArrayList<String> names) {
@@ -33,7 +32,7 @@ public class Napakalaki {
    }
    
    public static Napakalaki getInstance() {
-       
+       return instance;
    }
    
    public CombatResult developCombat() {
@@ -57,11 +56,11 @@ public class Napakalaki {
    }
    
    public Player getCurrentPlayer() {
-       
+       return currentPlayer;
    }
    
-   public Monster getCurrentMOnster() {
-       
+   public Monster getCurrentMonster() {
+       return currentMonster;
    }
    
    public boolean nextTurn() {

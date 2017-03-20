@@ -32,7 +32,7 @@ public class Prize {
     }
     
     public int getLevels() {
-        return level;
+        return levels;
     }
     /* ------------------------------------------------------ */
     

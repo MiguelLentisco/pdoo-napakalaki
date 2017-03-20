@@ -17,10 +17,11 @@ public class Player {
     private ArrayList<Treasure> hiddenTreasures = new ArrayList();
 
     public Player(String name) {
-        
+        this.name = name;
+        this.level = 1;
     }
     
-    private String getName() {
+    public String getName() {
         return name;
     }
     
@@ -37,10 +38,14 @@ public class Player {
     
     private void incrementLevels(int l) {
         level += l;
+        if (level > 10)
+            level = 10;
     }
     
     private void decrementLevels(int l) {
         level -= l;
+        if (level < 1)
+            level = 1;
     }
     
     private void setPendingBadConsequence(BadConsequence b) {
@@ -68,7 +73,8 @@ public class Player {
     }
     
     private void dieIfNoTreasures() {
-        dead = true;
+        if (visibleTreasures.isEmpty() && hiddenTreasures.isEmpty())
+            dead = true;
     }
     
     public boolean isDead() {
@@ -76,15 +82,14 @@ public class Player {
     }
     
     public ArrayList<Treasure> getVisibleTreasures() {
-        
+        return visibleTreasures;
     }
     
     public ArrayList<Treasure> getHiddenTreasures() {
-        
+        return hiddenTreasures;
     }
     
-    public CombatResult combat(Monster m)
-    {
+    public CombatResult combat(Monster m) {
         
     }
     
