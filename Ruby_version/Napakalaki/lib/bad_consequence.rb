@@ -117,6 +117,48 @@ module NapakalakiGame
     end
 
     # -------------------------------------------------------
+    
+    def self.depurar
+      bc1 = BadConsequence.newDeath("bc1")
+      bc2 = BadConsequence.newLevelNumberOfTreasures("bc2", 0, 2, 3)
+      bc3 = BadConsequence.newLevelNumberOfTreasures("bc3", 1, 0, 0)
+      bc4 = BadConsequence.newLevelSpecificTreasures("bc4", 4, [TreasureKind::ONEHAND], \
+          [TreasureKind::BOTHHANDS])
+      bc5 = BadConsequence.newLevelSpecificTreasures("bc5", 4, [], [])
+
+      puts bc1.to_s + "\n\n" + bc2.to_s + "\n\n" + bc3.to_s + "\n\n" + bc4.to_s + "\n\n"
+      puts bc5.to_s + "\n\n"
+
+      if (bc1.isEmpty) 
+        puts "bc1 vacia \n"
+      else
+        puts "bc1 no vacia \n"
+      end
+
+      if (bc2.isEmpty) 
+        puts "bc2 vacia \n"
+      else
+        puts "bc2 no vacia \n"
+      end
+
+      if (bc3.isEmpty) 
+        puts "bc3 vacia \n"
+      else
+        puts "bc3 no vacia \n"
+      end
+
+      if (bc4.isEmpty) 
+        puts "bc4 vacia \n"
+      else
+        puts "bc4 no vacia \n"
+      end
+
+      if (bc5.isEmpty) 
+        puts "bc5 vacia \n"
+      else
+        puts "bc5 no vacia \n"
+      end
+    end
   end
 end
 
