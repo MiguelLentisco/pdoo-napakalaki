@@ -37,8 +37,6 @@ module NapakalakiGame
     
     # Iniciamos el mazo de tesoros
     def initTreasureCardDeck
-      @unusedTreasures = []
-
       # ¡Sí mi amo!
       @unusedTreasures << Treasure.new("¡Sí mi amo!", 4, TreasureKind::HELMET)
 
@@ -135,8 +133,6 @@ module NapakalakiGame
 
     # Iniciamos el mazo de monstruos
     def initMonsterCardDeck
-      @unusedMonsters = []
-
       # 3 Byakhees de bonanza
       prize = Prize.new(2, 1)
       bC = BadConsequence.newLevelSpecificTreasures("Pierdes tu armadura visible" \
@@ -267,11 +263,21 @@ module NapakalakiGame
     end
 
     def nextTreasure
-
+      if @unusedTreasures.empty?
+        @usedTreasures.each { |treasure| @unusedTreasures << @usedTreasures.pop }
+        shuffleTreasures
+      else
+        giveTreasureBack(@unusedTreasures.shift)
+      end
     end
 
     def nextMonster
-
+      if @unusedMonsters.empty?
+        @usedMonsters.each { |monster| @unusedMonsters << @usedMonsters.pop }
+        shuffleMonsters
+      else
+        giveMonsterBack(@unusedMonsters.shift)
+      end
     end
 
     # Coge un tesoro y lo pone en el mazo de tesoros usados
@@ -285,7 +291,8 @@ module NapakalakiGame
     end
 
     def initCards
-
+      initTreasureCardDeck
+      initMonsterCardDeck
     end
     
     # -------------------------------------------------------

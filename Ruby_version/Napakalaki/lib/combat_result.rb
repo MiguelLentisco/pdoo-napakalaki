@@ -7,7 +7,7 @@ module NapakalakiGame
       # Tipos 
       # -------------------------------------------------------
 
-      WINGGAME = :wingame          # Ganar el juego
+      WINGAME = :wingame          # Ganar el juego
       WIN = :win                   # Ganar el combate
       LOSE = :lose                 # Perder el combate
 

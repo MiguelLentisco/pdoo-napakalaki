@@ -2,6 +2,7 @@
 # begin bad_consequence.rb
 
 require_relative 'treasure_kind'
+require_relative 'player'
 
 module NapakalakiGame
   # Clase BadConsequence que representa el mal rollo del monstruo
@@ -51,7 +52,7 @@ module NapakalakiGame
 
     # Constructor tipo 3: muerte
     def self.newDeath(t)
-      new(t, 0, 0, 0, [], [], true)
+      new(t, Player.getMaxLevel, @@MAXTREASURES, @@MAXTREASURES, [], [], true)
     end
 
     # -------------------------------------------------------
@@ -103,15 +104,28 @@ module NapakalakiGame
     end
 
     def substractVisibleTreasure(t)
-
+      if @specificVisibleTreasures.empty?
+        if @nVisibleTreasures > 0
+          @nVisibleTreasures -= 1
+        end     
+      else
+        @specificVisibleTreasures.delete_at(@specificHiddenTreasures.index(t))
+      end
     end
 
     def substractHiddenTreasure(t)
-
+      if @specificHiddenTreasures.empty?
+        if @nHiddenTreasures > 0
+          @nHiddenTreasures -= 1
+        end
+      else
+        @specificHiddenTreasures.delete_at(@specificHiddenTreasuers.index(t))
+      end
     end
 
     def adjustToFitTreasureList(v, h)
-
+      v.each {|t| substractVisibleTreasure(t)}
+      h.each {|t| substractHiddenTreasure(t)}
     end
 
     # Convierte a string

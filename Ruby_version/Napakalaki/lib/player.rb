@@ -4,6 +4,7 @@
 require_relative 'treasure'
 require_relative 'bad_consequence'
 require_relative 'dice'
+require_relative 'card_dealer'
 require_relative 'combat_result'
 
 module NapakalakiGame
@@ -68,6 +69,10 @@ module NapakalakiGame
     def getVisibleTreasures
       @visibleTreasures
     end
+    
+    def setEnemy(e)
+      @enemy = e
+    end
  
     # -------------------------------------------------------
     
@@ -107,16 +112,38 @@ module NapakalakiGame
       end
     end
 
+    # Aplica el buen rollo
     def applyPrize(m)
-
+      nLevels = m.getLevelsGained
+      incrementLevels(nLevels)
+      nTreasures = m.getTreasuresGained
+      if nTreasures > 0
+        dealer = CardDealer.instance
+        (1..nLevels).each do |t|
+          treasure = dealer.nextTreasure
+          @hiddenTreasures << treasure
+        end
+      end
     end
 
+    # Aplica el mal rollo
     def applyBadConsequence(m)
-
+      badConsequence = m.getBadConsequence
+      nLevels = badConsequence.getLevels
+      decrementLevels(nLevels)
+      pendingBad = badConsequence.adjustToFitTreasureList(@visibleTreasures, @hiddenTreasures)
+      setPendingBadConsequence(pendingBad)
     end
 
+    # Si se puede pasar el tesoto t de oculto a visible
     def canMakeTreasureVisible(t)
-
+      tType = t.getType
+      max = 1
+      if tType == TreasureKind::ONEHAND
+        max = 2
+      end
+      nObj = howManyVisibleTreasures(tType)
+      nObj < max
     end
 
     # Devuelve el numero de tipos de tesoro pasado que tiene el jugador
@@ -137,37 +164,106 @@ module NapakalakiGame
       end
     end
 
+    # Combate contra el monstruo
     def combat(m)
-
+      myLevel = getCombatLevel
+      monsterLevel = getCombatLevel
+      
+      if !canISteal
+        dice = Dice.instance
+        number = dice.nextNumber
+        if number < 3
+          enemyLevel = enemy.getCombatLevel
+          monsterLevel += enemyLevel
+        end
+      end
+      
+      if myLevel > monsterLevel
+        applyPrize(m)
+        if @levels >= @@MAXLEVEL
+          combatResult = CombatResult::WINGAME
+        else
+          combatResult = CombatResult::WIN
+        end
+      else
+        applyBadConsequence(m)
+        combatResult = CombatResult::LOSE
+      end
+      combatResult
     end
 
-    def makeTreasureVisible(t)
-
+    # Convierto un tesoro a visible
+    def makeTreasuresVisible(t)
+      canI = canMakeTreasureVisible(t)
+      if canI
+        @visibleTreasure << t
+        @hiddenTreasure.delete(t)
+      end
     end
 
+    # Descarta el tesoro visible
     def discardVisibleTreasure(t)
-
+      @visibleTreasure.delete(t)
+      if @pendingBadConsequence != nil and !pendingBadConsequence.isEmpty
+        @pendingBadConsequence.substractVisibleTreasure(t)
+      end
+      dieIfNoTreasures
     end
-
+    
+    # Descarta el tesoro oculto
     def discardHiddenTreasure(t)
-
+      @hiddenTreasure.delete(t)
+      if @pendingBadConsequence != nil and !pendingBadConsequence.isEmpty
+        @pendingBadConsequence.substractHiddenTreasure(t)
+      end
+      dieIfNoTreasures
     end
 
     # Si está en un estado válido el jugador
     def validState
-      @pendingBadConsequence.isEmpty and @hiddenTreasures.size < 4
+      if @pendingBadConsequence == nil
+        false
+      else
+        @pendingBadConsequence.isEmpty and @hiddenTreasures.size < 4
+      end
     end
 
+    # Inicializo los tesoros del jugador
     def initTreasures
-
+      dealer = CardDealer.instance
+      dice = Dice.instance
+      bringToLife
+      treasure = dealer.nextTreasure
+      @hiddenTreasures << treasure
+      number = dice.nextNumber
+      if number > 1
+        treasure = dealer.nextTreasure
+        @hiddenTreasures << treasure
+      end
+      if number == 6
+        treasure = dealer.nextTreasure
+        @hiddenTreasures << treasure
+      end
     end
 
+    # Robar un tesoro del enemigo
     def stealTreasure
-
+      canI = canISteal
+      treasure = nil
+      if canI
+        canYou = enemy.canYouGiveMeATreasure
+        if canYou
+          treasure = giveMeATresure
+          @hiddenTreasures << treasure
+          haveStolen
+        end
+      end
+      treasure
     end
 
+    # Devuelve un tesoro aleatorio
     def giveMeATreasure
-
+      @hiddenTreasures.slice!(rand(@hiddenTreasures.size))
     end
 
     # Si el jugador puede dar tesoros
@@ -180,8 +276,10 @@ module NapakalakiGame
       @canISteal = false
     end
 
+    # Descartar todos los tesoros
     def discardAllTreasures
-
+      @visibleTreasures.each { |treasure| discardVisibleTreasure(treasure)}
+      @hiddenTreasures.each { |treasure| discardHiddenTreasure(treasure)}
     end
     
     # -------------------------------------------------------

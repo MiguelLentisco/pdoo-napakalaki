@@ -48,48 +48,103 @@ module NapakalakiGame
     # Métodos
     # -------------------------------------------------------
 
+    # Crea todos los jugadores con los nombres pasados en el array
     def initPlayers(names)
-
+      names.each { |name| @players << Player.new(name) }
     end
 
+    # Devuelve y actualiza el jugador al que le toca jugar
     def nextPlayer
-
+      indice = -1
+      if @currentPlayer == nil
+        indice = rand(@players.size)
+      else
+        indice = @players.index(@currentPlayer)
+        if indice < @players.size - 1
+          indice += 1
+        else
+          indice = 0
+        end
+      end
+      @currentPlayer = @players[indice]
     end
 
+    # Si se puede pasar al siguiente turno
     def nextTurnAllowed
-
+      if @currentPlayer == nil
+        true
+      else
+        @currentPlayer.validState
+      end
     end
 
+    # Establece aleatoriamente los archienemigos de los jugadores
     def setEnemies
-
+      @players.each { |player| 
+        indice = @players.index(player)
+        var = rand(@players.size)
+        while indice == var
+          var = rand(@players.size)
+        end
+        player.setEnemy(@players[var])
+      }
     end
 
+    # Desarrolla el combate
     def developCombat
-
+      combatResult = @currentPlayer.combat(@currentMonster)
+      @dealer.giveMonsterBack(@currentMonster)
+      combatResult
     end
 
+    # Descarta los tesoros visibles del jugador
     def discardVisibleTreasures(treasures)
-
+      treasures.each {
+        |treasure|
+        @currentPlayer.discardVisibleTreasure(treasure)
+        @dealer.giveTreasureBack(treasure)
+      }
     end
 
+    # Descarta los tesoros ocultos del jugador
     def discardHiddenTreasures(treasures)
-
+      treasures.each {
+        |treasure|
+        @currentPlayer.discardHiddenTreasure(treasure)
+        @dealer.giveTreasureBack(treasure)
+      }
     end
 
+    # Hace visible todos los tesoros que se pasan
     def makeTreasuresVisible(treasures)
-
+      treasures.each { |t| @currentPlayer.makeTreasureVisible(t) }
     end
 
+    # Inicia el juego
     def initGame(players)
-
+      initPlayers(players)
+      setEnemies
+      @dealer.initCards
+      nextTurn
     end
 
+    # Pasa al siguiente turno
     def nextTurn
-
+      stateOK = nextTurnAllowed
+      if stateOK
+        @currentMonster = @dealer.nextMonster
+        @currentPlayer = nextPlayer
+        dead = @currentPlayer.isDead
+        if dead
+          @currentPlayer.initTreasures
+        end
+      end
+      stateOK
     end
 
+    # Si ha acabado la partida
     def endOfGame(result)
-
+      result == CombatResult::WINGAME
     end
 
     # -------------------------------------------------------
