@@ -299,30 +299,6 @@ module NapakalakiGame
     private :shuffleMonsters
     
     # -------------------------------------------------------
-
-    # Depuración de CardDealer (y de Treasure y Monster de forma implícita)
-    def self.depurar
-      cd = instance
-
-      cd.initTreasureCardDeck #Este método en realidad son privados, está publico para la depuración
-      cd.shuffleTreasures #Este método en realidad son privados, está publico para la depuración
-      printList(cd.unusedTreasures)
-
-      cd.giveTreasureBack(Treasure.new("¡Sí mi amo!", 4, TreasureKind::HELMET))
-      printList(cd.usedTreasures)
-
-      cd.initMonsterCardDeck #Este método en realidad son privados, está publico para la depuración
-      cd.shuffleMonsters #Este método en realidad son privados, está publico para la depuración
-      printList(cd.unusedMonsters)
-
-      bC = BadConsequence.newLevelNumberOfTreasures("Pierdes todos tus tesoros visibles.", 1, 6, 0)
-      cd.giveMonsterBack(Monster.new("El gorrón en el umbral", 13, bC, Prize.new(3, 1)))
-      printList(cd.usedMonsters)
-    end
-    
-    def self.printList(list)
-      list.each {|element| puts element }
-    end
   end
 end
 

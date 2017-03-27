@@ -27,7 +27,7 @@ module NapakalakiGame
     
     # Main
     def main
-     depuracion    
+      
     end
     
     # Lista todos los monstruos que tengan un nivel de combate superior a 10
@@ -68,24 +68,6 @@ module NapakalakiGame
     private :winLevelsOver1
     private :justLoseLevels
     private :combatLevelOver10
-
-    # -------------------------------------------------------
-
-    # Método de Depuración
-    # -------------------------------------------------------
-    def depuracion
-      # Depuración de dice
-      Dice.depurar
-
-      # Depuración de BadConsequence
-      BadConsequence.depurar
-
-      # Depuración de CardDealer (y de Treasure y Monster de forma implícita)
-      CardDealer.depurar
-
-      # Depuración de player
-      Player.depurar
-    end
 
     # -------------------------------------------------------
   end
