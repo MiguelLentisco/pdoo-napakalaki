@@ -1,21 +1,22 @@
 # encoding: utf-8
 # begin bad_consequence.rb
 
+require_relative 'treasure_kind'
+
 module NapakalakiGame
   # Clase BadConsequence que representa el mal rollo del monstruo
   class BadConsequence
-
-    # Consultores / datos miembro
+    # Attr / datos miembro
     # -------------------------------------------------------
-    @@MAXTREASURES = 10
+    @@MAXTREASURES = 10                    # Número máximo de tesoros
 
-    attr_reader :text                     # Descripción del mal rollo
+    #attr_reader :text                     # Descripción del mal rollo
     #attr_reader :levels                   # Nº de niveles perdidos
     #attr_reader :nVisibleTreasures        # Nº de tesoros visibles perdidos
     #attr_reader :nHiddenTreasures         # Nº de tesoros ocultos perdidos 
     #attr_reader :specificVisibleTreasures # Tesoros visibles específicos perdidos
     #attr_reader :specificHiddenTreasures  # Tesoros ocultos específicos perdidos
-    attr_reader :death                    # Si produce muerte
+    #attr_reader :death                    # Si produce muerte
 
     # -------------------------------------------------------
 
@@ -54,10 +55,18 @@ module NapakalakiGame
     end
 
     # -------------------------------------------------------
-
-    # Métodos
+    
+    # Consultores
     # -------------------------------------------------------
-
+    
+    def self.getMaxTreasures
+      @@MAXTREASURES
+    end
+    
+    def getText
+      @text
+    end
+    
     def getLevels
       @levels
     end
@@ -77,7 +86,17 @@ module NapakalakiGame
     def getSpecificHiddenTreasures
       @specificHiddenTreasures 
     end
-
+    
+    def getDeath
+      @death
+    end
+    
+    # -------------------------------------------------------
+    
+    # Métodos
+    # -------------------------------------------------------
+    
+    # Si el mal rollo no quita tesoros
     def isEmpty
       @nVisibleTreasures == 0 and @nHiddenTreasures == 0 and 
         @specificVisibleTreasures.empty? and @specificHiddenTreasures.empty?
@@ -116,8 +135,6 @@ module NapakalakiGame
       message
     end
 
-    # -------------------------------------------------------
-    
     def self.depurar
       bc1 = BadConsequence.newDeath("bc1")
       bc2 = BadConsequence.newLevelNumberOfTreasures("bc2", 0, 2, 3)
@@ -159,6 +176,8 @@ module NapakalakiGame
         puts "bc5 no vacia \n"
       end
     end
+    
+    # -------------------------------------------------------
   end
 end
 

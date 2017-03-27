@@ -1,15 +1,14 @@
 # encoding: utf-8
 # being prize.rb
 
-# Clase Prize que representa la recompensa por vencer a un monstruo
 module NapakalakiGame
+  # Clase Prize que representa la recompensa por vencer a un monstruo
   class Prize
-
-    # Consultores / datos miembro
+    # Attr / datos miembro
     # -------------------------------------------------------
 
     #attr_reader :treasures  # Nº de tesoros a coger
-    #attr_reader :levels      # Nº de niveles aumentados
+    #attr_reader :levels     # Nº de niveles aumentados
 
     # -------------------------------------------------------
 
@@ -22,6 +21,19 @@ module NapakalakiGame
     end
 
     # -------------------------------------------------------
+   
+    # Consultores
+    # -------------------------------------------------------
+    
+    def getTreasures
+      @treasures
+    end
+
+    def getLevels
+      @levels
+    end
+    
+    # -------------------------------------------------------
 
     # Métodos
     # -------------------------------------------------------
@@ -29,14 +41,6 @@ module NapakalakiGame
     # Convierte a string
     def to_s
       "\nTesoros: #{@treasures}\nNiveles: #{@levels}"
-    end
-
-    def getTreasures
-      @treasures
-    end
-
-    def getLevels
-      @getLevels
     end
 
     # -------------------------------------------------------

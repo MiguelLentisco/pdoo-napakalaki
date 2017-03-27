@@ -1,11 +1,9 @@
 # encoding: utf-8
 # begin treasure_kind.rb
 
-
 module NapakalakiGame
   # Módulo TreasureKind que representa el tipo de tesoro
   module TreasureKind
-
       # Tipos 
       # -------------------------------------------------------
 

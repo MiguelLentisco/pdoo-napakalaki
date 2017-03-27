@@ -1,53 +1,35 @@
 # encoding: utf-8
 # begin pruebaNapakalaki.rb
 
-# Includes
-# -------------------------------------------------------
-require_relative 'treasure_kind'
-require_relative 'prize'
-require_relative 'bad_consequence'
-require_relative 'monster'
-
-require_relative 'dice'
-require_relative 'card_dealer'
-require_relative 'player'
-# -------------------------------------------------------
+require_relative 'napakalaki' # Incluye todo (creo)
 
 module NapakalakiGame
   # Clase PruebaNapakalaki para probar el juego
   class PruebaNapakalaki
-
-    # Array de todos los monstruos
-    attr_reader :monsters
-
-    # Initialize
-    def initialize
-     @@monsters = []
+    # Attr / datos miembro
+    # -------------------------------------------------------
+    
+    @@monsters = []       # Mazo de monstruos
+    
+    # -------------------------------------------------------
+    
+    # Consultores
+    # -------------------------------------------------------
+    
+    def self.getMonsters
+      @@monsters
     end
-
+    
+    # -------------------------------------------------------
+    
+    # Métodos
+    # -------------------------------------------------------
+    
     # Main
     def main
      depuracion    
     end
-
-    # Método de Depuración
-    # -------------------------------------------------------
-    def depuracion
-      # Depuración de dice
-      Dice.depurar
-
-      # Depuración de BadConsequence
-      BadConsequence.depurar
-
-      # Depuración de CardDealer (y de Treasure y Monster de forma implícita)
-      CardDealer.depurar
-
-      # Depuración de player
-      Player.depurar
-    end
-
-    # -------------------------------------------------------
-
+    
     # Lista todos los monstruos que tengan un nivel de combate superior a 10
     def combatLevelOver10
       @@monsters.select { |monster| monster.combatLevel > 10}
@@ -76,19 +58,39 @@ module NapakalakiGame
         monster.badConsequence.specificVisibleTreasures.include?(treasureType) or
         monster.badConsequence.specificHiddenTreasures.include?(treasureType) }
     end
-
+    
+    # -------------------------------------------------------
+    
     # Métodos privados
     # -------------------------------------------------------
 
     private :loseTreasureType
-    #private :printList
     private :winLevelsOver1
     private :justLoseLevels
     private :combatLevelOver10
 
     # -------------------------------------------------------
-  end
 
+    # Método de Depuración
+    # -------------------------------------------------------
+    def depuracion
+      # Depuración de dice
+      Dice.depurar
+
+      # Depuración de BadConsequence
+      BadConsequence.depurar
+
+      # Depuración de CardDealer (y de Treasure y Monster de forma implícita)
+      CardDealer.depurar
+
+      # Depuración de player
+      Player.depurar
+    end
+
+    # -------------------------------------------------------
+  end
+  
   PruebaNapakalaki.new.main
 end 
+
 # end pruebaNapakalaki.rb

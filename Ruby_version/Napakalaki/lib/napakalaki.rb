@@ -2,13 +2,26 @@
 #begin napakalaki.rb
 
 require 'singleton'
+require_relative 'card_dealer' # Incluye monster y treasure
+require_relative 'player'      # Incluye combat_result y dice
 
 module NapakalakiGame
+  # Clase Napakalaki que representa el control principal del juego
   class Napakalaki
     include Singleton
-
-    #attr_reader :currentPlayer
-    #attr_reader :currentMonster
+    
+    # Attr / datos miembro
+    # -------------------------------------------------------
+    
+    #attr_reader :currentPlayer       # Jugador con el turno actual
+    #attr_reader :currentMonster      # Monstruo en el turno actual
+    #attr_reader :players             # Todos los jugadores
+    #attr_reader :dealer              # El repartidor de cartas
+    
+    # -------------------------------------------------------
+    
+    # Constructor
+    # -------------------------------------------------------
 
     def initialize
       @currentPlayer = nil
@@ -16,6 +29,24 @@ module NapakalakiGame
       @currentMonster = nil
       @dealer = CardDealer.instance
     end
+    
+    # -------------------------------------------------------
+    
+    # Consultores
+    # -------------------------------------------------------
+    
+    def getCurrentPlayer
+      @currentPlayer
+    end
+
+    def getCurrentMonster
+      @currentMonster
+    end
+    
+    # -------------------------------------------------------
+    
+    # Métodos
+    # -------------------------------------------------------
 
     def initPlayers(names)
 
@@ -61,19 +92,17 @@ module NapakalakiGame
 
     end
 
-    def getCurrentPlayer
-      @currentPlayer
-    end
-
-    def getCurrentMonster
-      @currentMonster
-    end
+    # -------------------------------------------------------
+    
+    # Métodos privados
+    # -------------------------------------------------------
 
     private :initPlayers
     private :nextPlayer
     private :nextTurnAllowed
     private :setEnemies
-
+    
+    # -------------------------------------------------------
   end
 end
 

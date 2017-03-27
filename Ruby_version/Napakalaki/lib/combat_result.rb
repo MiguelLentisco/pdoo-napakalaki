@@ -2,6 +2,7 @@
 # begin combat_result.rb
 
 module NapakalakiGame
+  # Módulo CombatResult que representa el resultado de una batalla
   module CombatResult
       # Tipos 
       # -------------------------------------------------------

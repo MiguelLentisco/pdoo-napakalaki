@@ -1,16 +1,27 @@
-#encoding: utf-8
+# encoding: utf-8
 # begin card_dealer.rb
 
 require 'singleton'
 require_relative 'treasure'
-require_relative 'treasure_kind'
+require_relative 'monster'
 
 module NapakalakiGame
+  # Clase CardDealer que representa la estructura que maneja los mazos de cartas
   class CardDealer
     include Singleton
-
+    # Attr / datos miembro
+    # -------------------------------------------------------
+    
     # SOLO PARA DEPURACION
-    attr_reader :unusedTreasures, :unusedMonsters, :usedMonsters, :usedTreasures
+    #attr_reader :unusedTreasures   # Mazo de tesoros no usados
+    #attr_reader :unusedMonsters    # Mazo de monstruos no usados
+    #attr_reader :usedTreasures     # Mazo de tesoros usados
+    #attr_reader :usedMonsters      # Mazo de monstruos usados
+ 
+    # -------------------------------------------------------
+    
+    # Constructor
+    # -------------------------------------------------------
 
     def initialize
       @usedTreasures = []
@@ -18,8 +29,14 @@ module NapakalakiGame
       @unusedTreasures = []
       @unusedMonsters = []
     end
-
-    def initTreasuresCardDeck
+    
+    # -------------------------------------------------------
+    
+    # Métodos
+    # -------------------------------------------------------
+    
+    # Iniciamos el mazo de tesoros
+    def initTreasureCardDeck
       @unusedTreasures = []
 
       # ¡Sí mi amo!
@@ -116,7 +133,8 @@ module NapakalakiGame
       @unusedTreasures << Treasure.new("Zapato deja-amigos", 1, TreasureKind::SHOE)
     end
 
-    def initMonstersCardDeck
+    # Iniciamos el mazo de monstruos
+    def initMonsterCardDeck
       @unusedMonsters = []
 
       # 3 Byakhees de bonanza
@@ -238,10 +256,12 @@ module NapakalakiGame
       @unusedMonsters << Monster.new("Bicéfalo", 21, bC, prize)
     end
 
+    # Baraja el mazo de tesoros
     def shuffleTreasures
       @unusedTreasures.shuffle!
     end
 
+    # Baraja el mazo de monstruos
     def shuffleMonsters
       @unusedMonsters.shuffle!
     end
@@ -254,10 +274,12 @@ module NapakalakiGame
 
     end
 
+    # Coge un tesoro y lo pone en el mazo de tesoros usados
     def giveTreasureBack(t)
       @usedTreasures << t
     end
 
+    # Coge un monstruo y lo pone en el mazo de monstruos usados
     def giveMonsterBack(m)
       @usedMonsters << m
     end
@@ -265,24 +287,31 @@ module NapakalakiGame
     def initCards
 
     end
+    
+    # -------------------------------------------------------
+    
+    # Métodos privados
+    # -------------------------------------------------------
 
-    #private :initTreasureCardDeck
-    #private :initMonsterCardDeck
-    #private :shuffleTreasures
-    #private :shuffleMonsters
+    private :initTreasureCardDeck
+    private :initMonsterCardDeck
+    private :shuffleTreasures
+    private :shuffleMonsters
+    
+    # -------------------------------------------------------
 
     # Depuración de CardDealer (y de Treasure y Monster de forma implícita)
     def self.depurar
       cd = instance
 
-      cd.initTreasuresCardDeck #Este método en realidad son privados, está publico para la depuración
+      cd.initTreasureCardDeck #Este método en realidad son privados, está publico para la depuración
       cd.shuffleTreasures #Este método en realidad son privados, está publico para la depuración
       printList(cd.unusedTreasures)
 
       cd.giveTreasureBack(Treasure.new("¡Sí mi amo!", 4, TreasureKind::HELMET))
       printList(cd.usedTreasures)
 
-      cd.initMonstersCardDeck #Este método en realidad son privados, está publico para la depuración
+      cd.initMonsterCardDeck #Este método en realidad son privados, está publico para la depuración
       cd.shuffleMonsters #Este método en realidad son privados, está publico para la depuración
       printList(cd.unusedMonsters)
 
@@ -294,7 +323,6 @@ module NapakalakiGame
     def self.printList(list)
       list.each {|element| puts element }
     end
-    
   end
 end
 

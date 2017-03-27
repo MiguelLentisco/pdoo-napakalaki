@@ -1,19 +1,30 @@
 # encoding: utf-8
 # begin player.rb
 
-# require_relative 'treasure'
-# require_relative 'bad_consequence'
+require_relative 'treasure'
+require_relative 'bad_consequence'
+require_relative 'dice'
+require_relative 'combat_result'
 
 module NapakalakiGame
+  # Clase Player que representa un jugador
   class Player
-    @@MAX_LEVEL = 10
+    # Attr / datos miembro
+    # -------------------------------------------------------
+    
+    @@MAXLEVEL = 10                     # Número máximo de niveles
 
-    #attr_reader :name
-    #attr_reader :level
-    #attr_reader :visibleTreasures
-    #attr_reader :hiddenTreasures
-    #attr_writer :enemy
-
+    #attr_reader :name                  # Nombre del jugador            
+    #attr_reader :level                 # Nivel del jugador
+    #attr_reader :visibleTreasures      # Tesoros visibles del jugador
+    #attr_reader :hiddenTreasures       # Tesoros ocultos del jugador
+    #attr_writer :enemy                 # Archienemigo del jugador
+    
+    # -------------------------------------------------------
+   
+    # Constructor
+    # -------------------------------------------------------
+    
     def initialize(name)
       @name = name
       @level = 1
@@ -24,11 +35,63 @@ module NapakalakiGame
       @hiddenTreasures = []
       @pendingBadConsequence = nil
     end
+    
+    # -------------------------------------------------------
+    
+    # Consultores
+    # -------------------------------------------------------
+    
+    def self.getMaxLevel
+      @@MAXLEVEL
+    end
+    
+    def getName
+      @name
+    end
+    
+    def getLevels
+      @level
+    end
+    
+    def isDead
+      @dead
+    end
+    
+    def canISteal
+      @canISteal
+    end
+    
+    def getHiddenTreasures
+      @hiddenTreasures
+    end
 
+    def getVisibleTreasures
+      @visibleTreasures
+    end
+ 
+    # -------------------------------------------------------
+    
+    # Métodos
+    # -------------------------------------------------------
+    
+    # Aplica un nuevo mal rollo
+    def setPendingBadConsequence(b)
+      @pendingBadConsequence = b
+    end
+    
+    # El poder de combate total del jugador
+    def getCombatLevel
+      bonus = @level
+      @visibleTreasures.each {|treasure| bonus += treasure.getBonus }
+      bonus
+    end
+
+    # Resucita
     def bringToLife
       @dead = false
     end
 
+    # Incrementa 'l' niveles
     def incrementLevels(l)
       @level += l
       if (@level > 10)
@@ -36,6 +99,7 @@ module NapakalakiGame
       end
     end
 
+    # Decrementa 'l' niveles
     def decrementLevels(l)
       @level -= l
       if (@level < 1)
@@ -55,6 +119,7 @@ module NapakalakiGame
 
     end
 
+    # Devuelve el numero de tipos de tesoro pasado que tiene el jugador
     def howManyVisibleTreasures(tKind)
       var = 0
       @visibleTreasures.each { |treasure| 
@@ -65,14 +130,11 @@ module NapakalakiGame
       var
     end
 
+    # Si no tiene tesoros mata al jugador
     def dieIfNoTreasures
       if (@visibleTreasures.empty? and @hiddenTreasures.empty?)
         @dead = true
       end
-    end
-
-    def isDead
-      @dead
     end
 
     def combat(m)
@@ -91,9 +153,9 @@ module NapakalakiGame
 
     end
 
+    # Si está en un estado válido el jugador
     def validState
-      @pendingBadConsequence.isEmpty and
-        @hiddenTreasures.size < 4
+      @pendingBadConsequence.isEmpty and @hiddenTreasures.size < 4
     end
 
     def initTreasures
@@ -108,14 +170,12 @@ module NapakalakiGame
 
     end
 
-    def canISteal
-      @canISteal
-    end
-
+    # Si el jugador puede dar tesoros
     def canYouGiveMeATreasure
       !@visibleTreasures.empty?
     end
 
+    # El jugador ya no puede robar
     def haveStolen
       @canISteal = false
     end
@@ -123,34 +183,12 @@ module NapakalakiGame
     def discardAllTreasures
 
     end
-
-    def setPendingBadConsequence(b)
-      @pendingBadConsequence = b
-    end
-
-    def getName
-      @name
-    end
-
-    def getHiddenTreasures
-      @hiddenTreasures
-    end
-
-    def getVisibleTreasures
-      @visibleTreasures
-    end
-
-    def getLevels
-      @level
-    end
-
-    def getCombatLevel
-      bonus = @level
-      getVisibleTreasures.each {|treasure| bonus += treasure.getBonus }
-      bonus
-    end
-
-=begin
+    
+    # -------------------------------------------------------
+    
+    # Métodos privados
+    # -------------------------------------------------------
+    
     private :bringToLife
     private :getCombatLevel
     private :incrementLevels
@@ -160,17 +198,15 @@ module NapakalakiGame
     private :applyBadConsequence
     private :canMakeTreasureVisible
     private :howManyVisibleTreasures
-    private :dieIfNoTreasure
+    private :dieIfNoTreasures
     private :giveMeATreasure
     private :canYouGiveMeATreasure
     private :haveStolen
-=end
+    
+    # -------------------------------------------------------
 
     # Para depuración
     # ---------------------------------------------------
-    attr_writer :visibleTreasures
-
-
 
     def self.depurar
       p = Player.new("Jugador1")
