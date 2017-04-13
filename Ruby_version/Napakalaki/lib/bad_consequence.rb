@@ -3,6 +3,7 @@
 
 require_relative 'treasure_kind'
 require_relative 'player'
+require_relative 'treasure'
 
 module NapakalakiGame
   # Clase BadConsequence que representa el mal rollo del monstruo
@@ -123,9 +124,27 @@ module NapakalakiGame
       end
     end
 
-    def adjustToFitTreasureList(v, h)
-      v.each {|t| substractVisibleTreasure(t)}
-      h.each {|t| substractHiddenTreasure(t)}
+    def adjustToFitTreasureLists(v, h)
+      bd
+      if (@nVisibleTreasures == 0 and @nHiddenTreasures == 0)
+        vTreasureKinds = []
+        hTreasureKinds = []
+        v.each { |t| vTreasureKinds << t.getType}
+        h.each { |t| hTreasureKinds << t.getType}
+        bd = newLevelSpecificTreasures(@text, @levels, vTreasureKinds & @specificVisibleTreasures,
+            hTreasureKinds & @specificHiddenTreasures)
+      else
+        nV = @nVisibleTreasures
+        nH = @nHiddenTreasures
+        if (nV > v.size)
+          nV = v.size
+        end
+        if (nH > h.size)
+          nH = h.size
+        end
+        bd = newLevelNumberOfTreasures(@text, @levels, nV, nH)
+      end
+      bd
     end
 
     # Convierte a string

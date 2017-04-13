@@ -119,7 +119,7 @@ module NapakalakiGame
       nTreasures = m.getTreasuresGained
       if nTreasures > 0
         dealer = CardDealer.instance
-        (1..nLevels).each do |t|
+        (1..nTreasures).each do |t|
           treasure = dealer.nextTreasure
           @hiddenTreasures << treasure
         end
@@ -131,19 +131,45 @@ module NapakalakiGame
       badConsequence = m.getBadConsequence
       nLevels = badConsequence.getLevels
       decrementLevels(nLevels)
-      pendingBad = badConsequence.adjustToFitTreasureList(@visibleTreasures, @hiddenTreasures)
+      pendingBad = badConsequence.adjustToFitTreasureLists(@visibleTreasures, @hiddenTreasures)
       setPendingBadConsequence(pendingBad)
     end
 
     # Si se puede pasar el tesoto t de oculto a visible
     def canMakeTreasureVisible(t)
-      tType = t.getType
-      max = 1
-      if tType == TreasureKind::ONEHAND
-        max = 2
+      type = t.getType
+      result = true
+      i = 0
+      case type
+      when ONEHAND
+        onehands = 0
+        while (result and i < @visibleTreasures.size)
+          if (@visibleTreasures[i].getType == TreasuresKind::BOTHHANDS)
+            result = false
+          elsif (@visibleTreasures[i].getType == TreasuresKind::ONEHAND)
+            onehands += 1
+            if (onehands >= 2)
+              result = false
+            end
+          end
+          i += 1
+        end
+        
+      when BOTHHANDS
+        while (result and i < @visibleTreasures.size)
+          if (@visibleTreasures[i].getType == TreasuresKind::BOTHHANDS or
+                @visibleTreasures[i].getType == TreasuresKind::ONEHAND)
+            result = false
+          end
+        end
+        
+      else
+        while (result and i < @visibleTreasures.size)
+          if (@visibleTreasures[i].getType == type)
+            result = false
+          end
+        end
       end
-      nObj = howManyVisibleTreasures(tType)
-      nObj < max
     end
 
     # Devuelve el numero de tipos de tesoro pasado que tiene el jugador
@@ -173,7 +199,7 @@ module NapakalakiGame
         dice = Dice.instance
         number = dice.nextNumber
         if number < 3
-          enemyLevel = enemy.getCombatLevel
+          enemyLevel = @enemy.getCombatLevel
           monsterLevel += enemyLevel
         end
       end
@@ -193,7 +219,7 @@ module NapakalakiGame
     end
 
     # Convierto un tesoro a visible
-    def makeTreasuresVisible(t)
+    def makeTreasureVisible(t)
       canI = canMakeTreasureVisible(t)
       if canI
         @visibleTreasure << t
@@ -251,9 +277,9 @@ module NapakalakiGame
       canI = canISteal
       treasure = nil
       if canI
-        canYou = enemy.canYouGiveMeATreasure
+        canYou = @enemy.canYouGiveMeATreasure
         if canYou
-          treasure = giveMeATresure
+          treasure = @enemy.giveMeATresure
           @hiddenTreasures << treasure
           haveStolen
         end

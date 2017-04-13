@@ -264,20 +264,20 @@ module NapakalakiGame
 
     def nextTreasure
       if @unusedTreasures.empty?
-        @usedTreasures.each { |treasure| @unusedTreasures << @usedTreasures.pop }
+        @unusedTreasures = @usedTreasures
+        @usedTreasures = []
         shuffleTreasures
-      else
-        giveTreasureBack(@unusedTreasures.shift)
       end
+      @unusedTreasures.shift
     end
 
     def nextMonster
       if @unusedMonsters.empty?
-        @usedMonsters.each { |monster| @unusedMonsters << @usedMonsters.pop }
+        @unusedMonsters = @usedMonsters
+        @usedMonsters = []
         shuffleMonsters
-      else
-        giveMonsterBack(@unusedMonsters.shift)
       end
+      @unusedMonsters.shift
     end
 
     # Coge un tesoro y lo pone en el mazo de tesoros usados
