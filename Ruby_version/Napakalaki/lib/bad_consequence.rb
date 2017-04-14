@@ -122,11 +122,12 @@ module NapakalakiGame
     def adjustToFitTreasureLists(v, h)
       bC = nil
       if @nVisibleTreasures == 0 and @nHiddenTreasures == 0
+
         vTType = v.collect {|t| t.getType}
         hTType = h.collect {|t| t.getType}
-        
+=begin        
         # Primero borramos los tesoros que no están en ninguno
-        vTType.delete_if {  |t| !t.in?(@specificVisibleTreasures)}
+        vTType.delete_if {|t| !t.in?(@specificVisibleTreasures)}
         hTType.delete_if {|t| !t.in?(@specificHiddenTreasures)}
         
         # Miramos en los tipos unicos
@@ -150,8 +151,11 @@ module NapakalakiGame
            n1 -= 1
          end
         end
-
-        bC = newLevelSpecificTreasures(@text, @levels, vTType, hTType)
+=end
+        vTFinal = (vTType & @specificVisibleTreasures).flat_map { |n| [n]*[vTType.count(n), @specificVisibleTreasures.count(n)].min }
+        hTFinal = (hTType & @specificHiddenTreasures).flat_map { |n| [n]*[hTType.count(n), @specificHiddenTreasures.count(n)].min }
+        
+        bC = newLevelSpecificTreasures(@text, @levels, vTFinal, hTFinal)
       else
         nV = v.size < @nVisibleTreasures ? v.size : @nVisibleTreasures
         nH = h.size < @nHiddenTreasures ? h.size : @nHiddenTreasures
