@@ -1,7 +1,6 @@
 # encoding: utf-8
 # begin bad_consequence.rb
 
-require_relative 'treasure_kind'
 require_relative 'player'
 require_relative 'treasure'
 
@@ -105,46 +104,60 @@ module NapakalakiGame
     end
 
     def substractVisibleTreasure(t)
-      if @specificVisibleTreasures.empty?
-        if @nVisibleTreasures > 0
-          @nVisibleTreasures -= 1
-        end     
+      if @specificVisibleTreasures.empty? and @nVisibleTreasures > 0
+        @nVisibleTreasures -= 1  
       else
         @specificVisibleTreasures.delete_at(@specificHiddenTreasures.index(t))
       end
     end
 
     def substractHiddenTreasure(t)
-      if @specificHiddenTreasures.empty?
-        if @nHiddenTreasures > 0
-          @nHiddenTreasures -= 1
-        end
+      if @specificHiddenTreasures.empty? and @nHiddenTreasures > 0
+        @nHiddenTreasures -= 1
       else
         @specificHiddenTreasures.delete_at(@specificHiddenTreasuers.index(t))
       end
     end
 
     def adjustToFitTreasureLists(v, h)
-      bd
-      if (@nVisibleTreasures == 0 and @nHiddenTreasures == 0)
-        vTreasureKinds = []
-        hTreasureKinds = []
-        v.each { |t| vTreasureKinds << t.getType}
-        h.each { |t| hTreasureKinds << t.getType}
-        bd = newLevelSpecificTreasures(@text, @levels, vTreasureKinds & @specificVisibleTreasures,
-            hTreasureKinds & @specificHiddenTreasures)
+      bC = nil
+      if @nVisibleTreasures == 0 and @nHiddenTreasures == 0
+        vTType = v.collect {|t| t.getType}
+        hTType = h.collect {|t| t.getType}
+        
+        # Primero borramos los tesoros que no están en ninguno
+        vTType.delete_if {  |t| !t.in?(@specificVisibleTreasures)}
+        hTType.delete_if {|t| !t.in?(@specificHiddenTreasures)}
+        
+        # Miramos en los tipos unicos
+        vTType.uniq.each do |type|
+         # Adjustamos el número
+          n1 = vTType.count(type)
+          n2 = @specificVisibleTreasures.count(type)
+          while n1 > n2 do
+            vTType.delete(type)
+            n1 -= 1
+          end
+        end
+        
+        # Miramos en los tipos unicos
+        hTType.uniq.each do |type|
+         # Adjustamos el número
+         n1 = hTType.count(type)
+         n2 = @specificHiddenTreasures.count(type)
+         while n1 > n2 do
+           hTType.delete(type)
+           n1 -= 1
+         end
+        end
+
+        bC = newLevelSpecificTreasures(@text, @levels, vTType, hTType)
       else
-        nV = @nVisibleTreasures
-        nH = @nHiddenTreasures
-        if (nV > v.size)
-          nV = v.size
-        end
-        if (nH > h.size)
-          nH = h.size
-        end
-        bd = newLevelNumberOfTreasures(@text, @levels, nV, nH)
+        nV = v.size < @nVisibleTreasures ? v.size : @nVisibleTreasures
+        nH = h.size < @nHiddenTreasures ? h.size : @nHiddenTreasures
+        
+        bC = newLevelNumberOfTreasures(@text, @levels, nV, nH)
       end
-      bd
     end
 
     # Convierte a string

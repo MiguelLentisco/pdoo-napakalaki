@@ -135,7 +135,7 @@ module NapakalakiGame
       setPendingBadConsequence(pendingBad)
     end
 
-    # Si se puede pasar el tesoto t de oculto a visible
+    # Si se puede pasar el tesoro t de oculto a visible
     def canMakeTreasureVisible(t)
       type = t.getType
       result = true
@@ -170,6 +170,22 @@ module NapakalakiGame
           end
         end
       end
+    end
+    
+    def canMakeTreasureVisible(t)
+      tType = t.getType
+      valid = false
+      case tType
+      when TreasureKind::ONEHAND
+        valid = howManyVisibleTreasures(TreasureKind::BOTHHANDS) == 0 and
+          howManyVisibleTreasures(tType) < 2
+      when TreasureKind::BOTHHANDS
+        valid = howManyVisibleTreasures(TreasureKind::ONEHAND) == 0 and
+          howManyVisibleTreasures(tType) < 1
+      else
+        valid = howManyVisibleTreasures(tType) < 1
+      end
+      valid
     end
 
     # Devuelve el numero de tipos de tesoro pasado que tiene el jugador
