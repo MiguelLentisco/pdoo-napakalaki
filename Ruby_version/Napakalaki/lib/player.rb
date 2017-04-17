@@ -137,42 +137,6 @@ module NapakalakiGame
 
     # Si se puede pasar el tesoro t de oculto a visible
     def canMakeTreasureVisible(t)
-      type = t.getType
-      result = true
-      i = 0
-      case type
-      when ONEHAND
-        onehands = 0
-        while (result and i < @visibleTreasures.size)
-          if (@visibleTreasures[i].getType == TreasuresKind::BOTHHANDS)
-            result = false
-          elsif (@visibleTreasures[i].getType == TreasuresKind::ONEHAND)
-            onehands += 1
-            if (onehands >= 2)
-              result = false
-            end
-          end
-          i += 1
-        end
-        
-      when BOTHHANDS
-        while (result and i < @visibleTreasures.size)
-          if (@visibleTreasures[i].getType == TreasuresKind::BOTHHANDS or
-                @visibleTreasures[i].getType == TreasuresKind::ONEHAND)
-            result = false
-          end
-        end
-        
-      else
-        while (result and i < @visibleTreasures.size)
-          if (@visibleTreasures[i].getType == type)
-            result = false
-          end
-        end
-      end
-    end
-    
-    def canMakeTreasureVisible(t)
       tType = t.getType
       valid = false
       case tType
@@ -209,7 +173,7 @@ module NapakalakiGame
     # Combate contra el monstruo
     def combat(m)
       myLevel = getCombatLevel
-      monsterLevel = getCombatLevel
+      monsterLevel = m.getCombatLevel
       
       if !canISteal
         dice = Dice.instance
@@ -222,7 +186,7 @@ module NapakalakiGame
       
       if myLevel > monsterLevel
         applyPrize(m)
-        if @levels >= @@MAXLEVEL
+        if @level >= @@MAXLEVEL
           combatResult = CombatResult::WINGAME
         else
           combatResult = CombatResult::WIN
@@ -238,15 +202,15 @@ module NapakalakiGame
     def makeTreasureVisible(t)
       canI = canMakeTreasureVisible(t)
       if canI
-        @visibleTreasure << t
-        @hiddenTreasure.delete(t)
+        @visibleTreasures << t
+        @hiddenTreasures.delete(t)
       end
     end
 
     # Descarta el tesoro visible
     def discardVisibleTreasure(t)
-      @visibleTreasure.delete(t)
-      if @pendingBadConsequence != nil and !pendingBadConsequence.isEmpty
+      @visibleTreasures.delete(t)
+      if @pendingBadConsequence != nil and !@pendingBadConsequence.isEmpty
         @pendingBadConsequence.substractVisibleTreasure(t)
       end
       dieIfNoTreasures
@@ -254,8 +218,8 @@ module NapakalakiGame
     
     # Descarta el tesoro oculto
     def discardHiddenTreasure(t)
-      @hiddenTreasure.delete(t)
-      if @pendingBadConsequence != nil and !pendingBadConsequence.isEmpty
+      @hiddenTreasures.delete(t)
+      if @pendingBadConsequence != nil and !@pendingBadConsequence.isEmpty
         @pendingBadConsequence.substractHiddenTreasure(t)
       end
       dieIfNoTreasures
@@ -263,11 +227,8 @@ module NapakalakiGame
 
     # Si está en un estado válido el jugador
     def validState
-      if @pendingBadConsequence == nil
-        false
-      else
-        @pendingBadConsequence.isEmpty and @hiddenTreasures.size < 4
-      end
+      @pendingBadConsequence == nil or @pendingBadConsequence.isEmpty and 
+        @hiddenTreasures.size < 4
     end
 
     # Inicializo los tesoros del jugador
@@ -320,8 +281,12 @@ module NapakalakiGame
 
     # Descartar todos los tesoros
     def discardAllTreasures
-      @visibleTreasures.each { |treasure| discardVisibleTreasure(treasure)}
-      @hiddenTreasures.each { |treasure| discardHiddenTreasure(treasure)}
+      @visibleTreasures.reverse_each { |treasure| discardVisibleTreasure(treasure)}
+      @hiddenTreasures.reverse_each { |treasure| discardHiddenTreasure(treasure)}
+    end
+    
+    def to_s
+      "\n Nombre: #{@name}\n Nivel: #{@level}\n Poder de combate: #{getCombatLevel}"
     end
     
     # -------------------------------------------------------
@@ -340,7 +305,7 @@ module NapakalakiGame
     private :howManyVisibleTreasures
     private :dieIfNoTreasures
     private :giveMeATreasure
-    private :canYouGiveMeATreasure
+    protected :canYouGiveMeATreasure
     private :haveStolen
     
     # ---------------------------------------------------
