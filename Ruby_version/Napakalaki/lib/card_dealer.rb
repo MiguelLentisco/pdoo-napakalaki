@@ -129,6 +129,8 @@ module NapakalakiGame
 
       # Zapato deja-amigos
       @unusedTreasures << Treasure.new("Zapato deja-amigos", 1, TreasureKind::SHOE)
+      
+      shuffleTreasures
     end
 
     # Iniciamos el mazo de monstruos
@@ -250,6 +252,8 @@ module NapakalakiGame
           [TreasureKind::BOTHHANDS, TreasureKind::ONEHAND, 
           TreasureKind::ONEHAND], [])
       @unusedMonsters << Monster.new("Bicéfalo", 21, bC, prize)
+      
+      shuffleMonsters
     end
 
     # Baraja el mazo de tesoros
@@ -293,8 +297,6 @@ module NapakalakiGame
     def initCards
       initTreasureCardDeck
       initMonsterCardDeck
-      shuffleTreasures
-      shuffleMonsters
     end
     
     # -------------------------------------------------------
