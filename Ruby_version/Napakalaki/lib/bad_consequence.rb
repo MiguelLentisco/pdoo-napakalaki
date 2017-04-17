@@ -52,7 +52,7 @@ module NapakalakiGame
 
     # Constructor tipo 3: muerte
     def self.newDeath(t)
-      new(t, Player.getMaxLevel, @@MAXTREASURES, @@MAXTREASURES, [], [], true)
+      new(t, Player.MAXLEVEL, @@MAXTREASURES, @@MAXTREASURES, [], [], true)
     end
 
     # -------------------------------------------------------
@@ -60,7 +60,7 @@ module NapakalakiGame
     # Consultores
     # -------------------------------------------------------
     
-    def self.getMaxTreasures
+    def self.MAXTREASURES
       @@MAXTREASURES
     end
     

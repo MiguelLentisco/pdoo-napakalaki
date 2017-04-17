@@ -42,7 +42,7 @@ module NapakalakiGame
     # Consultores
     # -------------------------------------------------------
     
-    def self.getMaxLevel
+    def self.MAXLEVEL
       @@MAXLEVEL
     end
     
