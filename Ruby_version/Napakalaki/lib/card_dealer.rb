@@ -41,7 +41,7 @@ module NapakalakiGame
       @unusedTreasures << Treasure.new("¡Sí mi amo!", 4, TreasureKind::HELMET)
 
       # Botas de investigación
-      @unusedTreasures << Treasure.new("Botas de investigacion", 3, TreasureKind::SHOE)
+      @unusedTreasures << Treasure.new("Botas de investigación", 3, TreasureKind::SHOE)
 
       # Capucha de Cthulhu
       @unusedTreasures << Treasure.new("Capucha de Cthulhu", 3, TreasureKind::HELMET)
@@ -293,6 +293,8 @@ module NapakalakiGame
     def initCards
       initTreasureCardDeck
       initMonsterCardDeck
+      shuffleTreasures
+      shuffleMonsters
     end
     
     # -------------------------------------------------------

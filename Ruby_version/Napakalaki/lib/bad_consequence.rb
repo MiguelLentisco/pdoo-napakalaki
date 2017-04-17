@@ -155,19 +155,19 @@ module NapakalakiGame
         vTFinal = (vTType & @specificVisibleTreasures).flat_map { |n| [n]*[vTType.count(n), @specificVisibleTreasures.count(n)].min }
         hTFinal = (hTType & @specificHiddenTreasures).flat_map { |n| [n]*[hTType.count(n), @specificHiddenTreasures.count(n)].min }
         
-        bC = newLevelSpecificTreasures(@text, @levels, vTFinal, hTFinal)
+        bC = BadConsequence.newLevelSpecificTreasures(@text, @levels, vTFinal, hTFinal)
       else
         nV = v.size < @nVisibleTreasures ? v.size : @nVisibleTreasures
         nH = h.size < @nHiddenTreasures ? h.size : @nHiddenTreasures
         
-        bC = newLevelNumberOfTreasures(@text, @levels, nV, nH)
+        bC = BadConsequence.newLevelNumberOfTreasures(@text, @levels, nV, nH)
       end
     end
 
     # Convierte a string
     def to_s
       message = "\nDescripción: #{@text}\n"
-      if !death
+      if !@death
         message += "Niveles: #{@levels}\n"
         if @nVisibleTreasures > 0
           message += "Tesoros visibles: #{@nVisibleTreasures}\n"
