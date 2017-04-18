@@ -138,45 +138,45 @@ module NapakalakiGame
       # 3 Byakhees de bonanza
       prize = Prize.new(2, 1)
       bC = BadConsequence.newLevelSpecificTreasures("Pierdes tu armadura visible" \
-          " y otra oculta.", 1, [TreasureKind::ARMOR], [TreasureKind::ARMOR])
+          " y otra oculta.", 0, [TreasureKind::ARMOR], [TreasureKind::ARMOR])
       @unusedMonsters << Monster.new("3 Byakhees de bonanza", 8, bC, prize)
 
       # Tenochtitlan
       prize = Prize.new(1,1)
       bC = BadConsequence.newLevelSpecificTreasures("Embobados con el lindo " \
-          "primigenio te descartas de tu casco visible.", 1, [TreasureKind::ARMOR], 
+          "primigenio te descartas de tu casco visible.", 0, [TreasureKind::HELMET], 
           [])
       @unusedMonsters << Monster.new("Tenochtitlan", 2, bC, prize)
 
       # El sopor de Dunwich
       prize = Prize.new(1,1)
       bC = BadConsequence.newLevelSpecificTreasures("El primodial bostezo " \
-          "contagioso. Pierdes el calzado visible.", 1, [TreasureKind::SHOE], [])
+          "contagioso. Pierdes el calzado visible.", 0, [TreasureKind::SHOE], [])
       @unusedMonsters << Monster.new("El sopor de Dunwich", 2, bC, prize)
 
       # Demonios de Magaluf
       prize = Prize.new(4, 1)
       bC = BadConsequence.newLevelSpecificTreasures("Te atrapan para llevarte " \
           "de fiesta y te dejan caer en mitad del vuelo. Descarta 1 mano visible" \
-          " y 1 mano oculta.", 1, [TreasureKind::ONEHAND], [TreasureKind::ONEHAND])
+          " y 1 mano oculta.", 0, [TreasureKind::ONEHAND], [TreasureKind::ONEHAND])
       @unusedMonsters << Monster.new("Demonios de Magaluf", 2, bC, prize)
 
       # El gorrón en el umbral
       prize = Prize.new(3, 1)
       bC = BadConsequence.newLevelNumberOfTreasures("Pierdes todos tus tesoros " \
-          "visibles.", 1, 6, 0)
+          "visibles.", 0, BadConsequence.MAXTREASURES, 0)
       @unusedMonsters << Monster.new("El gorrón en el umbral", 13, bC, prize)
 
       # H.P. Munchcraft
       prize = Prize.new(2, 1)
       bC = BadConsequence.newLevelSpecificTreasures("Pierdes la armadura visible.",
-          1, [TreasureKind::ARMOR], [])
+          0, [TreasureKind::ARMOR], [])
       @unusedMonsters << Monster.new("H.P. Munchcraft", 6, bC, prize)
 
       # Necrófago
       prize = Prize.new(1, 1)
       bC = BadConsequence.newLevelSpecificTreasures("Sientes bichos bajo la ropa." \
-          " Descarta la armadura visible.", 1, [TreasureKind::ARMOR], [])
+          " Descarta la armadura visible.", 0, [TreasureKind::ARMOR], [])
       @unusedMonsters << Monster.new("Necrófago", 13, bC, prize)
 
       # El rey de rosado
@@ -206,7 +206,7 @@ module NapakalakiGame
       # Dameargo
       prize = Prize.new(2, 1)
       bC = BadConsequence.newLevelSpecificTreasures("Te intentas escaquear." \
-          " Pierdes una mano visible.", 1, [TreasureKind::ONEHAND], [])
+          " Pierdes una mano visible.", 0, [TreasureKind::ONEHAND], [])
       @unusedMonsters << Monster.new("Dameargo", 1, bC, prize)
 
       # Pollipólipo volante
@@ -236,7 +236,7 @@ module NapakalakiGame
       # El espía sordo
       prize = Prize.new(1, 1)
       bC = BadConsequence.newLevelSpecificTreasures("Te asusta en la noche. " \
-          "Pierdes un casco visible.", 1, [TreasureKind::HELMET], [])
+          "Pierdes un casco visible.", 0, [TreasureKind::HELMET], [])
       @unusedMonsters << Monster.new("El espía sordo", 5, bC, prize)
 
       # Tongue

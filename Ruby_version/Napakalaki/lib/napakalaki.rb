@@ -55,39 +55,29 @@ module NapakalakiGame
 
     # Devuelve y actualiza el jugador al que le toca jugar
     def nextPlayer
-      indice = -1
       if @currentPlayer == nil
-        indice = rand(@players.size)
+        @currentPlayer = @players.sample
+      elsif @currentPlayer == @players.last
+        @currentPlayer = @players.first
       else
-        indice = @players.index(@currentPlayer)
-        if indice < @players.size - 1
-          indice += 1
-        else
-          indice = 0
-        end
+        @currentPlayer = @players[@players.index(@currentPlayer) + 1]
       end
-      @currentPlayer = @players[indice]
     end
 
     # Si se puede pasar al siguiente turno
     def nextTurnAllowed
-      if @currentPlayer == nil
-        true
-      else
-        @currentPlayer.validState
-      end
+      @currentPlayer == nil or @currentPlayer.validState
     end
 
     # Establece aleatoriamente los archienemigos de los jugadores
     def setEnemies
-      @players.each { |player| 
-        indice = @players.index(player)
-        var = rand(@players.size)
-        while indice == var
-          var = rand(@players.size)
+      @players.each do |player|
+        enemy = @players.sample
+        while player == enemy do
+          enemy = @players.sample
         end
-        player.setEnemy(@players[var])
-      }
+        player.setEnemy(enemy)
+      end
     end
 
     # Desarrolla el combate
@@ -99,20 +89,18 @@ module NapakalakiGame
 
     # Descarta los tesoros visibles del jugador
     def discardVisibleTreasures(treasures)
-      treasures.each {
-        |treasure|
+      treasures.each do |treasure|
         @currentPlayer.discardVisibleTreasure(treasure)
         @dealer.giveTreasureBack(treasure)
-      }
+      end
     end
 
     # Descarta los tesoros ocultos del jugador
     def discardHiddenTreasures(treasures)
-      treasures.each {
-        |treasure|
+      treasures.each do |treasure|
         @currentPlayer.discardHiddenTreasure(treasure)
         @dealer.giveTreasureBack(treasure)
-      }
+      end
     end
 
     # Hace visible todos los tesoros que se pasan
@@ -134,8 +122,7 @@ module NapakalakiGame
       if stateOK
         @currentMonster = @dealer.nextMonster
         @currentPlayer = nextPlayer
-        dead = @currentPlayer.isDead
-        if dead
+        if @currentPlayer.isDead
           @currentPlayer.initTreasures
         end
       end
