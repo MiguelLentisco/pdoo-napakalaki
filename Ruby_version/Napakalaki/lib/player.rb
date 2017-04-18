@@ -99,8 +99,8 @@ module NapakalakiGame
     # Incrementa 'l' niveles
     def incrementLevels(l)
       @level += l
-      if (@level > 10)
-        @level = 10
+      if (@level > @@MAXLEVEL)
+        @level = @@MAXLEVEL
       end
     end
 
@@ -138,29 +138,19 @@ module NapakalakiGame
     # Si se puede pasar el tesoro t de oculto a visible
     def canMakeTreasureVisible(t)
       tType = t.getType
-      valid = false
       case tType
-      when TreasureKind::ONEHAND
-        valid = howManyVisibleTreasures(TreasureKind::BOTHHANDS) == 0 and
-          howManyVisibleTreasures(tType) < 2
-      when TreasureKind::BOTHHANDS
-        valid = howManyVisibleTreasures(TreasureKind::ONEHAND) == 0 and
-          howManyVisibleTreasures(tType) < 1
+      when TreasureKind::ONEHAND then
+        howManyVisibleTreasures(TreasureKind::BOTHHANDS) == 0 and howManyVisibleTreasures(tType) < 2
+      when TreasureKind::BOTHHANDS then
+        howManyVisibleTreasures(TreasureKind::ONEHAND) == 0 and howManyVisibleTreasures(tType) < 1
       else
-        valid = howManyVisibleTreasures(tType) < 1
+        howManyVisibleTreasures(tType) < 1
       end
-      valid
     end
 
     # Devuelve el numero de tipos de tesoro pasado que tiene el jugador
-    def howManyVisibleTreasures(tKind)
-      var = 0
-      @visibleTreasures.each { |treasure| 
-        if treasure.getType == tKind
-          var += 1 
-        end
-      }
-      var
+    def howManyVisibleTreasures(tKind)  
+      @visibleTreasures.count { |treasure| treasure.getType == tKind }
     end
 
     # Si no tiene tesoros mata al jugador
@@ -251,27 +241,23 @@ module NapakalakiGame
 
     # Robar un tesoro del enemigo
     def stealTreasure
-      canI = canISteal
       treasure = nil
-      if canI
-        canYou = @enemy.canYouGiveMeATreasure
-        if canYou
-          treasure = @enemy.giveMeATresure
-          @hiddenTreasures << treasure
-          haveStolen
-        end
+      if canISteal and @enemy.canYouGiveMeATreasure
+        treasure = @enemy.giveMeATreasure
+        @hiddenTreasures << treasure
+        haveStolen
       end
       treasure
     end
 
     # Devuelve un tesoro aleatorio
     def giveMeATreasure
-      @hiddenTreasures.slice!(rand(@hiddenTreasures.size))
+      @hiddenTreasures.slice!(@hiddenTreasures.sample)
     end
 
     # Si el jugador puede dar tesoros
     def canYouGiveMeATreasure
-      !@visibleTreasures.empty?
+      !@hiddenTreasures.empty?
     end
 
     # El jugador ya no puede robar
@@ -286,7 +272,7 @@ module NapakalakiGame
     end
     
     def to_s
-      "\n Nombre: #{@name}\n Nivel: #{@level}\n Poder de combate: #{getCombatLevel}"
+      "\n Nombre: #{@name}\n Nivel: #{@level}\n Poder de combate: #{getCombatLevel}\n Enemigo: #{@enemy.getName}\n ¿Puedo robar?: #{@canISteal}"
     end
     
     # -------------------------------------------------------
@@ -304,7 +290,7 @@ module NapakalakiGame
     private :canMakeTreasureVisible
     private :howManyVisibleTreasures
     private :dieIfNoTreasures
-    private :giveMeATreasure
+    protected :giveMeATreasure
     protected :canYouGiveMeATreasure
     private :haveStolen
     
