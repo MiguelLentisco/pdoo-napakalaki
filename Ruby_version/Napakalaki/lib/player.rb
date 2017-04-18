@@ -242,7 +242,9 @@ module NapakalakiGame
 
     # Devuelve un tesoro aleatorio
     def giveMeATreasure
-      @hiddenTreasures.slice!(@hiddenTreasures.sample)
+      treasure = @hiddenTreasures.delete(@hiddenTreasures.sample)
+      dieIfNoTreasures
+      treasure
     end
 
     # Si el jugador puede dar tesoros
