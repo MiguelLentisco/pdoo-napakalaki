@@ -185,6 +185,26 @@ module NapakalakiGame
       message
     end
     
+    # Imprime solo el mal rollo
+    def malRolloString
+      message = "\n"
+      if !@death
+        if @nVisibleTreasures > 0
+          message += " Tesoros visibles: #{@nVisibleTreasures}\n"
+        elsif !@specificVisibleTreasures.empty?
+          message += " Tesoros visibles: #{@specificVisibleTreasures}\n"
+        end
+        if @nHiddenTreasures > 0
+          message += " Tesoros ocultos: #{@nHiddenTreasures}\n"
+        elsif !@specificHiddenTreasures.empty?
+          message += " Tesoros ocultos: #{@specificHiddenTreasures}\n"
+        end
+      else
+        message += " Muerte: pierdes todos los tesoros."
+      end
+      message
+    end
+    
     # -------------------------------------------------------
   end
 end

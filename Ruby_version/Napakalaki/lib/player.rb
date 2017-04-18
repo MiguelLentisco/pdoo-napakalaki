@@ -114,13 +114,11 @@ module NapakalakiGame
 
     # Aplica el buen rollo
     def applyPrize(m)
-      nLevels = m.getLevelsGained
-      incrementLevels(nLevels)
+      incrementLevels(m.getLevelsGained)
       nTreasures = m.getTreasuresGained
       if nTreasures > 0
-        dealer = CardDealer.instance
-        (1..nTreasures).each do |t|
-          treasure = dealer.nextTreasure
+        for i in (1..nTreasures)
+          treasure = CardDealer.instance.nextTreasure
           @hiddenTreasures << treasure
         end
       end
@@ -155,7 +153,7 @@ module NapakalakiGame
 
     # Si no tiene tesoros mata al jugador
     def dieIfNoTreasures
-      if (@visibleTreasures.empty? and @hiddenTreasures.empty?)
+      if @visibleTreasures.empty? and @hiddenTreasures.empty?
         @dead = true
       end
     end
@@ -165,13 +163,8 @@ module NapakalakiGame
       myLevel = getCombatLevel
       monsterLevel = m.getCombatLevel
       
-      if !canISteal
-        dice = Dice.instance
-        number = dice.nextNumber
-        if number < 3
-          enemyLevel = @enemy.getCombatLevel
-          monsterLevel += enemyLevel
-        end
+      if !canISteal and Dice.instance.nextNumber < 3
+        monsterLevel += @enemy.getCombatLevel
       end
       
       if myLevel > monsterLevel
@@ -185,13 +178,11 @@ module NapakalakiGame
         applyBadConsequence(m)
         combatResult = CombatResult::LOSE
       end
-      combatResult
     end
 
     # Convierto un tesoro a visible
     def makeTreasureVisible(t)
-      canI = canMakeTreasureVisible(t)
-      if canI
+      if canMakeTreasureVisible(t)
         @visibleTreasures << t
         @hiddenTreasures.delete(t)
       end
@@ -217,18 +208,17 @@ module NapakalakiGame
 
     # Si está en un estado válido el jugador
     def validState
-      @pendingBadConsequence == nil or @pendingBadConsequence.isEmpty and 
-        @hiddenTreasures.size < 4
+      @pendingBadConsequence == nil or (@pendingBadConsequence.isEmpty and 
+        @hiddenTreasures.size < 4)
     end
 
     # Inicializo los tesoros del jugador
     def initTreasures
       dealer = CardDealer.instance
-      dice = Dice.instance
       bringToLife
       treasure = dealer.nextTreasure
       @hiddenTreasures << treasure
-      number = dice.nextNumber
+      number = Dice.instance.nextNumber
       if number > 1
         treasure = dealer.nextTreasure
         @hiddenTreasures << treasure
@@ -272,7 +262,11 @@ module NapakalakiGame
     end
     
     def to_s
-      "\n Nombre: #{@name}\n Nivel: #{@level}\n Poder de combate: #{getCombatLevel}\n Enemigo: #{@enemy.getName}\n ¿Puedo robar?: #{@canISteal}"
+      mensaje = "\n Nombre: #{@name}\n Nivel: #{@level}\n Poder de combate: #{getCombatLevel}\n Enemigo: #{@enemy.getName}\n ¿Puedo robar?: #{@canISteal}"
+      if @pendingBadConsequence != nil and !@pendingBadConsequence.isEmpty
+        mensaje += "\n Mal rollo pendiente: " + @pendingBadConsequence.malRolloString
+      end
+      mensaje
     end
     
     # -------------------------------------------------------
