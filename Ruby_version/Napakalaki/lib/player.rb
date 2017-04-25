@@ -242,9 +242,7 @@ module NapakalakiGame
 
     # Devuelve un tesoro aleatorio
     def giveMeATreasure
-      treasure = @hiddenTreasures.delete(@hiddenTreasures.sample)
-      dieIfNoTreasures
-      treasure
+      @hiddenTreasures.delete(@hiddenTreasures.sample)
     end
 
     # Si el jugador puede dar tesoros
@@ -264,10 +262,21 @@ module NapakalakiGame
     end
     
     def to_s
-      mensaje = "\n Nombre: #{@name}\n Nivel: #{@level}\n Poder de combate: #{getCombatLevel}\n Enemigo: #{@enemy.getName}\n ¿Puedo robar?: #{@canISteal}"
+      mensaje = "\n Nombre: #{@name}\n Nivel: #{@level}\n Poder de combate: #{getCombatLevel}\n ¿Puedo robar?: #{@canISteal}"
+      if @enemy != nil
+        mensaje += "\n Enemigo: #{@enemy.getName}\n"
+      else
+        mensaje += "\n Sin enemigo."
+      end
       if @pendingBadConsequence != nil and !@pendingBadConsequence.isEmpty
         mensaje += "\n Mal rollo pendiente: " + @pendingBadConsequence.malRolloString
+      else
+        mensaje += "\n Sin mal rollo pendiente."
       end
+      mensaje += "\n Tesoros visibles equipados: "
+      @visibleTreasures.each { |t| mensaje += t.to_s }
+      mensaje += "\n Tesoros ocultos equipados: "
+      @hiddenTreasures.each { |t| mensaje += t.to_s }
       mensaje
     end
     

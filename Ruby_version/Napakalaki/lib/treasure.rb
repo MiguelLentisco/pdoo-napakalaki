@@ -48,7 +48,7 @@ module NapakalakiGame
     
     # Convierte a string - PARA DEPURACION: NO INCLUIDO EN EL UML
     def to_s
-      message = "\nDescripción: #{@name}\t Bonus: #{@bonus}\t Tipo: #{@type}"
+      "\n  Descripción: #{@name}\t Bonus: #{@bonus}\t Tipo: #{@type}"
     end
     
     # -------------------------------------------------------
