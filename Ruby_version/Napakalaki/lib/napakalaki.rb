@@ -2,8 +2,8 @@
 #begin napakalaki.rb
 
 require 'singleton'
-require_relative 'card_dealer' # Incluye monster y treasure
-require_relative 'player'      # Incluye combat_result y dice
+require_relative 'card_dealer'         # Incluye monster y treasure
+require_relative 'cultist_player'      # Incluye combat_result, dice, cultist y player
 
 module NapakalakiGame
   # Clase Napakalaki que representa el control principal del juego
@@ -50,7 +50,7 @@ module NapakalakiGame
 
     # Crea todos los jugadores con los nombres pasados en el array
     def initPlayers(names)
-      names.each { |name| @players << Player.new(name) }
+      names.each { |name| @players << Player.newPlayer(name) }
     end
 
     # Devuelve y actualiza el jugador al que le toca jugar
@@ -83,6 +83,18 @@ module NapakalakiGame
     # Desarrolla el combate
     def developCombat
       combatResult = @currentPlayer.combat(@currentMonster)
+      if combatResult == CombatResult::LOSEANDCONVERT
+        cultistCard = @dealer.nextCultist
+        newCultist = CultistPlayer.new(@currentPlayer, cultistCard)
+        @players.each do |player|
+          if player.getName == @currentPlayer.name
+            player.setEnemy(newCultist)
+          end
+        end
+        index = @players.index(@currentPlayer)
+        @currentPlayer = newCultist
+        @players[index] = newCultist
+      end
       @dealer.giveMonsterBack(@currentMonster)
       combatResult
     end

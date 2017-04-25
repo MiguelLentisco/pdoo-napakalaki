@@ -7,9 +7,10 @@ module NapakalakiGame
       # Tipos 
       # -------------------------------------------------------
 
-      WINGAME = :wingame          # Ganar el juego
-      WIN = :win                   # Ganar el combate
-      LOSE = :lose                 # Perder el combate
+      WINGAME = :wingame               # Ganar el juego
+      WIN = :win                       # Ganar el combate
+      LOSE = :lose                     # Perder el combate
+      LOSEANDCONVERT = :loseandconvert # Convertirse en cultista
 
       # -------------------------------------------------------
   end

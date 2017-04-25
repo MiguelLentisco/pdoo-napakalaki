@@ -21,11 +21,25 @@ module NapakalakiGame
     # Constructor
     # -------------------------------------------------------
 
-    def initialize(n, l, b, p)
+    def initialize(n, l, b, p, lC)
       @name = n
       @combatLevel = l
       @badConsequence = b
       @prize = p
+      @levelChangeAgainstCultistPlayer = lC
+    end
+    
+    # new es private
+    private_class_method :new
+    
+    # Monstruo sin poderes especiales
+    def self.newNormalMonster(n, l, b, p)
+      new(n, l, b, p, 0)
+    end
+    
+    # Monstruo con poder distinto contra cultores
+    def self.newCultistMonster(n, l, badConsequence, p, lC)
+      new(n, l, badConsequence, p, lC)
     end
 
     # -------------------------------------------------------
@@ -51,6 +65,10 @@ module NapakalakiGame
 
     def getTreasuresGained
       @prize.getTreasures
+    end
+    
+    def getCombatLevelAgainstCultistPlayer
+      @combatLevel + @levelChangeAgainstCultistPlayer
     end
     
     # -------------------------------------------------------

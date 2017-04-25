@@ -17,15 +17,18 @@ module NapakalakiGame
 
     #attr_reader :name                  # Nombre del jugador            
     #attr_reader :level                 # Nivel del jugador
-    #attr_reader :visibleTreasures      # Tesoros visibles del jugador
+    attr_accesor :visibleTreasures      # Tesoros visibles del jugador
     #attr_reader :hiddenTreasures       # Tesoros ocultos del jugador
-    #attr_writer :enemy                 # Archienemigo del jugador
+    attr_accesor :enemy                 # Archienemigo del jugador
+    
+    protected :enemy, :enemy=
+    protected :visibleTreasures, :visibleTreasures=
     
     # -------------------------------------------------------
    
     # Constructor
     # -------------------------------------------------------
-    
+=begin
     def initialize(name)
       @name = name
       @level = 1
@@ -35,6 +38,29 @@ module NapakalakiGame
       @visibleTreasures = []
       @hiddenTreasures = []
       @pendingBadConsequence = nil
+    end
+=end
+    
+    def initialize(name, l, d, cIS, e, vT, hT, pBC)
+      @name = name
+      @level = l
+      @dead = d
+      @canISteal = cIS
+      @enemy = e
+      @visibleTreasures = vT
+      @hiddenTreasures = hT
+      @pendingBadConsequence = pBC
+    end
+    
+    def self.newJugador(name)
+      new(name, 1, true, true, nil, [], [], nil)
+    end
+    
+    # Si va a ser reemplazado no hace falta hacer copia profunda
+    def self.copyJugador(player)
+      new(player.getName, player.getLevels, player.canISteal, player.enemy,
+        Marshal.load(Marshal.dump(player.getVisibleTreasures)),
+        Marshal,load(Marshal.dump(player.getHiddenTreasures)))
     end
     
     # -------------------------------------------------------
@@ -91,9 +117,19 @@ module NapakalakiGame
       bonus
     end
 
-    # Resucita
+    # Resucita  
     def bringToLife
       @dead = false
+    end
+    
+    # El nivel del oponente
+    def getOponentLevel(m)
+      m.getCombatLevel
+    end
+    
+    # Si se convierte en sectario
+    def shouldConvert
+      Dice.instance.nextNumber == 6
     end
 
     # Incrementa 'l' niveles
@@ -161,7 +197,7 @@ module NapakalakiGame
     # Combate contra el monstruo
     def combat(m)
       myLevel = getCombatLevel
-      monsterLevel = m.getCombatLevel
+      monsterLevel = getOponentLevel(m)
       
       if !canISteal and Dice.instance.nextNumber < 3
         monsterLevel += @enemy.getCombatLevel
@@ -176,7 +212,11 @@ module NapakalakiGame
         end
       else
         applyBadConsequence(m)
-        combatResult = CombatResult::LOSE
+        if shouldConvert
+          combatResult = CombatResult::LOSEANDCONVERT
+        else
+          combatResult = CombatResult::LOSE
+        end
       end
     end
 
@@ -286,7 +326,7 @@ module NapakalakiGame
     # -------------------------------------------------------
     
     private :bringToLife
-    private :getCombatLevel
+    protected :getCombatLevel
     private :incrementLevels
     private :decrementLevels
     private :setPendingBadConsequence
@@ -298,6 +338,8 @@ module NapakalakiGame
     protected :giveMeATreasure
     protected :canYouGiveMeATreasure
     private :haveStolen
+    protected :shouldConvert
+    protected :getOponentLevel
     
     # ---------------------------------------------------
   end
