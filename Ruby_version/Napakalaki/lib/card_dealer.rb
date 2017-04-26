@@ -27,7 +27,6 @@ module NapakalakiGame
     def initialize
       @usedTreasures = []
       @usedMonsters = []
-      @usedCultist = []
       @unusedTreasures = []
       @unusedMonsters = []
       @unusedCultists = []
@@ -299,8 +298,6 @@ module NapakalakiGame
       shuffleMonsters
     end
     
-    
-    
     def initCultistCardDeck
       # Sectario +1 (1)
       @unusedCultists << Cultist.new("Sectario", 1)
@@ -324,7 +321,7 @@ module NapakalakiGame
     end
     
     def nextCultist
-      @unusedTreasures.shift
+      @unusedCultists.shift
     end
     
     # Baraja el mazo de cultistas

@@ -60,7 +60,7 @@ module NapakalakiGame
     def self.copyJugador(player)
       new(player.getName, player.getLevels, player.canISteal, player.enemy,
         Marshal.load(Marshal.dump(player.getVisibleTreasures)),
-        Marshal,load(Marshal.dump(player.getHiddenTreasures)))
+        Marshal.load(Marshal.dump(player.getHiddenTreasures)))
     end
     
     # -------------------------------------------------------

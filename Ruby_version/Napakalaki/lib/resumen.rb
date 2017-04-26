@@ -1,4 +1,4 @@
-
+=begin
 @array & @otro_array
   Devuelve un tercer array con los elementos que pertenecen a
     ambos arrays (la intersección) SIN DUPLICADOS
@@ -81,3 +81,4 @@ Igual que @array.each pero recorriendo el array en sentido inverso.
 
 @array.size
   Devuelve el numero de elementos del array.
+=end
