@@ -45,6 +45,10 @@ module NapakalakiGame
       !@getVisibleTreasures.empty?
     end
     
+    def to_s
+      super + "\n Es cultista."
+    end
+    
     protected :getCombatLevel
     protected :getOponentLevel
     protected :shouldConvert

@@ -62,7 +62,7 @@ module NapakalakiGame
     
     def copyPlayer(player)
       @name = player.getName
-      @level = player.getLevel
+      @level = player.getLevels
       @dead = player.isDead
       @canISteal = player.canISteal
       @enemy = player.getEnemy
@@ -110,6 +110,10 @@ module NapakalakiGame
     
     def getEnemy
       @enemy
+    end
+    
+    def getPendingBadConsequence
+      @pendingBadConsequence
     end
  
     # -------------------------------------------------------
@@ -316,7 +320,22 @@ module NapakalakiGame
     def to_s
       mensaje = "\n Nombre: #{@name}\n Nivel: #{@level}\n Poder de combate: #{getCombatLevel}\n ¿Puedo robar?: #{@canISteal}"
       if @enemy != nil
-        mensaje += "\n Enemigo: #{@enemy.getName}\n"
+        mensaje += "\n Enemigo: #{@enemy.getName}"
+      else
+        mensaje += "\n Sin enemigo."
+      end
+      if @pendingBadConsequence != nil and !@pendingBadConsequence.isEmpty
+        mensaje += "\n Mal rollo pendiente: " + @pendingBadConsequence.malRolloString
+      else
+        mensaje += "\n Sin mal rollo pendiente."
+      end
+      mensaje
+    end
+    
+    def completo
+      mensaje = "\n Nombre: #{@name}\n Nivel: #{@level}\n Poder de combate: #{getCombatLevel}\n ¿Puedo robar?: #{@canISteal}"
+      if @enemy != nil
+        mensaje += "\n Enemigo: #{@enemy.getName}"
       else
         mensaje += "\n Sin enemigo."
       end
@@ -352,6 +371,7 @@ module NapakalakiGame
     private :haveStolen
     protected :shouldConvert
     protected :getOponentLevel
+    protected :getPendingBadConsequence
     
     # ---------------------------------------------------
   end

@@ -50,7 +50,7 @@ module NapakalakiGame
 
     # Crea todos los jugadores con los nombres pasados en el array
     def initPlayers(names)
-      names.each { |name| @players << Player.newPlayer(name) }
+      names.each { |name| @players << Player.new(name) }
     end
 
     # Devuelve y actualiza el jugador al que le toca jugar
