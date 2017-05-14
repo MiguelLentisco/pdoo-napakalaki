@@ -53,7 +53,8 @@ module NapakalakiGame
     
     # Métodos
     # -------------------------------------------------------
-    
+
+=begin
     # Deberiamos quitarlo o dejarlo asi ?
     def isEmpty
       true
@@ -71,7 +72,8 @@ module NapakalakiGame
     def adjustToFitTreasureLists(v, t)
       nil
     end
-
+=end
+    
     # Convierte a string
     def to_s
       message = "\nDescripción: #{@text}"

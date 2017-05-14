@@ -46,7 +46,7 @@ module NapakalakiGame
     end
     
     def to_s
-      super + "\n Es cultista."
+      super + "\n Es cultista. Bonus por cultista: #{@myCultistCard.getGainedLevels}."
     end
     
     protected :getCombatLevel

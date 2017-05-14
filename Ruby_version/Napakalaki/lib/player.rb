@@ -265,7 +265,7 @@ module NapakalakiGame
     # Si está en un estado válido el jugador
     def validState
       @pendingBadConsequence == nil or (@pendingBadConsequence.isEmpty and 
-        @hiddenTreasures.size < 4)
+        @hiddenTreasures.size <= 4)
     end
 
     # Inicializo los tesoros del jugador

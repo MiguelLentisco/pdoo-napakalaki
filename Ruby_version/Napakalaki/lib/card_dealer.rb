@@ -190,8 +190,8 @@ module NapakalakiGame
 
       # Flecher -> cuidao
       prize = Prize.new(1, 1)
-      bC = BadConsequence.new("Toses los pulmones y " \
-          "pierdes 2 niveles.", 2)
+      bC = NumericBadConsequence.new("Toses los pulmones y " \
+          "pierdes 2 niveles.", 2, 0, 0)
       @unusedMonsters << Monster.newNormalMonster("Flecher", 2, bC, prize)
 
       # Los hondos
@@ -213,7 +213,7 @@ module NapakalakiGame
 
       # Pollipólipo volante
       prize = Prize.new(2, 1)
-      bC = BadConsequence.new("Da mucho asquito. Pierdes 3 niveles.", 3)
+      bC = NumericBadConsequence.new("Da mucho asquito. Pierdes 3 niveles.", 3, 0, 0)
       @unusedMonsters << Monster.newNormalMonster("Pollipólipo volante", 3, bC, prize)
 
       # Yskhtihyssggoth
@@ -270,7 +270,7 @@ module NapakalakiGame
       
       # Serpiente Político
       prize = Prize.new(2, 1)
-      bC = BadConsequence.new("Tu gobierno te recorta 2 niveles.", 2)
+      bC = NumericBadConsequence.new("Tu gobierno te recorta 2 niveles.", 2, 0, 0)
       @unusedMonsters << Monster.newCultistMonster("Serpiente Político", 8, bC, prize, -2)
       
       # Felpuggoth
@@ -282,12 +282,12 @@ module NapakalakiGame
       
       # Shoggoth
       prize = Prize.new(4, 2)
-      bC = BadConsequence.new("Pierdes 2 niveles.", 2)
+      bC = NumericBadConsequence.new("Pierdes 2 niveles.", 2, 0, 0)
       @unusedMonsters << Monster.newCultistMonster("Shoggoth", 16, bC, prize, -4)
       
       # Lolitagooth
       prize = Prize.new(1, 1)
-      bC = BadConsequence.new("Pintalabios negro. Pierdes 2 niveles.", 2)
+      bC = NumericBadConsequence.new("Pintalabios negro. Pierdes 2 niveles.", 2, 0, 0)
       @unusedMonsters << Monster.newCultistMonster("Lolitagooth", 2, bC, prize, 3)
       
       shuffleMonsters
@@ -380,7 +380,6 @@ module NapakalakiGame
     private :shuffleMonsters
     private :shuffleCultists
     private :initCultistCardDeck
-    
     
     # -------------------------------------------------------
   end
