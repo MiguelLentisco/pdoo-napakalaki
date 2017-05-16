@@ -23,14 +23,14 @@ module NapakalakiGame
     end
     
     def substractVisibleTreasure(t)
-      if !@specificVisibleTreasures.empty? and @specificVisibleTreasures.include?(t)
-        @specificVisibleTreasures.delete_at(@specificVisibleTreasures.index(t))
+      if !@specificVisibleTreasures.empty? and @specificVisibleTreasures.include?(t.getType)
+        @specificVisibleTreasures.delete_at(@specificVisibleTreasures.index(t.getType))
       end
     end
     
     def substractHiddenTreasure(t)
-      if !@specificHiddenTreasures.empty? and @specificHiddenTreasures.include?(t)
-        @specificHiddenTreasures.delete_at(@specificHiddenTreasures.index(t))
+      if !@specificHiddenTreasures.empty? and @specificHiddenTreasures.include?(t.getType)
+        @specificHiddenTreasures.delete_at(@specificHiddenTreasures.index(t.getType))
       end
     end
     
