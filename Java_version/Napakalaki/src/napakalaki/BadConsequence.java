@@ -10,6 +10,8 @@ public class BadConsequence {
     /* Datos miembro */
     /* ------------------------------------------------------ */
     
+    // Nº máximo de tesoros
+    final static int MAXTREASURES = 10;
     // Descripción del mal rollo
     private String text;
     // Niveles a perder
@@ -31,29 +33,29 @@ public class BadConsequence {
     /* ------------------------------------------------------- */
     
     // Constructor tipo 1: tesoros no específcos
-    public BadConsequence(String text, int levels, int nVisible, int nHidden) {
-        this.text = text;
-        this.levels = levels;
+    public BadConsequence(String t, int l, int nVisible, int nHidden) {
+        this.text = t;
+        this.levels = l;
         this.nVisibleTreasures = nVisible;
         this.nHiddenTreasures = nHidden;
         this.death = false;
     }
     
      // Constructor tipo 2: tesoros específicos
-    public BadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible,
-                               ArrayList<TreasureKind> tHidden) {
-        this.text = text;
-        this.levels = levels;
+    public BadConsequence(String t, int l, ArrayList<TreasureKind> v,
+                               ArrayList<TreasureKind> h) {
+        this.text = t;
+        this.levels = l;
         this.nHiddenTreasures = 0;
         this.nVisibleTreasures = 0;
-        this.specificHiddenTreasures = tHidden;
-        this.specificVisibleTreasures = tVisible;
+        this.specificHiddenTreasures = v;
+        this.specificVisibleTreasures = h;
         this.death = false;
     }
     
     // Constructor tipo 3: muerte
-    public BadConsequence(String text, boolean death) {
-        this.text = text;
+    public BadConsequence(String t, boolean death) {
+        this.text = t;
         this.levels = 0;
         this.nVisibleTreasures = 0;
         this.nHiddenTreasures = 0;
@@ -65,10 +67,12 @@ public class BadConsequence {
     /* Consulta */
     /* ------------------------------------------------------- */
     
-    public String getText() {
-        return text;
+    boolean isEmpty() {
+        return nVisibleTreasures == 0 && nHiddenTreasures == 0 &&
+                specificHiddenTreasures.isEmpty() &&
+                specificVisibleTreasures.isEmpty();
     }
-    
+     
     public int getLevels() {
         return levels;
     }
@@ -76,13 +80,9 @@ public class BadConsequence {
     public int getNVisibleTreasures() {
         return nVisibleTreasures;
     }
-        
+    
     public int getNHiddenTreasures() {
         return nHiddenTreasures;
-    }
-    
-    public boolean getDeath() {
-        return death;
     }
     
     public ArrayList<TreasureKind> getSpecificHiddenTreasures() {
@@ -98,7 +98,22 @@ public class BadConsequence {
     /* Métodos */
     /* ------------------------------------------------------- */
     
+    public void substractVisibleTreasure(Treasure t) {
+        
+    }
+    
+    public void substractHiddenTreasure(Treasure t) {
+        
+    }
+    
+    public BadConsequence adjustToFitTreasureLists(ArrayList<TreasureKind> v,
+            ArrayList<TreasureKind> h) {
+        
+    }
+    
+    
     // Convierte a String
+    /*
     public String toString() {
         String message = "\nDescripción = " + text;
         if (!death)
@@ -118,7 +133,7 @@ public class BadConsequence {
             message += "\nMuerte = sí";
                     
        return message;
-    }
+    }*/
     
     /* ------------------------------------------------------- */
 }

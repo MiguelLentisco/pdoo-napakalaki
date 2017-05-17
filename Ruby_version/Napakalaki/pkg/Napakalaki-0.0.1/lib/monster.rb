@@ -1,8 +1,7 @@
 # encoding: utf-8
 # begin monster.rb
 
-require_relative 'death_bad_consequence'
-require_relative 'specific_bad_consequence'
+require_relative 'bad_consequence'
 require_relative 'prize'
 
 module NapakalakiGame
@@ -74,7 +73,7 @@ module NapakalakiGame
 
     # Convierte a string
     def to_s
-      "\nNombre: #{@name}\nPoder de combate: #{@combatLevel} (Contra sectarios: #{getCombatLevelAgainstCultistPlayer})\n" \
+      "\nNombre: #{@name}\nPoder de combate: #{@combatLevel}\n" \
       "--Recompensa--#{@prize}\n--Mal rollo--#{@badConsequence}"
     end
     

@@ -1,50 +1,58 @@
 # encoding: utf-8
-# being prize.rb
+# begin treasure.rb
+
+require_relative 'treasure_kind'
 
 module NapakalakiGame
-  # Clase Prize que representa la recompensa por vencer a un monstruo
-  class Prize
+  # Clase Tesoro que representa una carta de tesoro
+  class Treasure
     # Attr / datos miembro
     # -------------------------------------------------------
-
-    #attr_reader :treasures  # Nº de tesoros a coger
-    #attr_reader :levels     # Nº de niveles aumentados
-
+    
+    #attr_reader :name        # Descripción del tesoro
+    #attr_reader :bonus       # Nº de bonus
+    #attr_reader :type        # Tipo de tesoro
+    
     # -------------------------------------------------------
-
+    
     # Constructor
     # -------------------------------------------------------
 
-    def initialize(t, l)
-      @treasures = t
-      @levels = l
-    end
-
+    def initialize(n, bonus, t)
+      @name = n
+      @bonus = bonus
+      @type = t
+    end 
+    
     # -------------------------------------------------------
-   
+    
     # Consultores
     # -------------------------------------------------------
-    
-    def getTreasures
-      @treasures
+
+    def getName
+      @name
     end
 
-    def getLevels
-      @levels
+    def getBonus
+      @bonus
+    end
+
+    def getType
+      @type
     end
     
     # -------------------------------------------------------
-
+    
     # Métodos
     # -------------------------------------------------------
-
-    # Convierte a string
+    
+    # Convierte a string - PARA DEPURACION: NO INCLUIDO EN EL UML
     def to_s
-      "\nTesoros: #{@treasures}\nNiveles: #{@levels}"
+      "\n  Descripción: #{@name}\t Bonus: #{@bonus}\t Tipo: #{@type}"
     end
-
+    
     # -------------------------------------------------------
   end
 end
 
-# end prize.rb
+# end treasure.rb

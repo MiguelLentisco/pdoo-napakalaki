@@ -11,7 +11,7 @@ public enum TreasureKind {
     ONEHAND,                       // Arma de una mano
     BOTHHANDS,                     // Arma de dos manos
     HELMET,                        // Casco
-    SHOES;                         // Calzado
+    SHOE;                         // Calzado
     
     /* ------------------------------------------------------- */
 }

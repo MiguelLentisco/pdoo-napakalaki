@@ -65,49 +65,49 @@ public class PruebaNapakalaki {
         // 3 Byakhees de bonanza
         prize = new Prize(2, 1);
         bC = new BadConsequence("Pierdes tu armadura visible" +
-            " y otra oculta.", 1, new ArrayList(Arrays.asList(TreasureKind.ARMOR)), 
+            " y otra oculta.", 0, new ArrayList(Arrays.asList(TreasureKind.ARMOR)), 
             new ArrayList(Arrays.asList(TreasureKind.ARMOR)));
         monsters.add(new Monster("3 Byakhees de bonanza", 8, bC, prize));
 
         // Tenochtitlan
         prize = new Prize(1,1);
         bC = new BadConsequence("Embobados con el lindo" +
-            " primigenio te descartas de tu casco visible.", 1, 
+            " primigenio te descartas de tu casco visible.", 0, 
             new ArrayList(Arrays.asList(TreasureKind.ARMOR)), new ArrayList());
         monsters.add(new Monster("Tenochtitlan", 2, bC, prize));
 
         // El sopor de Dunwich
         prize = new Prize(1,1);
         bC = new BadConsequence("El primodial bostezo " +
-            "contagioso. Pierdes el calzado visible.", 1, 
-            new ArrayList(Arrays.asList(TreasureKind.SHOES)), new ArrayList());
+            "contagioso. Pierdes el calzado visible.", 0, 
+            new ArrayList(Arrays.asList(TreasureKind.SHOE)), new ArrayList());
         monsters.add(new Monster("El sopor de Dunwich", 2, bC, prize));
 
         // Demonios de Magaluf
         prize = new Prize(4, 1);
         bC = new BadConsequence("Te atrapan para llevarte " +
             "de fiesta y te dejan caer en mitad del vuelo. Descarta 1 mano visible" 
-            + " y 1 mano oculta.", 1, 
+            + " y 1 mano oculta.", 0, 
             new ArrayList(Arrays.asList(TreasureKind.ONEHAND)), 
             new ArrayList(Arrays.asList(TreasureKind.ONEHAND)));
         monsters.add(new Monster("Demonios de Magaluf", 2, bC, prize));
 
         // El gorrón en el umbral
         prize = new Prize(3, 1);
-        bC = new BadConsequence("Pierdes todos tus tesoros visibles.", 1, 
+        bC = new BadConsequence("Pierdes todos tus tesoros visibles.", 0, 
             6, 0);
         monsters.add(new Monster("El gorrón en el umbral", 13, bC, prize));
 
         // H.P. Munchcraft
         prize = new Prize(2, 1);
         bC = new BadConsequence("Pierdes la armadura visible.",
-            1, new ArrayList(Arrays.asList(TreasureKind.ARMOR)), new ArrayList());
+            0, new ArrayList(Arrays.asList(TreasureKind.ARMOR)), new ArrayList());
         monsters.add(new Monster("H.P. Munchcraft", 6, bC, prize));
 
         // Necrófago
         prize = new Prize(1, 1);
         bC = new BadConsequence("Sientes bichos bajo la ropa. Descarta la armadura " 
-            + "visible.", 1, new ArrayList(Arrays.asList(TreasureKind.ARMOR)), 
+            + "visible.", 0, new ArrayList(Arrays.asList(TreasureKind.ARMOR)), 
             new ArrayList());
         monsters.add(new Monster("Necrófago", 13, bC, prize));
 
@@ -135,7 +135,7 @@ public class PruebaNapakalaki {
         // Dameargo
         prize = new Prize(2, 1);
         bC = new BadConsequence("Te intentas escaquear. Pierdes una mano visible.", 
-            1, new ArrayList(Arrays.asList(TreasureKind.ONEHAND)), new ArrayList());
+            0, new ArrayList(Arrays.asList(TreasureKind.ONEHAND)), new ArrayList());
         monsters.add(new Monster("Dameargo", 1, bC, prize));
 
         // Pollipólipo volante
@@ -164,7 +164,7 @@ public class PruebaNapakalaki {
         // El espía sordo
         prize = new Prize(1, 1);
         bC = new BadConsequence("Te asusta en la noche. Pierdes " +
-            "un casco visible", 1, new ArrayList(Arrays.asList(TreasureKind.HELMET)), 
+            "un casco visible", 0, new ArrayList(Arrays.asList(TreasureKind.HELMET)), 
             new ArrayList());
         monsters.add(new Monster("El espía sordo", 5, bC, prize));
 
@@ -217,7 +217,7 @@ public class PruebaNapakalaki {
         printMonsters(loseTreasureType(TreasureKind.BOTHHANDS));
         System.out.print("\nMonstruos que te hacen perder el calzado:" +
                 "\n--------------------------------------------------------");
-        printMonsters(loseTreasureType(TreasureKind.SHOES));
+        printMonsters(loseTreasureType(TreasureKind.SHOE));
     }
 }
 
