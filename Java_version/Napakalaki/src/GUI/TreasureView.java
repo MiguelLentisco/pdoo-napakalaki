@@ -51,11 +51,11 @@ public class TreasureView extends javax.swing.JPanel {
         bonus = new javax.swing.JLabel();
         treasureKind = new javax.swing.JLabel();
 
-        name.setText("jLabel1");
+        name.setText("Name");
 
-        bonus.setText("jLabel2");
+        bonus.setText("Bonus");
 
-        treasureKind.setText("jLabel3");
+        treasureKind.setText("Type");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -67,7 +67,7 @@ public class TreasureView extends javax.swing.JPanel {
                     .addComponent(name)
                     .addComponent(bonus)
                     .addComponent(treasureKind))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

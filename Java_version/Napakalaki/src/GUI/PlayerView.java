@@ -27,19 +27,92 @@ public class PlayerView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        name = new javax.swing.JLabel();
+        level = new javax.swing.JLabel();
+        death = new javax.swing.JLabel();
+        canISteal = new javax.swing.JLabel();
+        enemy = new javax.swing.JLabel();
+        pendingBadConsequence = new javax.swing.JLabel();
+        visibleTreasures = new javax.swing.JLabel();
+        hiddenTreasures = new javax.swing.JLabel();
+        sectario = new javax.swing.JLabel();
+
+        name.setText("Name");
+
+        level.setText("Level");
+
+        death.setText("Death");
+
+        canISteal.setText("CanISteal");
+
+        enemy.setText("Enemy");
+
+        pendingBadConsequence.setText("PendingBadConsequence");
+
+        visibleTreasures.setText("VisibleTreasures");
+
+        hiddenTreasures.setText("HiddenTreasures");
+
+        sectario.setText("Cultist");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(death)
+                            .addComponent(level)
+                            .addComponent(canISteal)
+                            .addComponent(enemy)
+                            .addComponent(pendingBadConsequence)
+                            .addComponent(visibleTreasures)
+                            .addComponent(hiddenTreasures))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(name)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                        .addComponent(sectario)
+                        .addGap(100, 100, 100))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(name)
+                    .addComponent(sectario))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(level)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(death)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(canISteal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(enemy)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pendingBadConsequence)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(visibleTreasures)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(hiddenTreasures)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel canISteal;
+    private javax.swing.JLabel death;
+    private javax.swing.JLabel enemy;
+    private javax.swing.JLabel hiddenTreasures;
+    private javax.swing.JLabel level;
+    private javax.swing.JLabel name;
+    private javax.swing.JLabel pendingBadConsequence;
+    private javax.swing.JLabel sectario;
+    private javax.swing.JLabel visibleTreasures;
     // End of variables declaration//GEN-END:variables
 }

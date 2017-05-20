@@ -23,7 +23,7 @@
                   <Component id="bonus" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="treasureKind" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="116" max="32767" attributes="0"/>
+              <EmptySpace pref="121" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -44,12 +44,12 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="name">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
+        <Property name="text" type="java.lang.String" value="Name"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="bonus">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel2"/>
+        <Property name="text" type="java.lang.String" value="Bonus"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
@@ -57,7 +57,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="treasureKind">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel3"/>
+        <Property name="text" type="java.lang.String" value="Type"/>
       </Properties>
     </Component>
   </SubComponents>
