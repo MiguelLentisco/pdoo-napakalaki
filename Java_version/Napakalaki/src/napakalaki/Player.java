@@ -1,6 +1,7 @@
 // begin Player.java
 package napakalaki;
 
+import GUI.Dice;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
