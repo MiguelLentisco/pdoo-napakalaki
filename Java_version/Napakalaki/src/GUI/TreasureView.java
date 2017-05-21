@@ -13,7 +13,7 @@ import napakalaki.Treasure;
  */
 public class TreasureView extends javax.swing.JPanel {
 
-    Treasure treasureModel;
+    private Treasure treasureModel;
     
     public TreasureView() {
         initComponents();
@@ -21,10 +21,11 @@ public class TreasureView extends javax.swing.JPanel {
 
     public void setTreasure(Treasure t) {
         treasureModel = t;
-        this.name.setText("Nombre: " + t.getName());
-        this.bonus.setText("Bonus: " + Integer.toString(t.getBonus()));
+        this.name.setText("Nombre: " + treasureModel.getName());
+        this.bonus.setText("Bonus: " + 
+                Integer.toString(treasureModel.getBonus()));
         String s = "Tipo: ";
-        switch (t.getType()) {
+        switch (treasureModel.getType()) {
             case BOTHHANDS: 
                 s += "BOTHHANDS";
                 break;
@@ -41,6 +42,7 @@ public class TreasureView extends javax.swing.JPanel {
                 s += "ARMOR";
         }
         this.treasureKind.setText(s);
+        repaint();
     }
     
     @SuppressWarnings("unchecked")

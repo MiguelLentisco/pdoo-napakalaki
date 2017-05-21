@@ -20,50 +20,89 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="death" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="level" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="canISteal" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="enemy" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="pendingBadConsequence" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="visibleTreasures" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="hiddenTreasures" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="stealTreasure" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                      <Component id="makeVisible" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="67" max="32767" attributes="0"/>
+                      <Component id="discardTreasures" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
+                      <Component id="discardAllTreasures" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="name" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="135" max="32767" attributes="0"/>
-                      <Component id="sectario" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="death" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="canISteal" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="enemy" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cultist" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="level" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="name" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="pendingBadConsequenceView" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="hiddenTreasures" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                          <Component id="visibleTreasures" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="name" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="sectario" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="visibleTreasures" min="-2" pref="102" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="hiddenTreasures" min="-2" pref="97" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="name" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="level" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="death" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="canISteal" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="enemy" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cultist" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                              <Component id="pendingBadConsequenceView" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="level" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="death" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="canISteal" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="enemy" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="pendingBadConsequence" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="visibleTreasures" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="hiddenTreasures" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="stealTreasure" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="makeVisible" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="discardTreasures" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="discardAllTreasures" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -94,24 +133,78 @@
         <Property name="text" type="java.lang.String" value="Enemy"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="pendingBadConsequence">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="PendingBadConsequence"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="visibleTreasures">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="VisibleTreasures"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="hiddenTreasures">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="HiddenTreasures"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="sectario">
+    <Component class="javax.swing.JLabel" name="cultist">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cultist"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JPanel" name="visibleTreasures">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+    </Container>
+    <Container class="javax.swing.JPanel" name="hiddenTreasures">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+    </Container>
+    <Component class="javax.swing.JButton" name="stealTreasure">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Steal Treasure"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stealTreasureActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="makeVisible">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Make Visible"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="discardTreasures">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Discard Treasures"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="discardAllTreasures">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Discard All Treasures"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Visible Treasures"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hidden Treasures"/>
+      </Properties>
+    </Component>
+    <Component class="GUI.PendingBadConsequenceView" name="pendingBadConsequenceView">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder/>
+          </Border>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pending Bad Consequence"/>
       </Properties>
     </Component>
   </SubComponents>

@@ -54,21 +54,21 @@ public class PlayerNamesCapture extends javax.swing.JDialog {
 
         jLabel3.setText("Player 3");
 
-        name1.setText("name1");
+        name1.setText("Name 1");
         name1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 name1ActionPerformed(evt);
             }
         });
 
-        name2.setText("name2");
+        name2.setText("Name 2");
         name2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 name2ActionPerformed(evt);
             }
         });
 
-        name3.setText("name3");
+        name3.setText("Name 3");
 
         jButton1.setText("Play");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

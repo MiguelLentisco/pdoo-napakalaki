@@ -179,7 +179,7 @@ public class CardDealer {
         // El gorrón en el umbral
         prize = new Prize(3, 1);
         bC = new NumericBadConsequence("Pierdes todos tus tesoros visibles.", 0, 
-                BadConsequence.MAXTREASURES, 0);
+                NumericBadConsequence.MAXTREASURES, 0);
         unusedMonsters.add(new Monster("El gorrón en el umbral", 13, bC, prize));
 
         // H.P. Munchcraft
@@ -277,7 +277,7 @@ public class CardDealer {
         // Testigos oculares
         prize = new Prize(2, 1);
         bC = new NumericBadConsequence("Pierdes tus tesoros visibles. Jajaja.", 0,
-            BadConsequence.MAXTREASURES, 0);
+            NumericBadConsequence.MAXTREASURES, 0);
         unusedMonsters.add(new Monster("Testigos oculares", 6, bC, prize, 2));
             
         // El gran Cthulhu

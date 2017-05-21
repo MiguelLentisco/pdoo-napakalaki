@@ -276,6 +276,14 @@ public class Player {
         return enemy;
     }
     
+    // Métodos para la vista:
+    public String getEnemyName() {
+        return enemy.getName();
+    }
+    
+    public BadConsequence getPendingBadConsequence() {
+        return pendingBadConsequence;
+    }
 }
 
 // end Player.java

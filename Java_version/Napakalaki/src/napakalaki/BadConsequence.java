@@ -10,8 +10,6 @@ public abstract class BadConsequence {
     /* Datos miembro */
     /* ------------------------------------------------------ */
   
-    // Nº máximo de tesoros
-    final static int MAXTREASURES = 10;
     // Descripción del mal rollo
     private String text;
     // Niveles a perder
@@ -35,7 +33,7 @@ public abstract class BadConsequence {
         return levels;
     }
     
-    protected String getText() {
+    public String getText() {
         return text;
     }
     

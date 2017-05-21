@@ -68,6 +68,15 @@ public class Monster {
         return prize.getTreasures();
     }
     
+    // Añadidos para la vista: 
+    public int getLevelChangeAgainstCultisPlayer() {
+        return levelChangeAgainstCultisPlayer;
+    }
+    
+    public Prize getPrize() {
+        return prize;
+    }
+    
     /* ------------------------------------------------------- */
     
     

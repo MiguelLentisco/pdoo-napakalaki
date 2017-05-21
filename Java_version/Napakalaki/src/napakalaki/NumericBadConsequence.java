@@ -5,6 +5,8 @@ package napakalaki;
 import java.util.ArrayList;
 
 public class NumericBadConsequence extends BadConsequence {
+    // Nº máximo de tesoros
+    final static int MAXTREASURES = 10;
     // Nº de tesoros visibles perdidos
     private int nVisibleTreasures;
     // Nº de tesoros ocultos perdidos

@@ -4,8 +4,8 @@ package napakalaki;
 public class DeathBadConsequence extends NumericBadConsequence {    
     // Constructor tipo 3: muerte
     public DeathBadConsequence(String t) {
-        super(t, Player.MAXLEVEL, BadConsequence.MAXTREASURES, 
-                    BadConsequence.MAXTREASURES);
+        super(t, Player.MAXLEVEL, NumericBadConsequence.MAXTREASURES, 
+                    NumericBadConsequence.MAXTREASURES);
     }
     
     

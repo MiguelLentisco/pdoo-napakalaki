@@ -1,3 +1,4 @@
+
 // begin BadConsequence.java
 package napakalaki;
 
@@ -33,7 +34,7 @@ public abstract class OldBadConsequence {
     /* ------------------------------------------------------- */
     
     // Constructor tipo 1: tesoros no específcos
-    public BadConsequence(String t, int l, int nVisible, int nHidden) {
+    public OldBadConsequence(String t, int l, int nVisible, int nHidden) {
         this.text = t;
         this.levels = l;
         this.nVisibleTreasures = nVisible;
@@ -42,7 +43,7 @@ public abstract class OldBadConsequence {
     }
     
      // Constructor tipo 2: tesoros específicos
-    public BadConsequence(String t, int l, ArrayList<TreasureKind> v,
+    public OldBadConsequence(String t, int l, ArrayList<TreasureKind> v,
                                ArrayList<TreasureKind> h) {
         this.text = t;
         this.levels = l;
@@ -54,7 +55,7 @@ public abstract class OldBadConsequence {
     }
     
     // Constructor tipo 3: muerte
-    public BadConsequence(String t, boolean death) {
+    public OldBadConsequence(String t, boolean death) {
         this.text = t;
         this.levels = 0;
         this.nVisibleTreasures = 0;
@@ -157,3 +158,4 @@ public abstract class OldBadConsequence {
 }
 
 // end BadConsequence.java
+
