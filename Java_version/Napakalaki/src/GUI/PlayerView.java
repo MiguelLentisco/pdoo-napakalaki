@@ -1,19 +1,26 @@
 package GUI;
 
+import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import napakalaki.CultistPlayer;
+import napakalaki.Napakalaki;
 import napakalaki.Player;
 import napakalaki.Treasure;
 
 public class PlayerView extends javax.swing.JPanel {
 
     private Player playerModel;
-    
+    private Napakalaki napakalakiModel;
+            
     public PlayerView() {
         initComponents();
     }
 
+    public void setNapakalakiModel(Napakalaki napakalaki) {
+        napakalakiModel = napakalaki;
+    }
+    
     public void setPlayer(Player p) {
         playerModel = p;
         this.name.setText("Name: " + playerModel.getName());
@@ -50,6 +57,20 @@ public class PlayerView extends javax.swing.JPanel {
         aPanel.revalidate();
     }
     
+    private ArrayList<Treasure> getSelectedTreasures(JPanel aPanel) {
+        // Se recorren los tesoros que contiene el panel,
+        // almacenando en un vector aquellos que están seleccionados.
+        // Finalmente se devuelve dicho vector.
+        TreasureView tv;
+        ArrayList<Treasure> output = new ArrayList();
+        for (Component c : aPanel.getComponents()) {
+            tv = (TreasureView) c;
+            if ( tv.isSelected() )
+                output.add ( tv.getTreasure() );
+        }
+        return output;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -62,10 +83,10 @@ public class PlayerView extends javax.swing.JPanel {
         cultist = new javax.swing.JLabel();
         visibleTreasures = new javax.swing.JPanel();
         hiddenTreasures = new javax.swing.JPanel();
-        stealTreasure = new javax.swing.JButton();
-        makeVisible = new javax.swing.JButton();
-        discardTreasures = new javax.swing.JButton();
-        discardAllTreasures = new javax.swing.JButton();
+        stealTreasureButton = new javax.swing.JButton();
+        makeVisibleButton = new javax.swing.JButton();
+        discardTreasuresButton = new javax.swing.JButton();
+        discardAllTreasuresButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         pendingBadConsequenceView = new GUI.PendingBadConsequenceView();
@@ -87,18 +108,33 @@ public class PlayerView extends javax.swing.JPanel {
 
         hiddenTreasures.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        stealTreasure.setText("Steal Treasure");
-        stealTreasure.addActionListener(new java.awt.event.ActionListener() {
+        stealTreasureButton.setText("Steal Treasure");
+        stealTreasureButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stealTreasureActionPerformed(evt);
+                stealTreasureButtonActionPerformed(evt);
             }
         });
 
-        makeVisible.setText("Make Visible");
+        makeVisibleButton.setText("Make Visible");
+        makeVisibleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                makeVisibleButtonActionPerformed(evt);
+            }
+        });
 
-        discardTreasures.setText("Discard Treasures");
+        discardTreasuresButton.setText("Discard Treasures");
+        discardTreasuresButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                discardTreasuresButtonActionPerformed(evt);
+            }
+        });
 
-        discardAllTreasures.setText("Discard All Treasures");
+        discardAllTreasuresButton.setText("Discard All Treasures");
+        discardAllTreasuresButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                discardAllTreasuresButtonActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Visible Treasures");
 
@@ -116,13 +152,13 @@ public class PlayerView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(stealTreasure)
+                        .addComponent(stealTreasureButton)
                         .addGap(78, 78, 78)
-                        .addComponent(makeVisible)
+                        .addComponent(makeVisibleButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                        .addComponent(discardTreasures)
+                        .addComponent(discardTreasuresButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addComponent(discardAllTreasures))
+                        .addComponent(discardAllTreasuresButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(death)
@@ -178,35 +214,56 @@ public class PlayerView extends javax.swing.JPanel {
                                 .addComponent(pendingBadConsequenceView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stealTreasure)
-                    .addComponent(makeVisible)
-                    .addComponent(discardTreasures)
-                    .addComponent(discardAllTreasures))
+                    .addComponent(stealTreasureButton)
+                    .addComponent(makeVisibleButton)
+                    .addComponent(discardTreasuresButton)
+                    .addComponent(discardAllTreasuresButton))
                 .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void stealTreasureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stealTreasureActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stealTreasureActionPerformed
+    private void stealTreasureButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stealTreasureButtonActionPerformed
+        playerModel.stealTreasure();
+        setPlayer (napakalakiModel.getCurrentPlayer());
+        stealTreasureButton.setEnabled(playerModel.canISteal());
+    }//GEN-LAST:event_stealTreasureButtonActionPerformed
+
+    private void makeVisibleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeVisibleButtonActionPerformed
+        ArrayList<Treasure> selHidden = getSelectedTreasures (hiddenTreasures);
+        napakalakiModel.makeTreasuresVisible (selHidden);
+        setPlayer (napakalakiModel.getCurrentPlayer());
+    }//GEN-LAST:event_makeVisibleButtonActionPerformed
+
+    private void discardTreasuresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardTreasuresButtonActionPerformed
+        ArrayList<Treasure> sel = getSelectedTreasures (hiddenTreasures);
+        napakalakiModel.discardHiddenTreasures(sel);
+        sel = getSelectedTreasures (visibleTreasures);
+        napakalakiModel.discardVisibleTreasures(sel);
+        setPlayer (napakalakiModel.getCurrentPlayer());
+    }//GEN-LAST:event_discardTreasuresButtonActionPerformed
+
+    private void discardAllTreasuresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardAllTreasuresButtonActionPerformed
+        playerModel.discardAllTreasures();
+        setPlayer (napakalakiModel.getCurrentPlayer());
+    }//GEN-LAST:event_discardAllTreasuresButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel canISteal;
     private javax.swing.JLabel cultist;
     private javax.swing.JLabel death;
-    private javax.swing.JButton discardAllTreasures;
-    private javax.swing.JButton discardTreasures;
+    private javax.swing.JButton discardAllTreasuresButton;
+    private javax.swing.JButton discardTreasuresButton;
     private javax.swing.JLabel enemy;
     private javax.swing.JPanel hiddenTreasures;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel level;
-    private javax.swing.JButton makeVisible;
+    private javax.swing.JButton makeVisibleButton;
     private javax.swing.JLabel name;
     private GUI.PendingBadConsequenceView pendingBadConsequenceView;
-    private javax.swing.JButton stealTreasure;
+    private javax.swing.JButton stealTreasureButton;
     private javax.swing.JPanel visibleTreasures;
     // End of variables declaration//GEN-END:variables
 }

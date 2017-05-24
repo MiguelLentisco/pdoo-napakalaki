@@ -20,13 +20,13 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="stealTreasure" min="-2" max="-2" attributes="0"/>
+                      <Component id="stealTreasureButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-                      <Component id="makeVisible" min="-2" max="-2" attributes="0"/>
+                      <Component id="makeVisibleButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="67" max="32767" attributes="0"/>
-                      <Component id="discardTreasures" min="-2" max="-2" attributes="0"/>
+                      <Component id="discardTreasuresButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="34" max="32767" attributes="0"/>
-                      <Component id="discardAllTreasures" min="-2" max="-2" attributes="0"/>
+                      <Component id="discardAllTreasuresButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -97,10 +97,10 @@
               </Group>
               <EmptySpace pref="25" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="stealTreasure" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="makeVisible" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="discardTreasures" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="discardAllTreasures" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="stealTreasureButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="makeVisibleButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="discardTreasuresButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="discardAllTreasuresButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
           </Group>
@@ -160,28 +160,37 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
     </Container>
-    <Component class="javax.swing.JButton" name="stealTreasure">
+    <Component class="javax.swing.JButton" name="stealTreasureButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Steal Treasure"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stealTreasureActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stealTreasureButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="makeVisible">
+    <Component class="javax.swing.JButton" name="makeVisibleButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Make Visible"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="makeVisibleButtonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="discardTreasures">
+    <Component class="javax.swing.JButton" name="discardTreasuresButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Discard Treasures"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="discardTreasuresButtonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="discardAllTreasures">
+    <Component class="javax.swing.JButton" name="discardAllTreasuresButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Discard All Treasures"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="discardAllTreasuresButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>

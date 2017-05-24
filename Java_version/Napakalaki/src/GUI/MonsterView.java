@@ -17,7 +17,7 @@ public class MonsterView extends javax.swing.JPanel {
                 Integer.toString(monsterModel.getCombatLevel()));
         this.levelChangeAgainstCultistPlayer.setText(
                 "Level change against cultist: " + 
-                monsterModel.getLevelChangeAgainstCultisPlayer());
+                monsterModel.getLevelChangeAgainstCultistPlayer());
         this.prizePanel.setPrize(m.getPrize());
         this.badConsequencePanel.setBadConsequence(
                 monsterModel.getBadConsequence());
@@ -28,6 +28,7 @@ public class MonsterView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pendingBadConsequenceView1 = new GUI.PendingBadConsequenceView();
         badConsequencePanel = new GUI.BadConsequenceView();
         prizePanel = new GUI.PrizeView();
         name = new javax.swing.JLabel();
@@ -83,6 +84,7 @@ public class MonsterView extends javax.swing.JPanel {
     private javax.swing.JLabel combatLevel;
     private javax.swing.JLabel levelChangeAgainstCultistPlayer;
     private javax.swing.JLabel name;
+    private GUI.PendingBadConsequenceView pendingBadConsequenceView1;
     private GUI.PrizeView prizePanel;
     // End of variables declaration//GEN-END:variables
 }

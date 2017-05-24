@@ -28,26 +28,26 @@
               <Component id="playerView" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="monsterView" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="meetTheMonster" min="-2" max="-2" attributes="0"/>
-                                  <Component id="nextTurn" min="-2" max="-2" attributes="0"/>
+                                  <Component id="meetTheMonsterButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nextTurnButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="combat" min="-2" max="-2" attributes="0"/>
+                                  <Component id="combatButton" min="-2" max="-2" attributes="0"/>
                                   <Component id="combatResult" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="47" max="32767" attributes="0"/>
@@ -65,12 +65,12 @@
                       <Component id="monsterView" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="meetTheMonster" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="combat" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="meetTheMonsterButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="combatButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="nextTurn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nextTurnButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="combatResult" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -108,17 +108,17 @@
         <Property name="text" type="java.lang.String" value="Monster"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="meetTheMonster">
+    <Component class="javax.swing.JButton" name="meetTheMonsterButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Meet the monster"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="combat">
+    <Component class="javax.swing.JButton" name="combatButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Combat"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="nextTurn">
+    <Component class="javax.swing.JButton" name="nextTurnButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Next turn"/>
       </Properties>
