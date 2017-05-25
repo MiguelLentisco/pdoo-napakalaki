@@ -78,20 +78,24 @@ public class PlayerView extends javax.swing.JPanel {
     }
     
     public void setStealTreasureButton (boolean b) {
-        stealTreasureButton.setEnabled(b);
+        stealTreasureButton.setEnabled(b && playerModel.canISteal());
     }
     
-    public void setmakeVisibleButton (boolean b) {
-        stealTreasureButton.setEnabled(b);
+    public void setMakeVisibleButton (boolean b) {
+        makeVisibleButton.setEnabled(b);
     }
     
-    public void setdiscardTreasuresButton (boolean b) {
-        stealTreasureButton.setEnabled(b);
+    public void setDiscardTreasuresButtons (boolean b) {
+        discardAllTreasuresButton.setEnabled(b);
+        discardTreasuresButton.setEnabled(b);
     }
     
-    public void setdiscardAllTreasuresButton (boolean b) {
-        stealTreasureButton.setEnabled(b);
+    public void setAllButtons (boolean b) {
+        setStealTreasureButton(b);
+        makeVisibleButton.setEnabled(b);
+        setDiscardTreasuresButtons(b);
     }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

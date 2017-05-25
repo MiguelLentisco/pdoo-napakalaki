@@ -254,8 +254,11 @@ public class Player {
     
     public void discardAllTreasures() {
         Iterator <Treasure> i = visibleTreasures.iterator();
-        while (i.hasNext())
-            discardVisibleTreasure(i.next());
+        Treasure t = null;
+        while (i.hasNext()) {
+            t = i.next();
+            discardVisibleTreasure(t);
+        }
         i = hiddenTreasures.iterator();
         while (i.hasNext())
             discardHiddenTreasure(i.next());

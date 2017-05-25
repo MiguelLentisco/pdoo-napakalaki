@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import napakalaki.CombatResult;
 import napakalaki.Napakalaki;
 
 /**
@@ -12,18 +13,39 @@ import napakalaki.Napakalaki;
  * @author Ocete
  */
 public class NapakalakiView extends javax.swing.JFrame {
-
+    
     Napakalaki napakalakiModel;
-            
-    public void setNapakalaki (Napakalaki n) {
+    
+    public void setNapakalaki(Napakalaki n) {
         napakalakiModel = n;
+        newTurn();
+    }
+    
+    private void printfCombatResult(CombatResult cR) {
+        String message = null;
+        switch (cR) {
+            case WINGAME:                
+                message = "HAS GANADO EL JUEGO";
+                break;
+            case WIN:
+                message = "Ganaste";
+                break;
+            case LOSE:
+                message = "Perdiste";
+        }
+        combatResult.setText("Combat result: " + message);
+    }
+    
+    private void newTurn() {
         currentPlayerView.setNapakalakiModel(napakalakiModel);
-        currentPlayerView.setPlayer(n.getCurrentPlayer());
+        currentPlayerView.setPlayer(napakalakiModel.getCurrentPlayer());
         monsterView.setVisible(false);
         combatResult.setText("Combat result: NO COMBAT");
         combatButton.setEnabled(false);
         nextTurnButton.setEnabled(false);
+        meetTheMonsterButton.setEnabled(true);
         currentPlayerView.setStealTreasureButton(false);
+        currentPlayerView.setDiscardTreasuresButtons(false);
         repaint();
         revalidate();
     }
@@ -31,7 +53,7 @@ public class NapakalakiView extends javax.swing.JFrame {
     public NapakalakiView() {
         initComponents();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -69,6 +91,11 @@ public class NapakalakiView extends javax.swing.JFrame {
         });
 
         nextTurnButton.setText("Next turn");
+        nextTurnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextTurnButtonActionPerformed(evt);
+            }
+        });
 
         combatResult.setText("Combat Result");
 
@@ -134,17 +161,38 @@ public class NapakalakiView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void combatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatButtonActionPerformed
-        
+        CombatResult cR = napakalakiModel.developCombat();
+        printfCombatResult(cR);
+        nextTurnButton.setEnabled(true);
+        combatButton.setEnabled(false);
+        currentPlayerView.setPlayer(napakalakiModel.getCurrentPlayer());
+        currentPlayerView.setAllButtons(true);
+        repaint();
+        revalidate();
     }//GEN-LAST:event_combatButtonActionPerformed
 
     private void meetTheMonsterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetTheMonsterButtonActionPerformed
-        
+        monsterView.setMonster(napakalakiModel.getCurrentMonster());
+        monsterView.setVisible(true);
+        combatButton.setEnabled(true);
+        meetTheMonsterButton.setEnabled(false);
+        currentPlayerView.setPlayer(napakalakiModel.getCurrentPlayer());
+        currentPlayerView.setMakeVisibleButton(false);
+        currentPlayerView.setDiscardTreasuresButtons(false);
+        repaint();
+        revalidate();
     }//GEN-LAST:event_meetTheMonsterButtonActionPerformed
 
     private void currentPlayerViewKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_currentPlayerViewKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_currentPlayerViewKeyPressed
 
+    private void nextTurnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTurnButtonActionPerformed
+        if (napakalakiModel.nextTurn()) {
+            newTurn();
+        }
+    }//GEN-LAST:event_nextTurnButtonActionPerformed
+    
     public void showView() {
         this.setVisible(true);
         repaint();
