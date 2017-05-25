@@ -13,6 +13,7 @@ public class PendingBadConsequenceView extends javax.swing.JPanel {
     }
 
     public void setPendingBadConsequence (BadConsequence bC) {
+        
         pendingBadConsequenceModel = bC;
         this.text.setText(pendingBadConsequenceModel.getText());
         String treasuresText;

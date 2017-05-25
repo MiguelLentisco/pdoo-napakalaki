@@ -69,7 +69,7 @@ public class Monster {
     }
     
     // Añadidos para la vista: 
-    public int getLevelChangeAgainstCultisPlayer() {
+    public int getLevelChangeAgainstCultistPlayer() {
         return levelChangeAgainstCultisPlayer;
     }
     
