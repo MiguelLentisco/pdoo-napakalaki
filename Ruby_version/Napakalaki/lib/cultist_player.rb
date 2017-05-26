@@ -42,7 +42,7 @@ module NapakalakiGame
     end
     
     def canYouGiveMeATreasure
-      !@getVisibleTreasures.empty?
+      !@visibleTreasures.empty?
     end
     
     def to_s

@@ -14,9 +14,9 @@ public class Player {
     private int level;
     private boolean dead = true;
     private boolean canISteal = true;
-    private Player enemy;
+    protected Player enemy;
     private BadConsequence pendingBadConsequence;
-    private ArrayList<Treasure> visibleTreasures = new ArrayList();
+    protected ArrayList<Treasure> visibleTreasures = new ArrayList();
     private ArrayList<Treasure> hiddenTreasures = new ArrayList();
 
     public Player(String name) {
@@ -52,8 +52,8 @@ public class Player {
     
     private void incrementLevels(int l) {
         level += l;
-        if (level > 10)
-            level = 10;
+        if (level > MAXLEVEL)
+            level = MAXLEVEL;
     }
     
     private void decrementLevels(int l) {
@@ -85,38 +85,18 @@ public class Player {
     }
     
     private boolean canMakeTreasureVisible(Treasure t) {
-        boolean result = true;
-        Treasure treasure;
-        Iterator <Treasure> i = visibleTreasures.iterator();
-        switch (t.getType()) {
-            case BOTHHANDS:
-                while (result && i.hasNext()) {
-                    treasure = i.next();
-                    if (treasure.getType() == TreasureKind.BOTHHANDS ||
-                            treasure.getType() == TreasureKind.ONEHAND)
-                        result = false;
-                }
-                break;
-                
+        TreasureKind tType = t.getType();
+        boolean result = false;
+        switch (tType) {
             case ONEHAND:
-                int numOneHand = 0;
-                while (result && i.hasNext()) {
-                    treasure = i.next();
-                    if (treasure.getType() == TreasureKind.BOTHHANDS)
-                        result = false;
-                    else if (treasure.getType() == TreasureKind.ONEHAND) {
-                        numOneHand += 1;
-                        if (numOneHand == 2)
-                            result = false;
-                    }
-                }
-                break;
-                
+                result = howManyVisibleTreasures(TreasureKind.BOTHHANDS) == 0 &&
+                        howManyVisibleTreasures(tType) < 2;
+            case BOTHHANDS:
+                result = howManyVisibleTreasures(TreasureKind.ONEHAND) == 0 &&
+                        howManyVisibleTreasures(tType) < 1;
             default:
-                while (result && i.hasNext()) 
-                    if (i.next().getType() == t.getType())
-                        result = false;
-        }
+                result = howManyVisibleTreasures(tType) < 1;
+        }   
         return result;
     }
     
@@ -149,14 +129,11 @@ public class Player {
         int myLevel = getCombatLevel();
         int monsterLevel = getOponentLevel(m);
         CombatResult cr;
-        if (!canISteal) {
-            if (Dice.getInstance().nextNumber() < 3) {
+        if (!canISteal && Dice.getInstance().nextNumber() < 3)
                 monsterLevel += enemy.getCombatLevel();
-            }
-        }
         if (myLevel > monsterLevel) {
             applyPrize(m);
-            if (level > MAXLEVEL)
+            if (level >= MAXLEVEL)
                 cr = CombatResult.WINGAME;
             else
                 cr = CombatResult.WIN;
@@ -194,7 +171,8 @@ public class Player {
     }
     
     public boolean validState() {
-       return pendingBadConsequence.isEmpty() && hiddenTreasures.size() <= 4;
+       return pendingBadConsequence == null || 
+               (pendingBadConsequence.isEmpty() && hiddenTreasures.size() <= 4);
     }
     
     public void initTreasures() {
@@ -254,21 +232,15 @@ public class Player {
     
     public void discardAllTreasures() {
         Iterator <Treasure> i = visibleTreasures.iterator();
-        Treasure t = null;
-        while (i.hasNext()) {
-            t = i.next();
-            discardVisibleTreasure(t);
-        }
+        while (i.hasNext())
+            discardVisibleTreasure(i.next());
         i = hiddenTreasures.iterator();
         while (i.hasNext())
             discardHiddenTreasure(i.next());
     }
     
     protected boolean shouldConvert() {
-        boolean result = false;
-        if (Dice.getInstance().nextNumber() == 6)
-            result = true;
-        return result;
+        return Dice.getInstance().nextNumber() == 6;
     }
     
     protected int getOponentLevel(Monster m) {
@@ -278,14 +250,16 @@ public class Player {
     protected Player getEnemy() {
         return enemy;
     }
-    
-    // Métodos para la vista:
+
     public String getEnemyName() {
-        return enemy.getName();
+        return enemy.name;
     }
-    
     public BadConsequence getPendingBadConsequence() {
         return pendingBadConsequence;
+    }
+    
+    public String toString() {
+        return "FALTA";
     }
 }
 

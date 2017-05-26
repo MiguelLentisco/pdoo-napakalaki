@@ -26,6 +26,11 @@ public class Treasure {
         return type;
     }
     
+    public String toString() {
+        return "\n  Descripción: " + name + "\t Bonus: " +
+                Integer.toString(bonus) + "\t Tipo: "+ type;
+    }
+    
 }
 
 // end Treasure.java

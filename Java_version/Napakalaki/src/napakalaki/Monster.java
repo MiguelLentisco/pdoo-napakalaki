@@ -4,31 +4,18 @@ package napakalaki;
 // Clase Monster que representa una carta de monstruo
 public class Monster {
     
-    /* Datos miembro */
-    /* ------------------------------------------------------ */
-    
-    // Nombre del monstruo
     private String name;
-    // Nivel de combate
     private int combatLevel;
-    // Recompensa por derrotarlo
     private Prize prize;
-    // Mal rollo
     private BadConsequence badConsequence;
-    // Aumento de nivel contra sectario
-    private int levelChangeAgainstCultisPlayer;
-    
-    /* ------------------------------------------------------ */
-    
-    /* Constructor */
-    /* ------------------------------------------------------ */
+    private int levelChangeAgainstCultistPlayer;
     
     public Monster(String n, int l, BadConsequence b, Prize p) {
         this.name = n;
         this.combatLevel = l;
         this.badConsequence = b;
         this.prize = p;
-        this.levelChangeAgainstCultisPlayer = 0;
+        this.levelChangeAgainstCultistPlayer = 0;
     }
     
     public Monster(String n, int l, BadConsequence b, Prize p, int IC) {
@@ -36,14 +23,9 @@ public class Monster {
         this.combatLevel = l;
         this.badConsequence = b;
         this.prize = p;
-        this.levelChangeAgainstCultisPlayer = IC;
+        this.levelChangeAgainstCultistPlayer = IC;
     }
-    
-    /* ------------------------------------------------------- */
-    
-    /* Consulta */
-    /* ------------------------------------------------------- */
-    
+
     public String getName() {
         return name;
     }
@@ -53,7 +35,7 @@ public class Monster {
     }
     
     public int getCombatLevelAgainstCultistPlayer() {
-        return combatLevel + levelChangeAgainstCultisPlayer;
+        return combatLevel + levelChangeAgainstCultistPlayer;
     }
     
     public BadConsequence getBadConsequence() {
@@ -68,31 +50,21 @@ public class Monster {
         return prize.getTreasures();
     }
     
-    // Añadidos para la vista: 
     public int getLevelChangeAgainstCultistPlayer() {
-        return levelChangeAgainstCultisPlayer;
+        return levelChangeAgainstCultistPlayer;
     }
     
     public Prize getPrize() {
         return prize;
     }
     
-    /* ------------------------------------------------------- */
-    
-    
-    /* Métodos */
-    /* ------------------------------------------------------- */
-    
-    // Convierte a String
-    /*
     public String toString() {
-        return  "\nNombre = " + name 
-                + "\nPoder de combate = " + Integer.toString(combatLevel)
-                + "\n--Recompensa--" + prize.toString() 
-                + "\n--Mal rollo--" + badConsequence.toString();
+        return "\nNombre: " + name + "\nPoder de combate: " + 
+                Integer.toString(combatLevel) + "(Contra sectarios: " +
+                Integer.toString(getCombatLevelAgainstCultistPlayer()) + ")\n" +
+                "--Recompensa--#" + prize.toString() + "\n--Mal rollo--" +
+                badConsequence.toString();
     }
-    */
-    /* ------------------------------------------------------- */
 }
 
 // end Monster.java

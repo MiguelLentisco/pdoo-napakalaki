@@ -12,20 +12,12 @@ public class Prize {
     // Nº de niveles subidos
     private int levels;
     
-    /* ------------------------------------------------------ */
-    
-    /* Constructor */
-    /* ------------------------------------------------------ */
     
     public Prize(int t, int l) {
         this.treasures = t;
         this.levels = l;
     }
-    
-    /* ------------------------------------------------------ */
-    
-    /* Consulta */
-    /* ------------------------------------------------------ */
+   
     
     public int getTreasures() {
         return treasures;
@@ -34,16 +26,11 @@ public class Prize {
     public int getLevels() {
         return levels;
     }
-    /* ------------------------------------------------------ */
-    
-    /* Métodos */
-    /* ------------------------------------------------------ */
-    /*
-    // Convierte a String
+
     public String toString() {
-        return  "\nTesoros = " + Integer.toString(treasures) 
-                + "\nNiveles = " + Integer.toString(level);
-    }*/
+        return  "\n Tesoros = " + Integer.toString(treasures) 
+                + "\n Niveles = " + Integer.toString(levels);
+    }
     
     /* ------------------------------------------------------ */
 }

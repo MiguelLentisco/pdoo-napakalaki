@@ -26,7 +26,8 @@ public class SpecificBadConsequence extends BadConsequence {
         return specificVisibleTreasures;
     }
     
-    boolean isEmpty() {
+    @Override
+    public boolean isEmpty() {
         return specificHiddenTreasures.isEmpty() &&
                 specificVisibleTreasures.isEmpty();
     }
@@ -46,11 +47,28 @@ public class SpecificBadConsequence extends BadConsequence {
     @Override
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v,
             ArrayList<Treasure> h) {
+        
+        ArrayList<TreasureKind> vTType = new ArrayList();
+        ArrayList<TreasureKind> hTType = new ArrayList();
+        for (Treasure t: v)
+            vTType.add(t.getType());
+        for (Treasure t: h)
+            hTType.add(t.getType());
+
+        vTType.retainAll(specificVisibleTreasures);
+        hTType.retainAll(specificHiddenTreasures);
+        
         BadConsequence bd = new SpecificBadConsequence(getText(), getLevels(), 
-                    specificVisibleTreasures, specificHiddenTreasures);
-        
-        
+                    vTType, hTType);
         return bd;
+    }
+    
+    @Override
+    public String toString() {
+        return super.toString() + "\n Tesoros visibles perdidos: " +
+                specificVisibleTreasures.toString() +
+                "\nTesoros ocultos perdidos: " +
+                specificHiddenTreasures.toString();
     }
 }
 

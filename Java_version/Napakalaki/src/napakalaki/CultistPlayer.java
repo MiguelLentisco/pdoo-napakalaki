@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.Random;
 import java.lang.Math;
 
-
 public class CultistPlayer extends Player {
     private static int totalCultistPlayers = 0;
     Cultist myCultistCard;
@@ -19,8 +18,8 @@ public class CultistPlayer extends Player {
     
     @Override
     protected int getCombatLevel() {
-        return (int) 1.7*super.getCombatLevel() + 
-                myCultistCard.getGainedLevels()*totalCultistPlayers;
+        return (int)Math.round(1.7*super.getCombatLevel() + 
+                myCultistCard.getGainedLevels()*totalCultistPlayers);
     }
     
     @Override
@@ -35,15 +34,15 @@ public class CultistPlayer extends Player {
     
     @Override
     protected Treasure giveMeATreasure() {
-        Treasure t = getVisibleTreasures().get(new Random().nextInt(
-            getVisibleTreasures().size()));
-        getVisibleTreasures().remove(t);
+        Treasure t = visibleTreasures.get(new Random().nextInt(
+            visibleTreasures.size()));
+        visibleTreasures.remove(t);
         return t;
     }
     
     @Override
     protected boolean canYouGiveMeATreasure(){
-        return !getVisibleTreasures().isEmpty();
+        return !visibleTreasures.isEmpty();
     }
     
     static public int getTotalCultistPlayers() {
