@@ -39,10 +39,29 @@ public class View {
         System.out.println ("Visibles: " + p.getVisibleTreasures().toString()
                             + "\nOcultos: " + p.getHiddenTreasures().toString()
                             + "\nVisibles de una mano: " + Integer.toString(p.howManyVisibleTreasures(TreasureKind.ONEHAND))
-                            + "\nVisibles de dos mano: " + Integer.toString(p.howManyVisibleTreasures(TreasureKind.BOTHHANDS)));
-        
-        
+                            + "\nVisibles de dos mano: " + Integer.toString(p.howManyVisibleTreasures(TreasureKind.BOTHHANDS)));        
+        ArrayList <Integer> array = new ArrayList();
+        int n=1;
+        while (n <= 10) {
+            array.add(new Integer(n));
+            n++;
+        }
+        Iterator <Integer> i = array.iterator();
+        while (i.hasNext()) {
+            System.out.println (i.next().toString());
+        }
+        i = array.iterator();
+        while (i.hasNext()) {
+            System.out.println ("hola");
+            i.next();
+            i.remove();
+        }
+        i = array.iterator();
+        while (i.hasNext()) {
+            System.out.println (i.next().toString());
+        }
         */
+        
         // Instanciamos el juego
         Napakalaki game = Napakalaki.getInstance();
         // Instanciamos la vista del juego

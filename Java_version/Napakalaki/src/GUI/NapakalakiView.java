@@ -5,6 +5,10 @@
  */
 package GUI;
 
+import java.awt.Color;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import napakalaki.CombatResult;
 import napakalaki.Napakalaki;
 
@@ -174,6 +178,16 @@ public class NapakalakiView extends javax.swing.JFrame {
         currentPlayerView.setAllButtons(true);
         repaint();
         revalidate();
+        if (cR == CombatResult.WINGAME) {
+            combatResultLabel.setBackground(Color.ORANGE);
+            repaint();
+            try {
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(NapakalakiView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            System.exit(0);
+        }
     }//GEN-LAST:event_combatButtonActionPerformed
 
     private void meetTheMonsterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_meetTheMonsterButtonActionPerformed

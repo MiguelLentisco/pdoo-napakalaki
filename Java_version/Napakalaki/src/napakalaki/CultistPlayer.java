@@ -48,6 +48,11 @@ public class CultistPlayer extends Player {
     static public int getTotalCultistPlayers() {
         return totalCultistPlayers;
     }
+    
+    @Override
+    public String toString() {
+        return super.toString() + "\n I´m a cultist.";
+    }
 }
 
 // end CultistPlayer.java

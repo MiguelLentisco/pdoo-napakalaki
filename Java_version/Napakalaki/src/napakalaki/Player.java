@@ -235,11 +235,25 @@ public class Player {
     
     public void discardAllTreasures() {
         Iterator <Treasure> i = visibleTreasures.iterator();
-        while (i.hasNext())
-            discardVisibleTreasure(i.next());
+        Treasure t = null;
+        while (i.hasNext()) {
+            t = i.next();
+            if (pendingBadConsequence != null &&
+                    !pendingBadConsequence.isEmpty()) {
+                pendingBadConsequence.substractVisibleTreasure(t);
+            }
+            i.remove();
+        }
         i = hiddenTreasures.iterator();
-        while (i.hasNext())
-            discardHiddenTreasure(i.next());
+        while (i.hasNext()) {
+            t = i.next();
+            if (pendingBadConsequence != null &&
+                    !pendingBadConsequence.isEmpty()) {
+                pendingBadConsequence.substractHiddenTreasure(t);
+            }
+            i.remove();
+        }
+        dead = true;
     }
     
     protected boolean shouldConvert() {
