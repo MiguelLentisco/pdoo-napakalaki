@@ -16,21 +16,7 @@ public class PendingBadConsequenceView extends javax.swing.JPanel {
         pendingBadConsequenceModel = bC;
         this.text.setText("<html>" + pendingBadConsequenceModel.getText()
                 + "<html>");
-        String treasuresText;
-        if (pendingBadConsequenceModel instanceof NumericBadConsequence) {
-            treasuresText = "Visibles: " + Integer.toString(
-                ((NumericBadConsequence) pendingBadConsequenceModel).
-                getNVisibleTreasures()) + " Hidden: " + Integer.toString(
-                ((NumericBadConsequence) pendingBadConsequenceModel).
-                getNHiddenTreasures());            
-        } else {
-            treasuresText = "Visibles: " + 
-                ((SpecificBadConsequence) pendingBadConsequenceModel).
-                getSpecificVisibleTreasures() + " Hidden: " + 
-                ((SpecificBadConsequence) pendingBadConsequenceModel).
-                getSpecificHiddenTreasures();
-        }
-        this.treasuresView.setText("<html>" + treasuresText + "<html>");
+        this.treasuresView.setText("<html>" + bC.toDiscard() + "<html>");
         repaint();
     }
     
@@ -43,38 +29,35 @@ public class PendingBadConsequenceView extends javax.swing.JPanel {
         treasuresView = new javax.swing.JLabel();
 
         text.setText("Text");
+        text.setBorder(new javax.swing.border.MatteBorder(null));
 
         jLabel2.setText("Treasures to discard:");
 
         treasuresView.setText("Treasures");
-        treasuresView.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(91, 96, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(treasuresView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                .addGap(10, 10, 10)
+                .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel2))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(treasuresView, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(text)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(4, 4, 4)
-                .addComponent(treasuresView, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addComponent(treasuresView, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

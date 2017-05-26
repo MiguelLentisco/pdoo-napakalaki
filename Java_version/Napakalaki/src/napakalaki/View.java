@@ -10,12 +10,39 @@ import GUI.NapakalakiView;
 import GUI.PlayerNamesCapture;
 import java.util.ArrayList;
 
+//Para depuracion
+import java.util.*;
+
 /**
  *
  * @author Ocete
  */
 public class View {
-    public static void main (String[] args) {
+    public static void main (String[] args) {/*
+        Player p = new Player("p");
+        ArrayList <Treasure> v = new ArrayList(Arrays.asList(new Treasure("1", 0, TreasureKind.ONEHAND), 
+                new Treasure("2", 0, TreasureKind.BOTHHANDS), new Treasure("3", 0, TreasureKind.ARMOR),
+                new Treasure("4", 0, TreasureKind.ONEHAND), new Treasure("5", 0, TreasureKind.BOTHHANDS)));
+        for (Treasure t : v) {
+            p.depuración(t);
+            //p.makeTreasureVisible(t);
+        }
+        System.out.println ("Visibles: " + p.getVisibleTreasures().toString()
+                            + "\nOcultos: " + p.getHiddenTreasures().toString()
+                            + "\nVisibles de una mano: " + Integer.toString(p.howManyVisibleTreasures(TreasureKind.ONEHAND))
+                            + "\nVisibles de dos mano: " + Integer.toString(p.howManyVisibleTreasures(TreasureKind.BOTHHANDS)));
+
+         for (Treasure t : v) {
+            //p.depuración(t);
+            p.makeTreasureVisible(t);
+        }
+        System.out.println ("Visibles: " + p.getVisibleTreasures().toString()
+                            + "\nOcultos: " + p.getHiddenTreasures().toString()
+                            + "\nVisibles de una mano: " + Integer.toString(p.howManyVisibleTreasures(TreasureKind.ONEHAND))
+                            + "\nVisibles de dos mano: " + Integer.toString(p.howManyVisibleTreasures(TreasureKind.BOTHHANDS)));
+        
+        
+        */
         // Instanciamos el juego
         Napakalaki game = Napakalaki.getInstance();
         // Instanciamos la vista del juego

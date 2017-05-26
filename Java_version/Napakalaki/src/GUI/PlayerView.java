@@ -26,6 +26,8 @@ public class PlayerView extends javax.swing.JPanel {
         this.name.setText("Name: " + playerModel.getName());
         this.level.setText("Level: " + 
                 Integer.toString(playerModel.getLevels()));
+        this.combatLevelLabel.setText("Combat level: " +
+                Integer.toString(p.getCombatLevel()));
         this.death.setText("Dead: " + 
                 Boolean.toString(playerModel.isDead()));
         this.canISteal.setText("CanISteal: " + 
@@ -121,6 +123,7 @@ public class PlayerView extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         pendingBadConsequenceView = new GUI.PendingBadConsequenceView();
         pendingBadConsequenceLabel = new javax.swing.JLabel();
+        combatLevelLabel = new javax.swing.JLabel();
 
         name.setText("Name");
 
@@ -174,6 +177,8 @@ public class PlayerView extends javax.swing.JPanel {
 
         pendingBadConsequenceLabel.setText("Pending Bad Consequence");
 
+        combatLevelLabel.setText("Combat level");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -183,22 +188,27 @@ public class PlayerView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(level)
+                            .addComponent(name)
                             .addComponent(death)
                             .addComponent(canISteal)
                             .addComponent(enemy)
                             .addComponent(cultist)
-                            .addComponent(level)
-                            .addComponent(name))
-                        .addGap(102, 102, 102)
+                            .addComponent(combatLevelLabel))
+                        .addGap(87, 87, 87)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pendingBadConsequenceView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pendingBadConsequenceLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(discardTreasuresButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(discardAllTreasuresButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(stealTreasureButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(makeVisibleButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pendingBadConsequenceView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pendingBadConsequenceLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(discardTreasuresButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(discardAllTreasuresButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(makeVisibleButton, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(stealTreasureButton)))
                         .addGap(14, 14, 14))
                     .addComponent(jLabel2)
                     .addComponent(hiddenTreasures, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,6 +227,8 @@ public class PlayerView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(level)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(combatLevelLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(death)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -269,13 +281,14 @@ public class PlayerView extends javax.swing.JPanel {
     }//GEN-LAST:event_discardTreasuresButtonActionPerformed
 
     private void discardAllTreasuresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardAllTreasuresButtonActionPerformed
-        napakalakiModel.getCurrentPlayer().discardAllTreasures();
-        setPlayer (napakalakiModel.getCurrentPlayer());
+        playerModel.discardAllTreasures();
+        setPlayer (playerModel);
     }//GEN-LAST:event_discardAllTreasuresButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel canISteal;
+    private javax.swing.JLabel combatLevelLabel;
     private javax.swing.JLabel cultist;
     private javax.swing.JLabel death;
     private javax.swing.JButton discardAllTreasuresButton;

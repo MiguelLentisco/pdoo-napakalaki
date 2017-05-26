@@ -52,7 +52,7 @@ public class TreasureView extends javax.swing.JPanel {
                 s += "ARMOR";
         }
         this.treasureKind.setText(s);
-        setBackground(Color.BLUE);
+        setBackground(Color.ORANGE);
         setOpaque(false);
         repaint();
     }
@@ -65,6 +65,7 @@ public class TreasureView extends javax.swing.JPanel {
         bonus = new javax.swing.JLabel();
         treasureKind = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -89,7 +90,7 @@ public class TreasureView extends javax.swing.JPanel {
                         .addComponent(bonus)
                         .addGap(29, 29, 29)
                         .addComponent(treasureKind)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

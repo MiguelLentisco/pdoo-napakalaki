@@ -27,24 +27,32 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="level" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="name" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="death" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="canISteal" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="enemy" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="cultist" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="level" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="name" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="combatLevelLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pendingBadConsequenceView" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="pendingBadConsequenceLabel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="discardTreasuresButton" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="discardAllTreasuresButton" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="stealTreasureButton" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="makeVisibleButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="pendingBadConsequenceView" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pendingBadConsequenceLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="discardTreasuresButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="discardAllTreasuresButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="makeVisibleButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="31" max="32767" attributes="0"/>
+                              <Component id="stealTreasureButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
                   </Group>
@@ -69,6 +77,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="level" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="combatLevelLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="death" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -212,6 +222,11 @@
     <Component class="javax.swing.JLabel" name="pendingBadConsequenceLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pending Bad Consequence"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="combatLevelLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Combat level"/>
       </Properties>
     </Component>
   </SubComponents>

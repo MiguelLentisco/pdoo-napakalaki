@@ -43,7 +43,7 @@ public class Player {
         dead = false;
     }
     
-    protected int getCombatLevel() {
+    public int getCombatLevel() {
         int bonus_total = level;
         for (Treasure treasure: visibleTreasures)
             bonus_total += treasure.getBonus();
@@ -77,11 +77,10 @@ public class Player {
     }
     
     private void applyBadConsequence(Monster m) {
-        BadConsequence badConsequence = m.getBadConsequence();
-        decrementLevels(badConsequence.getLevels());
-        BadConsequence pendingBad = badConsequence.adjustToFitTreasureLists(
+        BadConsequence bC = m.getBadConsequence();
+        decrementLevels(bC.getLevels());
+        pendingBadConsequence = bC.adjustToFitTreasureLists(
                 visibleTreasures, hiddenTreasures);
-        setPendingBadConsequence(pendingBad);
     }
     
     private boolean canMakeTreasureVisible(Treasure t) {
@@ -91,9 +90,11 @@ public class Player {
             case ONEHAND:
                 result = howManyVisibleTreasures(TreasureKind.BOTHHANDS) == 0 &&
                         howManyVisibleTreasures(tType) <= 1;
+                break;
             case BOTHHANDS:
                 result = howManyVisibleTreasures(TreasureKind.ONEHAND) == 0 &&
                         howManyVisibleTreasures(tType) == 0;
+                break;
             default:
                 result = howManyVisibleTreasures(tType) == 0;
         }   
@@ -239,7 +240,6 @@ public class Player {
         i = hiddenTreasures.iterator();
         while (i.hasNext())
             discardHiddenTreasure(i.next());
-        
     }
     
     protected boolean shouldConvert() {
@@ -262,7 +262,23 @@ public class Player {
     }
     
     public String toString() {
-        return "FALTA";
+        String message = " Name: " + name + "\n Level: " + level + "\n Death: "
+                + Boolean.toString(dead) + "\n CanISteal: " + 
+                Boolean.toString(canISteal);
+        if (enemy != null) {
+            message += "\n Enemy: " + enemy.name;
+        }
+        message += "\n Visible treasures: " + visibleTreasures + 
+                "\n Hidden treasures: " + hiddenTreasures;
+        if (pendingBadConsequence != null) {
+            message += "\n Pending bad consequence: " + 
+                    pendingBadConsequence.toString();
+        }
+        return message;
+    }
+    
+    public void depuración(Treasure t) {
+        hiddenTreasures.add(t);
     }
 }
 

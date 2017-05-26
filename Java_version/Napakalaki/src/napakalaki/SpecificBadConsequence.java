@@ -14,8 +14,8 @@ public class SpecificBadConsequence extends BadConsequence {
     public SpecificBadConsequence(String t, int l, ArrayList<TreasureKind> v,
                                ArrayList<TreasureKind> h) {
         super(t, l);
-        this.specificHiddenTreasures = v;
-        this.specificVisibleTreasures = h;
+        this.specificVisibleTreasures = v;
+        this.specificHiddenTreasures = h;
     }
     
     public ArrayList<TreasureKind> getSpecificHiddenTreasures() {
@@ -69,6 +69,12 @@ public class SpecificBadConsequence extends BadConsequence {
                 specificVisibleTreasures.toString() +
                 "\nTesoros ocultos perdidos: " +
                 specificHiddenTreasures.toString();
+    }
+    
+    @Override
+    public String toDiscard() {
+        return "Visibles: " + specificVisibleTreasures.toString() +
+            "\n Ocultos: " + specificHiddenTreasures.toString();
     }
 }
 

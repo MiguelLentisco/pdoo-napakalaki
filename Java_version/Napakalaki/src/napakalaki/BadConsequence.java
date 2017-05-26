@@ -28,6 +28,8 @@ public abstract class BadConsequence {
     
     abstract public void substractHiddenTreasure(Treasure t);
     
+    abstract public String toDiscard();
+    
     abstract public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v,
             ArrayList<Treasure> h); 
     

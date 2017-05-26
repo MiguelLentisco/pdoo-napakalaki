@@ -61,6 +61,12 @@ public class NumericBadConsequence extends BadConsequence {
                 "\n Tesoros ocultos perdidos: " + 
                 Integer.toString(nHiddenTreasures);
     }
+    
+    @Override
+    public String toDiscard() {
+        return "Visibles: " + Integer.toString(nVisibleTreasures) +
+            "\n Ocultos: " + Integer.toString(nHiddenTreasures);
+    }
 }
 
 // end NumericBadConsequence.java
