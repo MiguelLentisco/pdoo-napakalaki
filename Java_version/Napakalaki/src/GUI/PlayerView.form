@@ -146,10 +146,6 @@
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
-      <SubComponents>
-        <Component class="GUI.TreasureView" name="treasureView3">
-        </Component>
-      </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="hiddenTreasures">
       <Properties>

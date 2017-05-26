@@ -14,8 +14,8 @@ public class PendingBadConsequenceView extends javax.swing.JPanel {
 
     public void setPendingBadConsequence (BadConsequence bC) {
         pendingBadConsequenceModel = bC;
-        this.text.setText("<html>" + pendingBadConsequenceModel.getText() +
-                "<html>");
+        this.text.setText("<html>" + pendingBadConsequenceModel.getText()
+                + "<html>");
         String treasuresText;
         if (pendingBadConsequenceModel instanceof NumericBadConsequence) {
             treasuresText = "Visibles: " + Integer.toString(

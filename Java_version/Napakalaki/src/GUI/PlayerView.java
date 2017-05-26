@@ -34,14 +34,15 @@ public class PlayerView extends javax.swing.JPanel {
         this.cultist.setText("Cultist: " + 
                 Boolean.toString(p instanceof CultistPlayer));
         
-        if (p.getPendingBadConsequence() == null) {
-            this.pendingBadConsequenceView.setVisible(false);
-            this.pendingBadConsequenceLabel.setVisible(false);
-        } else {
-            this.pendingBadConsequenceView.setPendingBadConsequence(
+        if (p.getPendingBadConsequence() != null && 
+                !p.getPendingBadConsequence().isEmpty()) {
+            pendingBadConsequenceView.setVisible(true);
+            pendingBadConsequenceLabel.setVisible(true);
+            pendingBadConsequenceView.setPendingBadConsequence(
                 p.getPendingBadConsequence());
-            this.pendingBadConsequenceView.setVisible(true);
-            this.pendingBadConsequenceLabel.setVisible(true);
+        } else {
+            pendingBadConsequenceView.setVisible(false);
+            pendingBadConsequenceLabel.setVisible(false);
         }
         fillTreasurePanel(visibleTreasures, playerModel.getVisibleTreasures());
         fillTreasurePanel(hiddenTreasures, playerModel.getHiddenTreasures());        
@@ -111,7 +112,6 @@ public class PlayerView extends javax.swing.JPanel {
         enemy = new javax.swing.JLabel();
         cultist = new javax.swing.JLabel();
         visibleTreasures = new javax.swing.JPanel();
-        treasureView3 = new GUI.TreasureView();
         hiddenTreasures = new javax.swing.JPanel();
         stealTreasureButton = new javax.swing.JButton();
         makeVisibleButton = new javax.swing.JButton();
@@ -135,7 +135,6 @@ public class PlayerView extends javax.swing.JPanel {
         cultist.setText("Cultist");
 
         visibleTreasures.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        visibleTreasures.add(treasureView3);
 
         hiddenTreasures.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -270,7 +269,7 @@ public class PlayerView extends javax.swing.JPanel {
     }//GEN-LAST:event_discardTreasuresButtonActionPerformed
 
     private void discardAllTreasuresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardAllTreasuresButtonActionPerformed
-        playerModel.discardAllTreasures();
+        napakalakiModel.getCurrentPlayer().discardAllTreasures();
         setPlayer (napakalakiModel.getCurrentPlayer());
     }//GEN-LAST:event_discardAllTreasuresButtonActionPerformed
 
@@ -293,7 +292,6 @@ public class PlayerView extends javax.swing.JPanel {
     private javax.swing.JButton stealTreasureButton;
     private GUI.TreasureView treasureView1;
     private GUI.TreasureView treasureView2;
-    private GUI.TreasureView treasureView3;
     private javax.swing.JPanel visibleTreasures;
     // End of variables declaration//GEN-END:variables
 }

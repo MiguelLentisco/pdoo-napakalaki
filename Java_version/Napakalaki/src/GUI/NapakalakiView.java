@@ -32,17 +32,18 @@ public class NapakalakiView extends javax.swing.JFrame {
                 break;
             case LOSE :
                 message = "Perdiste";
+                break;
             case LOSEANDCONVERT :
                 message = "Perdiste y ahora eres cultista";
         }
-        combatResult.setText("Combat result: " + message);
+        combatResultLabel.setText("Combat result: " + message);
     }
     
     private void newTurn() {
         currentPlayerView.setNapakalakiModel(napakalakiModel);
         currentPlayerView.setPlayer(napakalakiModel.getCurrentPlayer());
         monsterView.setVisible(false);
-        combatResult.setText("Combat result: NO COMBAT");
+        combatResultLabel.setVisible(false);
         combatButton.setEnabled(false);
         nextTurnButton.setEnabled(false);
         meetTheMonsterButton.setEnabled(true);
@@ -60,19 +61,18 @@ public class NapakalakiView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        playerView = new GUI.PlayerView();
         monsterView = new GUI.MonsterView();
         jLabel1 = new javax.swing.JLabel();
         meetTheMonsterButton = new javax.swing.JButton();
         combatButton = new javax.swing.JButton();
         nextTurnButton = new javax.swing.JButton();
-        combatResult = new javax.swing.JLabel();
+        combatResultLabel = new javax.swing.JLabel();
         currentPlayerView = new GUI.PlayerView();
         jLabel2 = new javax.swing.JLabel();
 
-        playerView.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1366, 768));
+        setResizable(false);
 
         monsterView.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -99,7 +99,7 @@ public class NapakalakiView extends javax.swing.JFrame {
             }
         });
 
-        combatResult.setText("Combat Result");
+        combatResultLabel.setText("Combat Result");
 
         currentPlayerView.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         currentPlayerView.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -126,7 +126,7 @@ public class NapakalakiView extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(combatButton)
                                 .addGap(35, 35, 35)
-                                .addComponent(combatResult))
+                                .addComponent(combatResultLabel))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(37, 37, 37)
                                 .addComponent(meetTheMonsterButton))
@@ -157,7 +157,7 @@ public class NapakalakiView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(combatButton)
-                            .addComponent(combatResult))
+                            .addComponent(combatResultLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nextTurnButton)))
                 .addContainerGap(34, Short.MAX_VALUE))
@@ -169,6 +169,7 @@ public class NapakalakiView extends javax.swing.JFrame {
     private void combatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combatButtonActionPerformed
         CombatResult cR = napakalakiModel.developCombat();
         printfCombatResult(cR);
+        combatResultLabel.setVisible(true);
         nextTurnButton.setEnabled(true);
         combatButton.setEnabled(false);
         currentPlayerView.setPlayer(napakalakiModel.getCurrentPlayer());
@@ -206,13 +207,12 @@ public class NapakalakiView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton combatButton;
-    private javax.swing.JLabel combatResult;
+    private javax.swing.JLabel combatResultLabel;
     private GUI.PlayerView currentPlayerView;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton meetTheMonsterButton;
     private GUI.MonsterView monsterView;
     private javax.swing.JButton nextTurnButton;
-    private GUI.PlayerView playerView;
     // End of variables declaration//GEN-END:variables
 }

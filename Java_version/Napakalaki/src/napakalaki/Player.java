@@ -239,6 +239,7 @@ public class Player {
         i = hiddenTreasures.iterator();
         while (i.hasNext())
             discardHiddenTreasure(i.next());
+        
     }
     
     protected boolean shouldConvert() {
