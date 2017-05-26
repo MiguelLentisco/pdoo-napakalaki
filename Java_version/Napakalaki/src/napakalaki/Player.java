@@ -90,21 +90,23 @@ public class Player {
         switch (tType) {
             case ONEHAND:
                 result = howManyVisibleTreasures(TreasureKind.BOTHHANDS) == 0 &&
-                        howManyVisibleTreasures(tType) < 2;
+                        howManyVisibleTreasures(tType) <= 1;
             case BOTHHANDS:
                 result = howManyVisibleTreasures(TreasureKind.ONEHAND) == 0 &&
-                        howManyVisibleTreasures(tType) < 1;
+                        howManyVisibleTreasures(tType) == 0;
             default:
-                result = howManyVisibleTreasures(tType) < 1;
+                result = howManyVisibleTreasures(tType) == 0;
         }   
         return result;
     }
     
     private int howManyVisibleTreasures(TreasureKind tKind) {
         int n = 0;
-        for (Treasure treasure : visibleTreasures)
-            if (treasure.getType() == tKind)
+        for (Treasure treasure : visibleTreasures) {
+            if (treasure.getType() == tKind) {
                 n++;
+            }
+        }
         return n;
     }
     

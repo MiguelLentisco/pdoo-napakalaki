@@ -13,24 +13,24 @@ public class PendingBadConsequenceView extends javax.swing.JPanel {
     }
 
     public void setPendingBadConsequence (BadConsequence bC) {
-        
         pendingBadConsequenceModel = bC;
-        this.text.setText(pendingBadConsequenceModel.getText());
+        this.text.setText("<html>" + pendingBadConsequenceModel.getText() +
+                "<html>");
         String treasuresText;
         if (pendingBadConsequenceModel instanceof NumericBadConsequence) {
             treasuresText = "Visibles: " + Integer.toString(
                 ((NumericBadConsequence) pendingBadConsequenceModel).
-                getNVisibleTreasures()) + "\nHidden: " + Integer.toString(
+                getNVisibleTreasures()) + " Hidden: " + Integer.toString(
                 ((NumericBadConsequence) pendingBadConsequenceModel).
                 getNHiddenTreasures());            
         } else {
             treasuresText = "Visibles: " + 
                 ((SpecificBadConsequence) pendingBadConsequenceModel).
-                getSpecificVisibleTreasures() + "\nHidden: " + 
+                getSpecificVisibleTreasures() + " Hidden: " + 
                 ((SpecificBadConsequence) pendingBadConsequenceModel).
                 getSpecificHiddenTreasures();
         }
-        this.treasuresView.setText(treasuresText);
+        this.treasuresView.setText("<html>" + treasuresText + "<html>");
         repaint();
     }
     
@@ -56,21 +56,25 @@ public class PendingBadConsequenceView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(treasuresView, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(text)
-                    .addComponent(jLabel2))
-                .addContainerGap(66, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(91, 96, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(treasuresView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(text)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(4, 4, 4)
                 .addComponent(treasuresView, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
