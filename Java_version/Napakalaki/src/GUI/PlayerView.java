@@ -3,10 +3,10 @@ package GUI;
 import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JPanel;
-import napakalaki.CultistPlayer;
-import napakalaki.Napakalaki;
-import napakalaki.Player;
-import napakalaki.Treasure;
+import NapakalakiGame.CultistPlayer;
+import NapakalakiGame.Napakalaki;
+import NapakalakiGame.Player;
+import NapakalakiGame.Treasure;
 
 public class PlayerView extends javax.swing.JPanel {
 

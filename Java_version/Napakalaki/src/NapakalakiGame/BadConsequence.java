@@ -1,5 +1,5 @@
 // begin BadConsequence.java
-package napakalaki;
+package NapakalakiGame;
 
 // Usar arrays
 import java.util.ArrayList;

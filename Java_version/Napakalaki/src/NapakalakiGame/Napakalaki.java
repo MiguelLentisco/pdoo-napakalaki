@@ -1,5 +1,5 @@
 // begin Napakalaki.java
-package napakalaki;
+package NapakalakiGame;
 
 import java.util.ArrayList;
 import java.util.Random;

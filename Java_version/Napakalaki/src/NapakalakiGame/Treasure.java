@@ -1,5 +1,5 @@
 // begin Treasure.java
-package napakalaki;
+package NapakalakiGame;
 
 // Representa una carta de Tesoro
 public class Treasure {

@@ -1,5 +1,5 @@
 // begin CombatResult.java
-package napakalaki;
+package NapakalakiGame;
 
 // Representación del resultado de un combate entre el jugador y el monstruo
 public enum CombatResult {

@@ -1,5 +1,5 @@
 // begin Prize.java
-package napakalaki;
+package NapakalakiGame;
 
 // Clase Prize que representa la recompensa a obtener
 public class Prize {

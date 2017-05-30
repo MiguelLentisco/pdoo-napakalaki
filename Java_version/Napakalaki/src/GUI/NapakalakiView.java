@@ -9,8 +9,8 @@ import java.awt.Color;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import napakalaki.CombatResult;
-import napakalaki.Napakalaki;
+import NapakalakiGame.CombatResult;
+import NapakalakiGame.Napakalaki;
 
 /**
  *

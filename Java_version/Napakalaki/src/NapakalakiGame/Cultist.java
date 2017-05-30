@@ -1,4 +1,4 @@
-package napakalaki;
+package NapakalakiGame;
 
 public class Cultist {
     private String name;

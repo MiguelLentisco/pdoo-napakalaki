@@ -1,6 +1,6 @@
 package GUI;
 
-import napakalaki.Prize;
+import NapakalakiGame.Prize;
 
 public class PrizeView extends javax.swing.JPanel {
 

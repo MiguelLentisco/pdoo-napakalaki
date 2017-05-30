@@ -1,3 +1,5 @@
+package NapakalakiGame;
+
 /*
 TODO:
 napakalakiView::currentPlayerViewKeyPressed sobra (lo añadi por error y no se quitarlo)

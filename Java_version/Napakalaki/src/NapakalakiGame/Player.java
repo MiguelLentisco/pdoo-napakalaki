@@ -1,5 +1,5 @@
 // begin Player.java
-package napakalaki;
+package NapakalakiGame;
 
 import GUI.Dice;
 import java.util.ArrayList;
@@ -132,7 +132,8 @@ public class Player {
         int myLevel = getCombatLevel();
         int monsterLevel = getOponentLevel(m);
         CombatResult cr;
-        if (!canISteal && Dice.getInstance().nextNumber() < 3)
+        if (!canISteal && Dice.getInstance().nextNumber("Robaste una carta.",
+                "Veamos si el monstruo se hace más fuerte.") < 3)
                 monsterLevel += enemy.getCombatLevel();
         if (myLevel > monsterLevel) {
             applyPrize(m);
@@ -184,7 +185,8 @@ public class Player {
         bringToLife();
         Treasure treasure = dealer.nextTreasure();
         hiddenTreasures.add(treasure);
-        int number = dice.nextNumber();
+        int number = dice.nextNumber("Empezamos partida/estás muerto.",
+                "A ver cuantos tesoros te tocan.");
         if (number > 1) {
             treasure = dealer.nextTreasure();
             hiddenTreasures.add(treasure);
@@ -257,7 +259,8 @@ public class Player {
     }
     
     protected boolean shouldConvert() {
-        return Dice.getInstance().nextNumber() == 6;
+        return Dice.getInstance().nextNumber("Has perdido el combate",
+                "Si te sale un 6 te haces cultista.") == 6;
     }
     
     protected int getOponentLevel(Monster m) {

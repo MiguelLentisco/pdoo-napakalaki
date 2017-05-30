@@ -1,5 +1,5 @@
 // begin Monster.java
-package napakalaki;
+package NapakalakiGame;
 
 // Clase Monster que representa una carta de monstruo
 public class Monster {

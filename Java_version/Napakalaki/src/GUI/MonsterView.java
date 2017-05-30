@@ -1,6 +1,6 @@
 package GUI;
 
-import napakalaki.Monster;
+import NapakalakiGame.Monster;
 
 public class MonsterView extends javax.swing.JPanel {
 

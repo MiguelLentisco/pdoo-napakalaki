@@ -1,8 +1,8 @@
 package GUI;
 
-import napakalaki.BadConsequence;
-import napakalaki.NumericBadConsequence;
-import napakalaki.SpecificBadConsequence;
+import NapakalakiGame.BadConsequence;
+import NapakalakiGame.NumericBadConsequence;
+import NapakalakiGame.SpecificBadConsequence;
 
 public class PendingBadConsequenceView extends javax.swing.JPanel {
 

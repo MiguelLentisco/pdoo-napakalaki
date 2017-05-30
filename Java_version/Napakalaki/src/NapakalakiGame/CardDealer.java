@@ -1,5 +1,5 @@
 // begin CardDealer.java
-package napakalaki;
+package NapakalakiGame;
 
 import java.util.ArrayList;
 import java.util.Collections;

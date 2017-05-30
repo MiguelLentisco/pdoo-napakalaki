@@ -1,5 +1,5 @@
 // begin DeathBadConsequence.java
-package napakalaki;
+package NapakalakiGame;
 
 public class DeathBadConsequence extends NumericBadConsequence {
     

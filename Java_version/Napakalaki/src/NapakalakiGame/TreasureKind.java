@@ -1,5 +1,5 @@
 // begin TreasureKind.java
-package napakalaki;
+package NapakalakiGame;
 
 // Enumerado TreasureKind que representa el tipo de tesoro
 public enum TreasureKind {

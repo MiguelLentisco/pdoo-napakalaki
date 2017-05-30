@@ -3,6 +3,8 @@
 package napakalaki;
 
 // Usar arrays
+import NapakalakiGame.Treasure;
+import NapakalakiGame.TreasureKind;
 import java.util.ArrayList;
 
 // Clase BadConsequence que representa el mal rollo de los monstruos

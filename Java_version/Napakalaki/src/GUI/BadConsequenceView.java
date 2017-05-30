@@ -1,6 +1,6 @@
 package GUI;
 
-import napakalaki.BadConsequence;
+import NapakalakiGame.BadConsequence;
 
 public class BadConsequenceView extends javax.swing.JPanel {
 

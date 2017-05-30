@@ -1,13 +1,13 @@
 
 package Test;
 
-import napakalaki.Napakalaki;
+import NapakalakiGame.Napakalaki;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-import napakalaki.CombatResult;
-import napakalaki.Player;
-import napakalaki.Treasure;
+import NapakalakiGame.CombatResult;
+import NapakalakiGame.Player;
+import NapakalakiGame.Treasure;
 import java.util.Arrays;
 
 public class GameTester {

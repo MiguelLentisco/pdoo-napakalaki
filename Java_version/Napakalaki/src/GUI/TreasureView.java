@@ -6,7 +6,7 @@
 package GUI;
 
 import java.awt.Color;
-import napakalaki.Treasure;
+import NapakalakiGame.Treasure;
 
 /**
  *
