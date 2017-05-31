@@ -55,7 +55,8 @@ public class ControladorP5 {
     }
     
     public BadConsequenceView getNumericBadConsequence(){
-       NumericBadConsequence numericBC = new NumericBadConsequence("bc", 1, 2, 3);
+       NumericBadConsequence numericBC = new NumericBadConsequence(
+               "Numeric bad consequence", 1, 2, 3);
        BadConsequenceView bCV = new BadConsequenceView();
        bCV.setBadConsequence(numericBC);
        badcons.add(numericBC);
@@ -63,10 +64,10 @@ public class ControladorP5 {
     }
         
     public BadConsequenceView getSpecificBadConsequence(){
-        SpecificBadConsequence specificBC = new SpecificBadConsequence("bc",0,
-                new ArrayList(0), new ArrayList(Arrays.
-                asList(TreasureKind.ONEHAND, TreasureKind.ONEHAND, 
-                TreasureKind.SHOE)));
+        SpecificBadConsequence specificBC = new SpecificBadConsequence(
+                "Specific bad consequence", 0, new ArrayList(0),
+                new ArrayList(Arrays.asList(TreasureKind.ONEHAND, 
+                TreasureKind.ONEHAND, TreasureKind.SHOE)));
        BadConsequenceView bCV = new BadConsequenceView();
        bCV.setBadConsequence(specificBC);
        badcons.add(specificBC);
