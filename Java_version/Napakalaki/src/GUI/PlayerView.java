@@ -95,9 +95,15 @@ public class PlayerView extends javax.swing.JPanel {
         discardTreasuresButton.setEnabled(b);
     }
     
-    public void setAllButtons (boolean b) {
+    public void setMakeStealButtons (boolean b) {
+        b = b && (playerModel.getPendingBadConsequence() == null ||
+                playerModel.getPendingBadConsequence().isEmpty());
+        setMakeVisibleButton(b);
         setStealTreasureButton(b);
-        makeVisibleButton.setEnabled(b);
+    }
+    
+    public void setAllButtons (boolean b) {
+        setMakeStealButtons(b);
         setDiscardTreasuresButtons(b);
     }
     
@@ -277,11 +283,14 @@ public class PlayerView extends javax.swing.JPanel {
         napakalakiModel.discardHiddenTreasures(sel);
         sel = getSelectedTreasures (visibleTreasures);
         napakalakiModel.discardVisibleTreasures(sel);
+        setMakeStealButtons(true);        
         setPlayer (napakalakiModel.getCurrentPlayer());
     }//GEN-LAST:event_discardTreasuresButtonActionPerformed
 
     private void discardAllTreasuresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discardAllTreasuresButtonActionPerformed
         playerModel.discardAllTreasures();
+        setMakeVisibleButton(true);
+        setStealTreasureButton(true);
         setPlayer (playerModel);
     }//GEN-LAST:event_discardAllTreasuresButtonActionPerformed
 
