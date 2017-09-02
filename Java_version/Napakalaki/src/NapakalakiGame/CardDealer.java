@@ -157,7 +157,7 @@ public class CardDealer {
         prize = new Prize(1,1);
         bC = new SpecificBadConsequence("Embobados con el lindo" +
             " primigenio te descartas de tu casco visible.", 0, 
-            new ArrayList(Arrays.asList(TreasureKind.ARMOR)), new ArrayList());
+            new ArrayList(Arrays.asList(TreasureKind.HELMET)), new ArrayList());
         unusedMonsters.add(new Monster("Tenochtitlan", 2, bC, prize));
 
         // El sopor de Dunwich
@@ -261,7 +261,7 @@ public class CardDealer {
         // Bicéfalo
         prize = new Prize(2, 1);
         bC = new SpecificBadConsequence("Te faltan manos para tanta " +
-            "cabeza. Pierdes 3 nivels y tus tesoros visibles de las manos.", 3,
+            "cabeza. Pierdes 3 nivelEs y tus tesoros visibles de las manos.", 3,
             new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS, 
             TreasureKind.ONEHAND, TreasureKind.ONEHAND)), new ArrayList());
         unusedMonsters.add(new Monster("Bicéfalo", 21, bC, prize));
